@@ -29,7 +29,10 @@ async function loadExamQuestions() {
     startExam(selectedQuestions);
   } catch (error) {
     console.error("Error al cargar questions.json:", error);
-    document.getElementById('question-counter').textContent = "Error al cargar las preguntas. Verifica la consola.";
+    const counter = document.getElementById('question-counter');
+    if (counter) {
+      counter.textContent = "Error al cargar las preguntas. Verifica la consola.";
+    }
   }
 }
 
@@ -57,11 +60,14 @@ function startExam(questions) {
       </label>
     `).join('');
 
+    // Manejo de explicación opcional por seguridad
+    const explanationText = q.explanation ? q.explanation : "No hay explicación disponible para esta pregunta.";
+
     card.innerHTML = `
       <h3 class="question-title">${index + 1}. ${q.question}</h3>
       <div class="options-group">${optionsHTML}</div>
       <div class="explanation" id="explanation-${index}">
-        <strong>Explicación:</strong> ${q.explanation}
+        <strong>Explicación:</strong> ${explanationText}
       </div>
     `;
 
@@ -81,6 +87,14 @@ function evaluateExam() {
     if (explanationDiv) {
       explanationDiv.style.display = 'block';
     }
+
+    // Limpiar clases previas si se vuelve a calificar
+    q.options.forEach((_, i) => {
+      const lbl = document.getElementById(`label-${index}-${i}`);
+      if (lbl) {
+        lbl.classList.remove('correct', 'incorrect');
+      }
+    });
 
     // Marcar la opción correcta siempre
     const correctLabel = document.getElementById(`label-${index}-${q.answer}`);
@@ -104,13 +118,14 @@ function evaluateExam() {
 
   // Mostrar el puntaje final
   const scoreBox = document.getElementById('score-box');
-  const percentage = ((score / selectedQuestions.length) * 100).toFixed(1);
-  
-  scoreBox.style.display = 'block';
-  scoreBox.innerHTML = `
-    <h2>Resultado Final: ${score} / ${selectedQuestions.length} (${percentage}%)</h2>
-    <p>${percentage >= 70 ? '¡Felicidades! Has aprobado la simulación.' : 'Sigue practicando para alcanzar el 70% o más.'}</p>
-  `;
+  if (scoreBox) {
+    const percentage = ((score / selectedQuestions.length) * 100).toFixed(1);
+    scoreBox.style.display = 'block';
+    scoreBox.innerHTML = `
+      <h2>Resultado Final: ${score} / ${selectedQuestions.length} (${percentage}%)</h2>
+      <p>${percentage >= 70 ? '¡Felicidades! Has aprobado la simulación.' : 'Sigue practicando para alcanzar el 70% o más.'}</p>
+    `;
+  }
 
   // Desplazar la pantalla arriba para ver el puntaje
   window.scrollTo({ top: 0, behavior: 'smooth' });
