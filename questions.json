@@ -1,0 +1,52 @@
+[
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) architecture. Which component provides centralized management for cloud operations, automation, and log analytics across the platform?",
+    "options": [
+      "VMware vCenter Server",
+      "SDDC Manager",
+      "Aria Suite (formerly vRealize Suite)",
+      "NSX Manager"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "When designing a Management Domain in VMware Cloud Foundation, what is the minimum required number of ESXi hosts?",
+    "options": [
+      "2 hosts",
+      "3 hosts",
+      "4 hosts",
+      "7 hosts"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which storage solution is mandatory for the initial deployment of the VMware Cloud Foundation Management Domain primary storage?",
+    "options": [
+      "NFS v3",
+      "iSCSI SAN",
+      "VMware vSAN",
+      "Fibre Channel SAN"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "An architect needs to configure network redundancy for ESXi hosts in a VI Workload Domain. Which networking abstraction in VCF automates NSX-T/NSX Data Center deployment across hosts?",
+    "options": [
+      "vSphere Distributed Switch (vDS)",
+      "Host Switch / Transport Node Profile",
+      "Standard Switch (vSS)",
+      "NSX Edge Cluster Profile"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary role of SDDC Manager in a VMware Cloud Foundation environment?",
+    "options": [
+      "Managing VM workloads and resource pools directly",
+      "Automating the lifecycle management (LCM) and deployment of VCF infrastructure",
+      "Routing layer 3 traffic between workload domains",
+      "Providing disaster recovery replication across sites"
+    ],
+    "answer": 1
+  }
+]
