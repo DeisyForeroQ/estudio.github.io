@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Examen VMware 2V0-13.25 - VCF Architect</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <header>
+            <h1>VMware 2V0-13.25 Practice Exam</h1>
+            <p>VMware Cloud Foundation Architect</p>
+            <div id="hud">
+                <div id="progress">Pregunta 1 de 10</div>
+                <div id="score-live">Puntuación: 0</div>
+            </div>
+        </header>
 
+        <main id="quiz-body">
+            <h2 id="question-text">Cargando pregunta...</h2>
+            <div id="options-container" class="options-list"></div>
+            <button id="next-btn" class="btn" style="display: none;">Siguiente Pregunta</button>
+        </main>
+
+        <div id="results-screen" style="display: none;">
+            <h2>¡Examen Finalizado!</h2>
+            <p id="final-score"></p>
+            <p id="status-message"></p>
+            <button onclick="location.reload()" class="btn">Reiniciar Examen</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
