@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 750px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 30px;
+}
+
+header {
+    border-bottom: 2px solid #eef2f5;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: #1e293b;
+}
+
+header p {
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #3b82f6;
+}
+
+#question-text {
+    font-size: 1.15rem;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.option-btn {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #334155;
+}
+
+.option-btn:hover:not([disabled]) {
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.option-btn.correct {
+    background-color: #dcfce7;
+    border-color: #22c55e;
+    color: #14532d;
+}
+
+.option-btn.incorrect {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #7f1d1d;
+}
+
+.btn {
+    background-color: #0284c7;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #0369a1;
+}
+
+#results-screen {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#results-screen h2 {
+    margin-bottom: 15px;
+    color: #0f172a;
+}
+
+#final-score {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+#status-message {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
