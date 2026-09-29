@@ -1,99 +1,38 @@
-let questions = [];
-let currentQuestionIndex = 0;
-let score = 0;
+// Variable global para almacenar las preguntas cargadas
+let allQuestions = [];
+let selectedQuestions = [];
 
-const questionEl = document.getElementById("question-text");
-const optionsEl = document.getElementById("options-container");
-const nextBtn = document.getElementById("next-btn");
-const progressEl = document.getElementById("progress");
-const scoreLiveEl = document.getElementById("score-live");
-const quizBody = document.getElementById("quiz-body");
-const resultsScreen = document.getElementById("results-screen");
-
-// Cargar preguntas desde el JSON
-fetch("questions.json")
-    .then(res => res.json())
-    .then(data => {
-        questions = data;
-        startQuiz();
-    })
-    .catch(err => {
-        questionEl.innerText = "Error al cargar las preguntas.";
-        console.error(err);
-    });
-
-function startQuiz() {
-    currentQuestionIndex = 0;
-    score = 0;
-    showQuestion();
+// Función para mezclar un arreglo (Fisher-Yates Shuffle)
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
-function showQuestion() {
-    resetState();
-    const q = questions[currentQuestionIndex];
+// Carga del archivo JSON y selección aleatoria
+async function loadExamQuestions() {
+  try {
+    const response = await fetch('questions.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
     
-    progressEl.innerText = `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`;
-    questionEl.innerText = q.question;
-
-    q.options.forEach((opt, index) => {
-        const btn = document.createElement("button");
-        btn.innerText = opt;
-        btn.classList.add("option-btn");
-        btn.addEventListener("click", () => selectOption(btn, index));
-        optionsEl.appendChild(btn);
-    });
-}
-
-function resetState() {
-    nextBtn.style.display = "none";
-    optionsEl.innerHTML = "";
-}
-
-function selectOption(selectedBtn, selectedIndex) {
-    const q = questions[currentQuestionIndex];
-    const buttons = optionsEl.querySelectorAll(".option-btn");
-
-    buttons.forEach((btn, idx) => {
-        btn.disabled = true;
-        if (idx === q.answer) {
-            btn.classList.add("correct");
-        }
-    });
-
-    if (selectedIndex === q.answer) {
-        score++;
-        scoreLiveEl.innerText = `Puntuación: ${score}`;
-    } else {
-        selectedBtn.classList.add("incorrect");
-    }
-
-    if (currentQuestionIndex < questions.length - 1) {
-        nextBtn.style.display = "block";
-    } else {
-        setTimeout(showResults, 1500);
-    }
-}
-
-nextBtn.addEventListener("click", () => {
-    currentQuestionIndex++;
-    showQuestion();
-});
-
-function showResults() {
-    quizBody.style.display = "none";
-    resultsScreen.style.display = "block";
+    allQuestions = await response.json();
     
-    const percentage = Math.round((score / questions.length) * 100);
-    const finalScoreEl = document.getElementById("final-score");
-    const statusMsg = document.getElementById("status-message");
-
-    finalScoreEl.innerText = `${score} / ${questions.length} (${percentage}%)`;
-
-    if (percentage >= 70) {
-        statusMsg.innerText = "¡APROBADO! Tienes buen dominio de la arquitectura VCF.";
-        statusMsg.style.color = "#16a34a";
-    } else {
-        statusMsg.innerText = "NO APROBADO. Revisa la documentación de VCF e inténtalo de nuevo.";
-        statusMsg.style.color = "#dc2626";
-    }
+    // Mezclamos todas las preguntas y seleccionamos solo 100
+    selectedQuestions = shuffleArray(allQuestions).slice(0, 100);
+    
+    console.log(`Preguntas cargadas: ${selectedQuestions.length} de ${allQuestions.length}`);
+    
+    // Iniciar el examen o renderizar las preguntas
+    startExam(selectedQuestions);
+  } catch (error) {
+    console.error("Error al cargar questions.json:", error);
+  }
 }
+
+// Llama a la función cuando se cargue la página
+document.addEventListener('DOMContentLoaded', loadExamQuestions);
