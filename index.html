@@ -3,23 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simulador VMware 2V0-13.25</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Simulador Examen VMware 2V0-13.25</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    header {
+      border-bottom: 2px solid #007cbb;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    h1 {
+      color: #007cbb;
+      margin: 0 0 10px 0;
+    }
+    .question-card {
+      margin-bottom: 25px;
+      padding: 20px;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      background-color: #fafbfc;
+    }
+    .question-title {
+      margin-top: 0;
+      color: #1a252c;
+    }
+    .option-label {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 12px;
+      border: 1px solid #d1d5da;
+      border-radius: 4px;
+      background: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .option-label:hover {
+      background-color: #f1f8ff;
+    }
+    .explanation {
+      display: none;
+      margin-top: 15px;
+      padding: 12px 15px;
+      background-color: #e6f7ff;
+      border-left: 4px solid #1890ff;
+      border-radius: 4px;
+      font-size: 0.95em;
+      line-height: 1.4;
+    }
+    /* Estilos de calificación */
+    .correct {
+      background-color: #e6ffed !important;
+      border-color: #28a745 !important;
+    }
+    .incorrect {
+      background-color: #ffeef0 !important;
+      border-color: #dc3545 !important;
+    }
+    .score-box {
+      display: none;
+      padding: 20px;
+      margin-bottom: 25px;
+      background: #f0f3f6;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+    }
+    .actions {
+      text-align: center;
+      margin-top: 30px;
+    }
+    button {
+      background-color: #007cbb;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background-color: #005a88;
+    }
+  </style>
 </head>
 <body>
 
-  <div id="quiz-container">
+  <div class="container">
     <header>
-      <h1>Examen VMware 2V0-13.25</h1>
+      <h1>Simulador VMware 2V0-13.25</h1>
       <p id="question-counter">Cargando preguntas...</p>
     </header>
 
-    <!-- Contenedor donde se renderizarán las preguntas -->
+    <div id="score-box" class="score-box"></div>
+
     <main id="questions-wrapper"></main>
 
-    <footer>
-      <button id="submit-btn" onclick="evaluateExam()">Finalizar Examen</button>
-    </footer>
+    <div class="actions">
+      <button id="submit-btn" onclick="evaluateExam()">Finalizar y Calificar</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
