@@ -48,5 +48,1801 @@
       "Providing disaster recovery replication across sites"
     ],
     "answer": 1
+  },
+  {
+    "question": "An architect made an assumption that existing support staff are adequately skilled to operate a VCF infrastructure. What is the best mitigation if a skill gap is identified?",
+    "options": [
+      "Complete a skills assessment and allocate necessary budget/training time",
+      "Engage a third-party company to deploy and configure the solution",
+      "Hire additional support staff with the same skillsets",
+      "Limit infrastructure deployment scope to vSphere only"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which construct in VCF is used to separate management workloads from tenant business workloads?",
+    "options": [
+      "Resource Pools",
+      "Workload Domains (Management Domain vs. VI Workload Domains)",
+      "vCenter Folders",
+      "NSX Tier-0 Gateways"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "An architect must ensure physical NIC redundancy for all ESXi servers in a VCF design. Which consideration must be documented?",
+    "options": [
+      "Only 10GbE NICs should be used for NIC teaming",
+      "Embedded NICs must never be used",
+      "Each NIC team must include NICs from different physical PCIe slots/adapters",
+      "Each NIC team must use LACP with static hashing"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In a VCF multi-datacenter design with 2 ms latency, the Recovery Time Objective (RTO) for workloads is 24 hours and RPO for management is 0. Which design decision complies with these requirements?",
+    "options": [
+      "Implement a vSAN Stretched Cluster for the management domain and Live Recovery for workload domains",
+      "Use asynchronous replication for both management and workload domains",
+      "Back up all workloads daily and store them in a single central repository",
+      "Use VCF Automation to redeploy the entire environment upon failure"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "To mitigate the risk of frequent infrastructure changes breaking Disaster Recovery (DR) plans, what process should the architect establish?",
+    "options": [
+      "Limit infrastructure changes to once per year",
+      "Develop a process to review and update DR plans during change management and run periodic end-to-end DR tests",
+      "Set VM replication RPO to 1 minute for all VMs regardless of criticality",
+      "Disable lifecycle updates in SDDC Manager during DR exercises"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which network traffic type in VMware Cloud Foundation requires jumbo frames (MTU 9000) for optimal performance and supportability?",
+    "options": [
+      "vMotion traffic",
+      "NSX Geneve Overlay traffic and vSAN traffic",
+      "Management traffic",
+      "Fault Tolerance logging traffic"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the recommended maximum latency (RTT) allowed for a vSAN Stretched Cluster deployment between two main data sites in VCF?",
+    "options": [
+      "1 ms",
+      "5 ms",
+      "10 ms",
+      "20 ms"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary function of the NSX Edge Cluster in a VCF VI Workload Domain?",
+    "options": [
+      "Hosting Management Virtual Machines like vCenter Server and SDDC Manager",
+      "Providing North-South routing, NAT, edge firewall, and VPN services",
+      "Managing storage policies for vSAN datastores",
+      "Handling lifecycle management updates for vSphere hosts"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which VCF feature allows an architect to manage multiple VCF instances from a centralized, unified management console?",
+    "options": [
+      "VCF Federation / VCF Fleet Management",
+      "vCenter Linked Mode",
+      "NSX Federation",
+      "vSAN Direct Configuration"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "When designing a VI Workload Domain with principal storage based on NFS, what is required prior to host commission in SDDC Manager?",
+    "options": [
+      "vSAN must be temporarily activated on all hosts",
+      "NFS storage pools and network connectivity must be pre-configured and accessible by the ESXi hosts",
+      "An external vCenter Server must be manually installed on the NFS datastore",
+      "NSX Edge nodes must be pre-deployed on the NFS server"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the role of Cloud Builder in a VMware Cloud Foundation deployment?",
+    "options": [
+      "It continuously manages updates for day-2 operations",
+      "It is an appliance used to perform the initial automated deployment of the Management Domain",
+      "It acts as a backup server for vCenter and SDDC Manager",
+      "It generates network topology diagrams for NSX"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "During the design of a VCF infrastructure, an architect identifies a requirement for strict compliance separation between PCI-DSS workloads and general IT workloads. How should this be designed in VCF?",
+    "options": [
+      "Deploy separate Resource Pools inside the Management Domain",
+      "Deploy separate VI Workload Domains with dedicated vCenter instances and NSX domains",
+      "Use vSphere folders with strict RBAC inside a single cluster",
+      "Assign different VLAN tags on the same vSphere Distributed Switch"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which routing protocol is standard and recommended for peering NSX Tier-0 Gateways with physical top-of-rack (ToR) switches in VCF?",
+    "options": [
+      "OSPF",
+      "BGP (Border Gateway Protocol)",
+      "EIGRP",
+      "RIPv2"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What happens when an ESXi host is commissioned in SDDC Manager?",
+    "options": [
+      "It is immediately added to an active workload domain cluster",
+      "Its network and hardware details are validated and added to the unallocated host pool for future domain expansion",
+      "SDDC Manager installs Windows Server on the host",
+      "vSAN is immediately formatted across all local drives"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In a VCF architecture, which component handles the authentication and SSO integration for SDDC Manager and vCenter servers?",
+    "options": [
+      "vSphere Identity Federation / VMware Workspace ONE Access",
+      "NSX Manager Local User Database",
+      "SDDC Local File Authority",
+      "vSAN Witness Identity Provider"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the recommended vSAN Storage Policy setting for high availability in a standard 4-host Management Domain?",
+    "options": [
+      "RAID-1 (Failures to Tolerate = 1)",
+      "RAID-6 (Failures to Tolerate = 2)",
+      "No Data Redundancy",
+      "RAID-5 with Erasure Coding across 3 hosts"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which component is deployed automatically during the creation of a new VI Workload Domain in VCF?",
+    "options": [
+      "A dedicated vCenter Server instance for that Workload Domain",
+      "A dedicated SDDC Manager instance",
+      "A new Cloud Builder appliance",
+      "A standalone vRealize Log Insight per host"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "An architect needs to design a high-throughput network for vSAN and vMotion in VCF. What physical network architecture is recommended?",
+    "options": [
+      "Leaf-Spine (Clos) topology with non-blocking line-rate switches",
+      "Three-tier Core-Aggregation-Access topology with 1GbE uplinks",
+      "Single standalone switch without redundant power supplies",
+      "Hub-and-Spoke topology using legacy STP"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What type of IP Address Management (IPAM) approach does SDDC Manager require for deploying infrastructure appliances?",
+    "options": [
+      "Dynamic DHCP for all management components without static reservations",
+      "Static IP allocation with properly configured forward and reverse DNS records",
+      "APIPA (169.254.x.x) auto-configuration",
+      "IPv6 Link-Local addressing only"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "When deploying an NSX Edge Cluster in VCF via SDDC Manager, where can the Edge VMs be hosted?",
+    "options": [
+      "Only on bare-metal dedicated hardware outside vSphere",
+      "On the ESXi hosts within the target Workload Domain cluster or Management Domain cluster",
+      "Directly on physical ToR switches",
+      "Only within a vSAN Stretched Cluster Witness site"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary benefit of using Lifecycle Management (LCM) in SDDC Manager?",
+    "options": [
+      "It automatically creates VM backups every hour",
+      "It orchestrates patch, update, and upgrade sequences across vSphere, vSAN, NSX, and management components in a tested, dependency-aware manner",
+      "It manages public cloud billing accounts",
+      "It eliminates the need for redundant hardware"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which vSphere cluster feature must be enabled to allow automated workload rebalancing and high availability in VCF clusters?",
+    "options": [
+      "vSphere Fault Tolerance (FT) and Storage I/O Control",
+      "vSphere DRS (Distributed Resource Scheduler) and vSphere HA (High Availability)",
+      "vSphere Auto Deploy and vMotion",
+      "vSphere Replication and Network I/O Control"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "An architect is designing an AVN (Application Virtual Network) in VCF. What is the primary purpose of AVNs?",
+    "options": [
+      "To provide overlay-based connectivity for management components like Aria Suite across workload domains",
+      "To connect ESXi host VMkernel ports directly to public internet",
+      "To isolate vSAN storage traffic from vMotion traffic",
+      "To replace physical Top-of-Rack switches"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What storage protocol allows leveraging existing SAN investments as principal storage in a VI Workload Domain without requiring vSAN?",
+    "options": [
+      "Fibre Channel (FC) or vFS / vVol / iSCSI / NFS",
+      "USB Flash Storage",
+      "Local SAS Drives on individual hosts",
+      "SMB 1.0 Share"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In a VCF deployment, what is the role of the vSAN Witness Host in a Stretched Cluster design?",
+    "options": [
+      "It stores copy of all workload virtual machine VMDK files",
+      "It acts as a tie-breaker for cluster quorum and stores metadata components only",
+      "It routes NSX Tier-0 traffic to ToR switches",
+      "It hosts the vCenter Server instance during failover"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Which tool is used prior to VCF deployment to validate network settings, ESXi host configurations, and DNS/NTP services against the Deployment Parameter Sheet?",
+    "options": [
+      "SOS (Supportability Analysis Engine) / Cloud Builder SOS tool",
+      "vSphere Client Performance Manager",
+      "NSX Intelligence",
+      "vSAN Health Check"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "An architect needs to ensure zero data loss (RPO=0) across two sites separated by 5 km for a mission-critical workload domain. Which feature should be included in the design?",
+    "options": [
+      "vSAN Stretched Cluster with synchronous writes",
+      "vSphere Replication with 15-minute intervals",
+      "Daily file-level backups stored on NFS",
+      "Cold migration of VMs via vMotion scripts"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What network component in NSX connects virtual machines on overlay segments to external physical networks?",
+    "options": [
+      "Tier-0 Gateway",
+      "Distributed Firewall",
+      "NSX Manager",
+      "Segment Port"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which type of workload domain design allows sharing infrastructure resources across multiple tenants while maintaining isolation through NSX multitenancy?",
+    "options": [
+      "Consolidated VCF Architecture",
+      "Standard Architecture with Shared VI Workload Domains",
+      "Single-Node vSphere Deployment",
+      "Air-Gapped Cloud Builder Domain"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In VCF Consolidated Architecture, where do tenant/business virtual machines run?",
+    "options": [
+      "In a separate dedicated VI Workload Domain",
+      "In dedicated resource pools within the Management Domain cluster",
+      "On physical Edge nodes directly",
+      "On the SDDC Manager virtual machine"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the recommended physical switch port configuration for connecting ESXi hosts running NSX in VCF?",
+    "options": [
+      "Trunk ports allowing all required VLANs (Management, vMotion, vSAN, Geneve TEPs)",
+      "Access ports locked to VLAN 1",
+      "Unmanaged switch ports with STP disabled",
+      "Routed Layer 3 interface ports"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which utility included in SDDC Manager helps administrators collect logs and perform health checks on VCF services?",
+    "options": [
+      "SOS (Supportability Analysis Engine) utility",
+      "vRealize Orchestrator",
+      "vSphere Lifecycle Manager",
+      "NSX CLI command 'get controllers'"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is a mandatory requirement for NTP configuration across all nodes and management appliances in a VCF deployment?",
+    "options": [
+      "All nodes must synchronize time with a reliable, consistent, and common NTP source",
+      "NTP is optional if DNS is working",
+      "Hosts should rely on local hardware clock without synchronization",
+      "Only SDDC Manager requires time synchronization"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which VMware Aria product provides automated IT resource provisioning and self-service catalog capabilities in VCF?",
+    "options": [
+      "VMware Aria Automation",
+      "VMware Aria Operations",
+      "VMware Aria Operations for Logs",
+      "VMware Aria Operations for Networks"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "When expanding an existing VI Workload Domain cluster with a new ESXi host using SDDC Manager, what is a key prerequisite?",
+    "options": [
+      "The new host must be commissioned in SDDC Manager and meet hardware/license compatibility requirements",
+      "The host must be manually added to vCenter first",
+      "SDDC Manager must be rebooted before host expansion",
+      "vSAN must be formatted manually on the host prior to expansion"
+    ],
+    "answer": 0
+  }
+]
+[
+  {
+    "id": 41,
+    "question": "¿Qué función cumple el componente 'vCenter Server Database' en un despliegue de vSphere?",
+    "options": [
+      "Almacena las imágenes ISO de los sistemas operativos invitados.",
+      "Mantiene el estado, la configuración, el inventario y los datos de rendimiento del entorno vSphere.",
+      "Guarda los archivos VMDK de los discos virtuales.",
+      "Ejecuta las tareas de traducción de red entre switches virtuales."
+    ],
+    "answer": 1,
+    "explanation": "La base de datos de vCenter Server guarda la información del inventario, estados, eventos, alarmas, permisos y métricas de rendimiento del entorno vSphere."
+  },
+  {
+    "id": 42,
+    "question": "¿Cuál es la función principal de vSphere Distributed Switch (vDS) en comparación con un vSphere Standard Switch (vSS)?",
+    "options": [
+      "Permite conectar máquinas virtuales a redes físicas sin necesidad de tarjetas NIC físicas.",
+      "Proporciona administración centralizada de la red a nivel de datacenter/cluster en lugar de administrar cada host individualmente.",
+      "Elimina la necesidad de utilizar VLANs en la infraestructura física.",
+      "Incrementa de forma automática el ancho de banda del canal de almacenamiento iSCSI."
+    ],
+    "answer": 1,
+    "explanation": "vDS centraliza la configuración y administración del trabajo en red a nivel de vCenter Server, simplificando la gestión frente a la administración individualizada de cada vSS por host ESXi."
+  },
+  {
+    "id": 43,
+    "question": "¿Qué tecnología de vSphere permite migrar el almacenamiento de una máquina virtual en ejecución a otro datastore sin interrupción del servicio?",
+    "options": [
+      "vSphere Storage DRS",
+      "vSphere Storage vMotion",
+      "vSphere Fault Tolerance",
+      "vSphere High Availability"
+    ],
+    "answer": 1,
+    "explanation": "vSphere Storage vMotion permite la migración en vivo de las discos virtuales y archivos de estado de una máquina virtual en ejecución entre datastores sin tiempo de inactividad."
+  },
+  {
+    "id": 44,
+    "question": "¿Qué ocurre por defecto cuando un host ESXi pierde la conectividad con el almacenamiento del datastore en estado APD (All Paths Down)?",
+    "options": [
+      "vSphere HA reinicia inmediatamente las VMs en otro host sin esperar.",
+      "ESXi elimina automáticamente los registros de auditoría del datastore.",
+      "ESXi entra en un estado de tiempo de espera antes de que vSphere HA o VM Component Protection (VMCP) tomen acción.",
+      "Las VMs se apagan de forma limpia inmediatamente."
+    ],
+    "answer": 2,
+    "explanation": "A diferencia de PDL (Permanent Device Loss) donde el fallo es definitivo e inmediato, en APD (All Paths Down) la pérdida es potencialmente temporal, por lo que ESXi espera durante un tiempo configurable (APD timeout) antes de que intervenga VMCP."
+  },
+  {
+    "id": 45,
+    "question": "¿Qué componente de vSphere Lifecycle Manager (vLCM) define la versión de ESXi, los drivers y los complementos (addons) aplicados a un cluster completo?",
+    "options": [
+      "vSphere Baseline Set",
+      "Cluster Image",
+      "Update Planner",
+      "Host Profile Template"
+    ],
+    "answer": 1,
+    "explanation": "vLCM utiliza 'Images' a nivel de cluster compuestas por la versión base de ESXi, el vendor addon, los firmware y los componentes/drivers para garantizar la homogeneidad de los hosts."
+  },
+  {
+    "id": 46,
+    "question": "¿Cuál es el requisito mínimo de red para configurar vSphere Fault Tolerance (FT) en VMs con múltiples vCPUs (SMP FT)?",
+    "options": [
+      "Red compartida de 1 Gbps no dedicada.",
+      "Conexión dedicada de 10 Gbps (o superior).",
+      "Adaptadores de red de 100 Mbps en modo promiscuo.",
+      "Conectividad por consola serie virtual."
+    ],
+    "answer": 1,
+    "explanation": "Para la replicación en tiempo real y síncrona de estados en SMP-FT (múltiples vCPUs), VMware recomienda/requiere interfaces de red dedicadas de al menos 10 Gbps."
+  },
+  {
+    "id": 47,
+    "question": "¿Qué protocolo utiliza VMware vSAN para la comunicación de entrada/salida interna entre los hosts de un cluster vSAN?",
+    "options": [
+      "NFS v4.1",
+      "iSCSI sobre TCP",
+      "vSAN Proprietary Protocol sobre UDP/TCP (IP/Ethernet)",
+      "Fibre Channel over Ethernet (FCoE)"
+    ],
+    "answer": 2,
+    "explanation": "vSAN requiere un vmkernel port específico dedicado al tráfico vSAN que utiliza comunicación IP nativa sobre la red Ethernet física para sincronizar y distribuir los objetos de almacenamiento."
+  },
+  {
+    "id": 48,
+    "question": "En un entorno vSphere, ¿qué es un 'Storage Policy-Based Management' (SPBM)?",
+    "options": [
+      "Un script para desfragmentar datastores VMFS.",
+      "Un marco de trabajo que permite aplicar políticas de almacenamiento (rendimiento, disponibilidad, cifrado) directamente a discos virtuales individuales.",
+      "Un plugin para migrar datastores locales a la nube pública.",
+      "Una herramienta para limitar el ancho de banda del canal Fibre Channel."
+    ],
+    "answer": 1,
+    "explanation": "SPBM abstrata las capacidades del almacenamiento (como vSAN o VVols) permitiendo asignar requisitos como redundancia, cifrado o nivel de servicio directamente en las políticas asignables a las VMs."
+  },
+  {
+    "id": 49,
+    "question": "¿Cuál es el propósito del mecanismo de Heartbeat en vSphere High Availability (HA)?",
+    "options": [
+      "Sincronizar el reloj del BIOS de las máquinas virtuales.",
+      "Monitorear continuamente si un host ESXi del cluster se encuentra activo mediante red física y datastores.",
+      "Balancear las cargas de trabajo de la CPU entre diferentes clusters.",
+      "Transmitir eventos de registro hacia un servidor syslog externo."
+    ],
+    "answer": 1,
+    "explanation": "vSphere HA utiliza Heartbeats de red y de datastore para determinar si un host ESXi está activo, ha fallado o se encuentra aislado de la red."
+  },
+  {
+    "id": 50,
+    "question": "En un vSphere Distributed Switch, ¿qué función cumple la característica 'Network I/O Control' (NIOC)?",
+    "options": [
+      "Asigna IPs automáticamente a las VMs conectadas.",
+      "Garantiza el ancho de banda y prioriza diferentes tipos de tráfico de red (vMotion, vSAN, gestión, VMs) mediante Shares y Limits.",
+      "Bloquea ataques DDoS directamente desde las NICs físicas.",
+      "Permite la migración de switches estándar a distribuidos sin pérdida de paquetes."
+    ],
+    "answer": 1,
+    "explanation": "NIOC permite garantizar y asignar prioridades a las distintas clases de tráfico de red que comparten los mismos uplinks físicos dentro de un vDS."
+  },
+  {
+    "id": 51,
+    "question": "¿Qué tipo de archivo guarda la configuración actual del hardware virtual de una máquina virtual?",
+    "options": [
+      ".vmdk",
+      ".vmx",
+      ".vswp",
+      ".nvram"
+    ],
+    "answer": 1,
+    "explanation": "El archivo `.vmx` es un archivo de texto que contiene toda la información de configuración de la máquina virtual y sus recursos asignados."
+  },
+  {
+    "id": 52,
+    "question": "¿Qué sucede con una máquina virtual configurada con vSphere Fault Tolerance (FT) si el host ESXi primario sufre un fallo de hardware repentino?",
+    "options": [
+      "La VM se reinicia automáticamente en un nuevo host (con pérdida temporal de estado).",
+      "La VM secundaria asume el control de forma transparente e inmediata sin pérdida de datos ni interrupción.",
+      "El estado de la VM se guarda en disco y pasa a pausa.",
+      "vCenter invoca una tarea de Storage vMotion hacia un datastore de respaldo."
+    ],
+    "answer": 1,
+    "explanation": "FT mantiene una VM secundaria sincronizada en tiempo real mediante 'Lockstep'. Si el host primario cae, la VM secundaria toma el control inmediatamente sin pérdida de estado o sesión."
+  },
+  {
+    "id": 53,
+    "question": "¿Cuál es la función del archivo `.vswp` en el directorio de una máquina virtual?",
+    "options": [
+      "Almacenar las capturas de estado de los snapshots.",
+      "Servir como espacio de intercambio de memoria (swap) del hipervisor cuando la RAM física del host se agota.",
+      "Guardar el registro de eventos y logs de arranque de la VM.",
+      "Contener el BIOS o UEFI de la máquina virtual."
+    ],
+    "answer": 1,
+    "explanation": "El archivo de intercambio `.vswp` se crea cuando la VM se enciende y reserva espacio equivalente a la memoria RAM asignada no reservada, utilizado por ESXi si la memoria física entra en contención."
+  },
+  {
+    "id": 54,
+    "question": "Al crear un grupo de puertos (Port Group) en un vSphere Standard Switch, ¿a qué nivel se aplican las políticas de seguridad (como Promiscuous Mode o MAC Address Changes)?",
+    "options": [
+      "Solo a nivel de vCenter Server.",
+      "Se pueden heredar del switch virtual o sobrescribir específicamente a nivel de Port Group.",
+      "Únicamente a nivel de la tarjeta de red física (vmnic).",
+      "Solamente dentro del sistema operativo invitado."
+    ],
+    "answer": 1,
+    "explanation": "Las políticas de seguridad se configuran por defecto a nivel de switch virtual (vSS/vDS), pero pueden ser modificadas y sobrescritas específicamente a nivel de Port Group."
+  },
+  {
+    "id": 55,
+    "question": "¿Qué rol predeterminado de vSphere otorga permisos completos de administración sobre todos los objetos del inventario?",
+    "options": [
+      "Virtual Machine Administrator",
+      "Read-Only",
+      "Administrator",
+      "No Access"
+    ],
+    "answer": 2,
+    "explanation": "El rol predefinido 'Administrator' concede todos los privilegios sobre el objeto en el que se asigna y todos sus objetos secundarios jerárquicos."
+  },
+  {
+    "id": 56,
+    "question": "¿Qué ocurre si se habilita la función 'Proactive DRS' en un cluster de vSphere?",
+    "options": [
+      "Migra VMs basándose en recomendaciones predictivas del hardware (por ejemplo, fallos térmicos o de memoria inminentes capturados vía vRealize/vSAN/hardware sensor).",
+      "Apaga automáticamente los hosts durante los fines de semana.",
+      "Bloquea la creación de nuevas máquinas virtuales en los hosts con CPU superior al 50%.",
+      "Realiza copias de seguridad continuas en la nube."
+    ],
+    "answer": 0,
+    "explanation": "Proactive DRS se integra con el monitoreo de salud del hardware para evacuar de forma preventiva las máquinas virtuales de un host antes de que ocurra un fallo total del hardware."
+  },
+  {
+    "id": 57,
+    "question": "¿Qué formato de disco virtual asigna todo el espacio de almacenamiento en el momento de la creación y pone a cero el espacio de disco a medida que se escriben datos por primera vez?",
+    "options": [
+      "Thin Provision",
+      "Thick Provision Lazy Zeroed",
+      "Thick Provision Eager Zeroed",
+      "Raw Device Mapping (RDM)"
+    ],
+    "answer": 1,
+    "explanation": "Thick Provision Lazy Zeroed reserva todo el espacio en disco en la creación, pero los bloques de disco no se llenan de ceros sino hasta la primera escritura desde la VM."
+  },
+  {
+    "id": 58,
+    "question": "¿Cuál es la función principal de 'vSphere Content Library'?",
+    "options": [
+      "Almacenar y sincronizar plantillas de VM, imágenes ISO, scripts y vApps entre múltiples vCenter Servers.",
+      "Guardar las claves de licencias corporativas de VMware.",
+      "Centralizar los logs de diagnóstico de los hosts ESXi.",
+      "Servir de repositorio de parches de seguridad para el sistema operativo invitado."
+    ],
+    "answer": 0,
+    "explanation": "Content Library permite compartir y sincronizar contenido (plantillas OVF/OVA, ISOs, vApps) entre diferentes ubicaciones y servidores vCenter de manera centralizada."
+  },
+  {
+    "id": 59,
+    "question": "¿Qué función ofrece vSphere vMotion cuando se realiza una migración 'Cross vCenter'?",
+    "options": [
+      "Mover máquinas virtuales únicamente entre datastores NFS.",
+      "Migrar una máquina virtual entre diferentes instancias de vCenter Server sin tiempo de inactividad.",
+      "Transferir licencias de un vCenter a otro automáticamente.",
+      "Convertir un host ESXi en una VM dentro de otro vCenter."
+    ],
+    "answer": 1,
+    "explanation": "Cross vCenter vMotion permite mover VMs de manera transparente entre instancias de vCenter Server situadas dentro de la misma o de diferentes SSO Domains/redes."
+  },
+  {
+    "id": 60,
+    "question": "En un entorno vSAN, ¿qué compone la 'Cache Tier' en una arquitectura All-Flash?",
+    "options": [
+      "Discos mecánicos NL-SAS.",
+      "Dispositivos SSD/NVMe dedicados al 100% a operaciones de escritura (Write Buffer).",
+      "Memoria RAM del host dedicada al almacenamiento.",
+      "Dispositivos SSD dedicados únicamente al caché de lectura."
+    ],
+    "answer": 1,
+    "explanation": "En vSAN All-Flash, el 100% del nivel de caché (Cache Tier) se destina a la aceleración de escrituras (Write Buffer), ya que los discos del Capacity Tier son SSD y manejan lecturas de forma óptima."
+  },
+  {
+    "id": 61,
+    "question": "¿Qué característica de vSphere Distributed Switch garantiza que el tráfico tagged con una VLAN específica no interfiera con otras VLANs?",
+    "options": [
+      "VLAN Trunking y aislamiento de Port Group.",
+      "LACP binding.",
+      "Traffic Shaping limit.",
+      "DHCP Snooping."
+    ],
+    "answer": 0,
+    "explanation": "La asignación adecuada de VLAN IDs a nivel de Distributed Port Group asegura la segmentación y aislamiento del tráfico etiquetado mediante tramas 802.1Q."
+  },
+  {
+    "id": 62,
+    "question": "¿Cuál es el propósito del servicio 'vSphere ESXi Shell' y 'SSH' en un host ESXi?",
+    "options": [
+      "Permitir el acceso por línea de comandos para tareas de mantenimiento, diagnóstico y configuración avanzada.",
+      "Permitir a los usuarios finales conectarse al escritorio de sus VMs.",
+      "Proporcionar una interfaz gráfica para la gestión de respaldos.",
+      "Sincronizar el reloj del host con servidores NTP."
+    ],
+    "answer": 0,
+    "explanation": "ESXi Shell y SSH brindan acceso de comandos en el hipervisor para la resolución de problemas avanzados y scripts administrativos."
+  },
+  {
+    "id": 63,
+    "question": "¿Qué métrica de rendimiento en vSphere Client indica que una máquina virtual requiere más recursos de memoria y el hipervisor está recurriendo al uso de 'ballooning' o 'swapping'?",
+    "options": [
+      "Memory Usage",
+      "Memory Balloon / Swap In Rate",
+      "CPU Ready (%RDY)",
+      "Disk Latency"
+    ],
+    "answer": 1,
+    "explanation": "Métricas como 'Memory Balloon' y 'Swap In/Out Rate' altas indican que el host está bajo presión de memoria física y está forzando mecanismos de reclamo de memoria."
+  },
+  {
+    "id": 64,
+    "question": "¿Qué requisito es indispensable para realizar un vMotion sin interrupción entre dos hosts ESXi en términos de CPU?",
+    "options": [
+      "Ambos hosts deben tener exactamente la misma cantidad de cores.",
+      "Los procesadores de los hosts deben ser compatibles genéticamente (mismo fabricante Intel/AMD) o estar configurados en un cluster EVC.",
+      "Los hosts deben estar separados por menos de 1 metro de distancia física.",
+      "Uno de los hosts debe estar apagado."
+    ],
+    "answer": 1,
+    "explanation": "vMotion requiere compatibilidad de instrucciones de CPU (mismo fabricante Intel o AMD) o el uso de Enhanced vMotion Compatibility (EVC) para enmascarar características no comunes."
+  },
+  {
+    "id": 65,
+    "question": "¿Qué permite la función 'Enhanced vMotion Compatibility' (EVC) en un cluster vSphere?",
+    "options": [
+      "Aumentar la velocidad de transferencia de vMotion a 40 Gbps.",
+      "Garantizar la compatibilidad de vMotion entre hosts con diferentes generaciones de procesadores del mismo fabricante.",
+      "Permitir la migración en vivo entre procesadores Intel y AMD indistintamente.",
+      "Habilitar vMotion hacia servicios de almacenamiento S3."
+    ],
+    "answer": 1,
+    "explanation": "EVC oculta las características de CPU más recientes de los hosts del cluster para que todas las máquinas virtuales utilicen un conjunto baseline común de instrucciones y puedan migrarse sin problemas."
+  },
+  {
+    "id": 66,
+    "question": "¿Cuál es el propósito del estado 'Maintenance Mode' en un host ESXi?",
+    "options": [
+      "Reiniciar el host cada 24 horas para liberar RAM.",
+      "Prevenir que se ejecuten nuevas VMs y permitir migrar o apagar las existentes antes de realizar actualizaciones de hardware o software.",
+      "Formatear automáticamente todos los datastores locales asignados.",
+      "Convertir las máquinas virtuales en plantillas de forma definitiva."
+    ],
+    "answer": 1,
+    "explanation": "El Maintenance Mode prepara el host para tareas de servicio, asegurando que no ejecute cargas de trabajo activas durante el mantenimiento."
+  },
+  {
+    "id": 67,
+    "question": "En vSphere DRS, ¿qué representa la opción de automatización 'Fully Automated'?",
+    "options": [
+      "DRS sugiere recomendaciones de ubicación y migración que el administrador debe aprobar manualmente.",
+      "DRS ubica automáticamente las VMs al encenderse y las migra dinámicamente entre hosts para optimizar los recursos sin intervención humana.",
+      "DRS apaga las máquinas virtuales cuando la CPU supera el 90%.",
+      "DRS no realiza ninguna acción automatizada."
+    ],
+    "answer": 1,
+    "explanation": "En modo 'Fully Automated', DRS coloca automáticamente las VMs encendidas en el host adecuado y realiza migraciones vMotion de manera transparente según el nivel de agresividad configurado."
+  },
+  {
+    "id": 68,
+    "question": "¿Qué componente de vCenter Server se encarga de la autenticación de usuarios y de emitir tokens SAML en vSphere?",
+    "options": [
+      "vSphere Trust Authority",
+      "vCenter Single Sign-On (SSO)",
+      "vSphere Lifecycle Manager",
+      "vSphere Auto Deploy"
+    ],
+    "answer": 1,
+    "explanation": "vCenter SSO valida las credenciales frente a los proveedores de identidad (como Active Directory) y emite tokens de autenticación para los servicios de vSphere."
+  },
+  {
+    "id": 69,
+    "question": "¿Qué tipo de asignación de almacenamiento es requerida si un clúster de aplicaciones dentro del SO invitado exige acceso directo a las LUNs del SAN mediante comandos SCSI nativos?",
+    "options": [
+      "Thin Provisioned VMDK",
+      "Raw Device Mapping (RDM) en modo Physical Passthrough",
+      "vSAN Sparse Object",
+      "NFS Datastore v3"
+    ],
+    "answer": 1,
+    "explanation": "RDM en modo físico (Physical Compatibility Mode) pasa casi todos los comandos SCSI directamente a la LUN física, necesario para clusters basados en SO invitado que gestionan reservas SCSI."
+  },
+  {
+    "id": 70,
+    "question": "¿Cuál es la función principal de VMware vSphere Auto Deploy?",
+    "options": [
+      "Aprovisionar cientos de hosts ESXi sin disco cargando la imagen directamente en la memoria RAM desde la red vía PXE.",
+      "Desplegar máquinas virtuales de forma masiva desde plantillas OVF.",
+      "Instalar agentes de monitoreo de red en los switches virtuales.",
+      "Crear backups de la base de datos de vCenter automáticamente."
+    ],
+    "answer": 0,
+    "explanation": "Auto Deploy permite aprovisionar y actualizar hosts ESXi sobre la red usando reglas de despliegue, arrancando las imágenes de ESXi directamente en memoria vía PXE."
+  },
+  {
+    "id": 71,
+    "question": "¿Qué protocolo es comúnmente utilizado por vSphere para montar datastores compartidos de almacenamiento a nivel de archivos desde un servidor NAS?",
+    "options": [
+      "iSCSI",
+      "Fibre Channel",
+      "NFS (Network File System)",
+      "NVMe over Fibre Channel"
+    ],
+    "answer": 2,
+    "explanation": "NFS es un protocolo de sistema de archivos en red de nivel de archivo utilizado para conectar repositorios NAS a hosts ESXi como datastores."
+  },
+  {
+    "id": 72,
+    "question": "¿Qué ocurre con una máquina virtual con un snapshot activo cuando se ejecuta la opción 'Delete All' (Eliminar todos) desde el Snapshot Manager?",
+    "options": [
+      "Se eliminan los datos capturados y la VM se revierte al estado inicial.",
+      "Se consolidan todas las diferencias escritas en los discos delta dentro del disco base original y se eliminan los archivos de snapshot.",
+      "Se elimina la VM completa del disco duro.",
+      "Se detiene la VM y se crea una plantilla independiente."
+    ],
+    "answer": 1,
+    "explanation": "'Delete All' consolida (combina) los cambios de todos los discos delta en el disco base sin perder el estado actual de la VM, descartando únicamente los puntos de restauración."
+  },
+  {
+    "id": 73,
+    "question": "¿Qué función cumple el parámetro 'CPU Ready Time (%RDY)' en la supervisión de rendimiento de vSphere?",
+    "options": [
+      "Muestra el porcentaje de tiempo que la VM estuvo procesando comandos a máxima velocidad.",
+      "Muestra el porcentaje de tiempo que una VM estuvo lista para ejecutarse pero tuvo que esperar a que el hipervisor le asignara un procesador físico.",
+      "Indica la latencia de las lecturas hacia el datastore.",
+      "Representa la cantidad de CPU reservada por las políticas de DRS."
+    ],
+    "answer": 1,
+    "explanation": "%RDY mide la contención de CPU: el tiempo que una máquina virtual estuvo en cola esperando tiempo de procesamiento físico en los cores del host."
+  },
+  {
+    "id": 74,
+    "question": "¿Qué tipo de interfaz lógica VMkernel (vmk) es estrictamente necesaria para poder realizar operaciones de migración vMotion en un host ESXi?",
+    "options": [
+      "Un port group con la casilla 'Management Traffic' habilitada.",
+      "Un port group de VMkernel con el servicio 'vMotion Traffic' habilitado.",
+      "Una interfaz conectada obligatoriamente a una tarjeta de 40 Gbps.",
+      "Un puerto estándar de máquina virtual (Virtual Machine Port Group)."
+    ],
+    "answer": 1,
+    "explanation": "Se requiere un puerto VMkernel específico con la opción/servicio de 'vMotion Traffic' activado para que el host procese la transferencia de memoria durante una migración."
+  },
+  {
+    "id": 75,
+    "question": "¿Cuál es la ventaja principal del formato de sistema de archivos VMFS6 frente a VMFS5?",
+    "options": [
+      "Soporta solo discos de hasta 2TB.",
+      "Soporta reclamación automática de espacio en blanco (Automatic Space Reclamation / UNMAP) y rendimiento mejorado con discos de formato 4K nativo.",
+      "Elimina la necesidad de utilizar datastores en vSphere.",
+      "Permite la conexión directa a través de redes WiFi."
+    ],
+    "answer": 1,
+    "explanation": "VMFS6 introdujo soporte para discos 4K nativos, mejoras en la gestión de metadatos y la reclamación automática de bloques no utilizados (UNMAP diferido en segundo plano)."
+  },
+  {
+    "id": 76,
+    "question": "En la gestión de permisos en vSphere, ¿qué es la 'Herencia de Permisos'?",
+    "options": [
+      "Los permisos aplicados en un objeto padre (como una Carpeta o Datacenter) se propagan automáticamente hacia abajo a todos sus objetos hijos.",
+      "Los permisos del usuario root se transfieren a cualquier usuario nuevo.",
+      "Las políticas de red de un switch se copian a los datastores.",
+      "La licencia de vCenter se copia en todos los hosts ESXi."
+    ],
+    "answer": 0,
+    "explanation": "En la jerarquía del inventario de vSphere, los permisos asignados a un nivel superior se heredan por defecto en los objetos contenidos dentro del mismo (VMs, hosts, datastores)."
+  },
+  {
+    "id": 77,
+    "question": "¿Qué tecnología permite agrupar múltiples tarjetas de red físicas (uplinks) en un vSphere Switch para proveer redundancia y balanceo de carga?",
+    "options": [
+      "NIC Teaming",
+      "vMotion Multipathing",
+      "Storage I/O Control",
+      "Storage Execution Path"
+    ],
+    "answer": 0,
+    "explanation": "NIC Teaming permite asociar varias NICs físicas (uplinks) a un mismo virtual switch o port group para distribuir el tráfico y garantizar tolerancia a fallos."
+  },
+  {
+    "id": 78,
+    "question": "¿Cuál es la función del archivo `.nvram` dentro del directorio de archivos de una VM?",
+    "options": [
+      "Almacena los discos de snapshot.",
+      "Guarda el estado del BIOS o UEFI de la máquina virtual.",
+      "Contiene la memoria de intercambio de la VM.",
+      "Guarda el archivo de registro de vCenter."
+    ],
+    "answer": 1,
+    "explanation": "El archivo `.nvram` almacena la configuración de la BIOS o firmware UEFI de la máquina virtual."
+  },
+  {
+    "id": 79,
+    "question": "En un entorno vSphere, ¿para qué sirve 'Storage I/O Control' (SIOC)?",
+    "options": [
+      "Para migrar discos virtuales entre datastores cuando el espacio se agota.",
+      "Para evitar que una VM monopolice los IOPS de un datastore compartido bajo situaciones de contención de I/O.",
+      "Para cifrar las conexiones de almacenamiento NFS.",
+      "Para formatear discos duros en formato NVMe."
+    ],
+    "answer": 1,
+    "explanation": "SIOC monitorea la latencia de un datastore compartido y distribuye prioritariamente los IOPS disponibles entre las VMs basándose en Shares asignados durante cuellos de botella."
+  },
+  {
+    "id": 80,
+    "question": "¿Qué requisito debe cumplirse respecto a las licencias para habilitar las características de vSphere Distributed Switch y vSphere DRS?",
+    "options": [
+      "Requiere la edición vSphere Essentials Kit.",
+      "Requiere la edición vSphere Standard.",
+      "Requiere la edición vSphere Enterprise Plus.",
+      "No requiere licencias, está incluido por defecto en ESXi Free."
+    ],
+    "answer": 2,
+    "explanation": "Tanto vSphere Distributed Switch (vDS) como vSphere DRS son características premium que requieren licenciamiento vSphere Enterprise Plus."
+  }
+]
+[
+  {
+    "id": 81,
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) solution for an enterprise with strict compliance isolation requirements. Which design decision guarantees strict control plane and management boundary separation between departments?",
+    "options": [
+      "Deploy separate vSphere Folders and Resource Pools inside a shared cluster",
+      "Deploy separate VI Workload Domains, each with its own dedicated vCenter Server instance and NSX Domain Manager",
+      "Assign different VLAN tags on the same vSphere Distributed Switch in a single cluster",
+      "Deploy multiple SDDC Manager virtual appliances within the same Management Domain"
+    ],
+    "answer": 1,
+    "explanation": "Creating dedicated VI Workload Domains provisions isolated vCenter Server instances and separate NSX Manager clusters, ensuring complete management, control, and governance boundaries."
+  },
+  {
+    "id": 82,
+    "question": "When deploying an NSX Edge Cluster in a VCF Workload Domain to support High Availability for North-South routing, which mechanism is recommended for rapid failure detection between NSX Edge Nodes and physical ToR switches?",
+    "options": [
+      "LACP Link Aggregation Timer",
+      "Bidirectional Forwarding Detection (BFD) over BGP",
+      "Spanning Tree Protocol (STP) Topology Change Notification",
+      "vSphere HA Heartbeat over storage networks"
+    ],
+    "answer": 1,
+    "explanation": "BFD (Bidirectional Forwarding Detection) paired with BGP provides sub-second failure detection between Tier-0 Gateways on NSX Edges and physical Top-of-Rack switches."
+  },
+  {
+    "id": 83,
+    "question": "An architect needs to configure vSAN storage policies for a 6-host VCF VI Workload Domain cluster. To optimize storage capacity efficiency while maintaining tolerance for up to 2 host failures, which vSAN Storage Policy should be specified?",
+    "options": [
+      "RAID-1 Mirroring (Failures to Tolerate = 2)",
+      "RAID-6 Erasure Coding (Failures to Tolerate = 2)",
+      "RAID-5 Erasure Coding (Failures to Tolerate = 1)",
+      "No Data Redundancy with 3x Striping"
+    ],
+    "answer": 1,
+    "explanation": "RAID-6 (Erasure Coding) requires a minimum of 6 hosts (4 data + 2 parity) and tolerates 2 host failures with significantly lower storage capacity overhead than RAID-1 mirroring."
+  },
+  {
+    "id": 84,
+    "question": "What is the minimum network requirement for the Geneve Overlay Tunnel Endpoints (TEPs) in an NSX deployment managed by VCF?",
+    "options": [
+      "Minimum MTU of 1500 bytes on all physical network switches",
+      "Minimum MTU of 1600 bytes (9000 bytes recommended) enabled across the physical network path",
+      "Static IPv6 routes configured on physical ToR switches",
+      "Multicast routing enabled across all physical routers"
+    ],
+    "answer": 1,
+    "explanation": "Geneve overlay encapsulation adds header overhead to network packets. A minimum MTU of 1600 bytes (Jumbo Frames / MTU 9000 recommended) is mandatory across the physical switching fabric."
+  },
+  {
+    "id": 85,
+    "question": "Which appliance is responsible for orchestrating the automated upgrade sequence across vCenter Server, ESXi hosts, NSX Manager, and vSAN within VCF?",
+    "options": [
+      "Cloud Builder Appliance",
+      "SDDC Manager Lifecycle Management (LCM) engine",
+      "vRealize Orchestrator standalone node",
+      "NSX Global Manager"
+    ],
+    "answer": 1,
+    "explanation": "SDDC Manager includes built-in Lifecycle Management (LCM) capabilities that orchestrate updates in a tested, pre-validated sequence across all VCF core software stack layers."
+  },
+  {
+    "id": 86,
+    "question": "In a VCF Consolidated Architecture deployment, where are management components (SDDC Manager, vCenter, NSX Managers) hosted?",
+    "options": [
+      "On a separate bare-metal server cluster outside vSphere",
+      "In the same vSphere cluster alongside tenant workload virtual machines",
+      "Directly on physical Top-of-Rack network switches",
+      "Within an external public cloud provider instance"
+    ],
+    "answer": 1,
+    "explanation": "Consolidated Architecture runs management components and tenant workloads in resource pools within a single shared vSphere cluster, ideal for smaller footprints."
+  },
+  {
+    "id": 87,
+    "question": "During the design of a VCF Stretched Cluster across two data sites, what is the maximum round-trip time (RTT) network latency permitted for the data network between the main sites?",
+    "options": [
+      "1 millisecond",
+      "5 milliseconds",
+      "20 milliseconds",
+      "50 milliseconds"
+    ],
+    "answer": 1,
+    "explanation": "vSAN Stretched Cluster deployments in VCF require a maximum round-trip time (RTT) latency of 5 ms or less over the inter-site data network."
+  },
+  {
+    "id": 88,
+    "question": "Which VCF feature allows an architect to apply standardized deployment blueprints, ESXi host profiles, and network configurations consistently across multiple VI Workload Domains?",
+    "options": [
+      "SDDC Manager Application Virtual Networks (AVN)",
+      "VCF Architecture Blueprints / Solution Functionality Templates in SDDC Manager",
+      "vSphere Auto Deploy PXE Rules",
+      "vSAN Direct Storage Pools"
+    ],
+    "answer": 1,
+    "explanation": "SDDC Manager uses automated workflows and standardized templates to consistently provision VI Workload Domains according to VMware Validated Designs."
+  },
+  {
+    "id": 89,
+    "question": "An architect is planning the deployment of VMware Aria Suite components in a VCF environment. Which VCF network construct should be configured first to host these management tools?",
+    "options": [
+      "Application Virtual Network (AVN) with NSX Overlay Segments",
+      "Physical Access VLANs on Top-of-Rack switches",
+      "vSAN Witness VM Kernel interface",
+      "Storage Area Network (SAN) Zoning Ports"
+    ],
+    "answer": 0,
+    "explanation": "AVNs (Application Virtual Networks) provide NSX overlay-backed networks that allow management components like Aria Automation and Aria Operations to be deployed easily and migrated if necessary."
+  },
+  {
+    "id": 90,
+    "question": "When commissioning ESXi hosts in SDDC Manager prior to creating a Workload Domain, what verification step is automatically performed by SDDC Manager?",
+    "options": [
+      "Host hardware health, network connectivity, licensing, and DNS/NTP reachability validation",
+      "Automatic formatting of all external Fibre Channel SAN LUNs",
+      "Installation of Microsoft Windows Active Directory Domain Controller on the host",
+      "Configuration of BGP peering directly on the physical host NICs"
+    ],
+    "answer": 0,
+    "explanation": "Host commissioning validates credentials, network parameters (IP, DNS, NTP), SSH access, hardware compatibility, and license keys before adding the host to the unallocated pool."
+  },
+  {
+    "id": 91,
+    "question": "Which NSX Tier-0 Gateway routing mode is typically deployed in VCF to achieve active-active bandwidth scale-out and ECMP (Equal-Cost Multi-Path) routing to physical ToR switches?",
+    "options": [
+      "Active-Standby mode",
+      "Active-Active mode",
+      "Static Floating IP mode",
+      "Single-Threaded Bridging mode"
+    ],
+    "answer": 1,
+    "explanation": "Active-Active Tier-0 Gateways enable Equal-Cost Multi-Pathing (ECMP) across multiple NSX Edge nodes, maximizing throughput and redundancy for North-South traffic."
+  },
+  {
+    "id": 92,
+    "question": "An architect must ensure that management plane services in VCF remain available in the event of an ESXi host failure. Which vSphere feature provides this automatic restart capability?",
+    "options": [
+      "vSphere Fault Tolerance (FT)",
+      "vSphere High Availability (HA)",
+      "vSphere Distributed Resource Scheduler (DRS)",
+      "vSphere Replication"
+    ],
+    "answer": 1,
+    "explanation": "vSphere HA detects host failures and automatically restarts affected virtual machines (such as vCenter, SDDC Manager, and NSX Managers) on surviving hosts in the cluster."
+  },
+  {
+    "id": 93,
+    "question": "What is the primary function of the Cloud Builder appliance in the VMware Cloud Foundation deployment lifecycle?",
+    "options": [
+      "It runs continuously in production to monitor NSX performance",
+      "It automates the initial bring-up and deployment of the VCF Management Domain",
+      "It serves as a backup target for vCenter file-based backups",
+      "It manages public cloud cost optimization"
+    ],
+    "answer": 1,
+    "explanation": "Cloud Builder is a temporary appliance used exclusively during Day-0/Day-1 to validate parameters and deploy the initial Management Domain."
+  },
+  {
+    "id": 94,
+    "question": "Which storage protocol can be used as Supplemental (Secondary) Storage in a VCF Workload Domain?",
+    "options": [
+      "NFS, vSAN, iSCSI, and Fibre Channel (FC)",
+      "Local USB drives only",
+      "SATA Optical Media Share",
+      "Floppy Disk Emulation"
+    ],
+    "answer": 0,
+    "explanation": "While Principal Storage is required for domain creation (vSAN, NFS, vVols, or FC), Supplemental Storage allows attaching additional datastores using NFS, iSCSI, FC, or vSAN."
+  },
+  {
+    "id": 95,
+    "question": "In a VCF environment, what component controls centralized Role-Based Access Control (RBAC) and Single Sign-On (SSO) integration across vCenter and SDDC Manager?",
+    "options": [
+      "vSphere Identity Federation / Active Directory / Identity Provider (IdP) integration via vCenter SSO",
+      "Local host /etc/passwd file synchronization",
+      "NSX Edge Local Password Manager",
+      "Physical Switch RADIUS Server exclusively"
+    ],
+    "answer": 0,
+    "explanation": "vCenter SSO acts as the central authentication authority, integrating with Active Directory, LDAP, or OIDC Identity Providers to enforce unified RBAC across VCF components."
+  },
+  {
+    "id": 96,
+    "question": "What is the purpose of the 'SOS' (Supportability Analysis Engine) command-line tool in SDDC Manager?",
+    "options": [
+      "To generate automated Python scripts for application development",
+      "To run health checks, collect log bundles, and audit certificate/password health across VCF components",
+      "To reset physical switch passwords automatically",
+      "To format corrupted vSAN disk groups"
+    ],
+    "answer": 1,
+    "explanation": "The `/opt/vmware/sddc-support/sos` utility allows administrators to perform diagnostic health checks, gather unified log bundles, and verify system integrity in VCF."
+  },
+  {
+    "id": 97,
+    "question": "When designing network uplinks for an ESXi host in VCF using vSphere Distributed Switch (vDS), what is the recommended uplink strategy for high availability?",
+    "options": [
+      "Connect a single 1GbE uplink to a single physical switch",
+      "Use at least two physical uplinks (10GbE/25GbE+) connected to redundant physical Top-of-Rack (ToR) switches",
+      "Use four 100Mbps Ethernet cables connected to a hub",
+      "Directly connect host NICs to each other without physical switches"
+    ],
+    "answer": 1,
+    "explanation": "High availability requires dual high-speed uplinks (10GbE, 25GbE, or 100GbE) connected across physically independent ToR switches to eliminate single points of failure."
+  },
+  {
+    "id": 98,
+    "question": "An architect is designing a VCF deployment for a healthcare customer. The design requires that all VM data at rest on vSAN must be encrypted. How should this be designed in vSAN?",
+    "options": [
+      "Enable vSAN Data-at-Rest Encryption (DRE) or vSAN Cluster-Level Encryption using a Key Management Server (KMS) or vSphere Native Key Provider",
+      "Encrypt each guest OS using BitLocker manually without vSAN involvement",
+      "Enable HTTPS management on top-of-rack switches",
+      "Use SSL certificates on the vSAN VMkernel interface"
+    ],
+    "answer": 0,
+    "explanation": "vSAN Encryption operates at the datastore level using a KMS or vSphere Native Key Provider, encrypting all data at rest without guest OS overhead."
+  },
+  {
+    "id": 99,
+    "question": "Which VCF component provides automated infrastructure log collection, real-time analytics, and log search capabilities across the entire SDDC?",
+    "options": [
+      "VMware Aria Operations for Logs (formerly vRealize Log Insight)",
+      "vSphere Auto Deploy Server",
+      "NSX Intelligence Node",
+      "SDDC Manager Database"
+    ],
+    "answer": 0,
+    "explanation": "VMware Aria Operations for Logs centralizes log management, offering real-time log analysis and troubleshooting dashboards across all VCF core components."
+  },
+  {
+    "id": 100,
+    "question": "In a VCF design, what is a mandatory prerequisite for deploying a Stretched vSAN Cluster in the Management Domain?",
+    "options": [
+      "A third-site location hosting a vSAN Witness Appliance with network connectivity to both main sites",
+      "A 1Gbps wireless bridge between data sites",
+      "Physical tape backup drives connected to ESXi hosts",
+      "Disabling vSphere HA on all management hosts"
+    ],
+    "answer": 0,
+    "explanation": "Stretched Clusters require a Witness Node deployed at a independent third site (or cloud) to maintain cluster quorum and witness components."
+  },
+  {
+    "id": 101,
+    "question": "What is the function of Tier-1 Gateways in an NSX deployment within a VCF VI Workload Domain?",
+    "options": [
+      "Connecting physical BGP routers directly to internet service providers",
+      "Providing tenant-level or department-level routing, distributed firewalling, and NAT services connected upstream to a Tier-0 Gateway",
+      "Managing vSAN storage policy rules for virtual disks",
+      "Providing PXE boot services to bare-metal servers"
+    ],
+    "answer": 1,
+    "explanation": "Tier-1 Gateways provide flexible, multi-tenant logical routing and security services for specific application boundaries, connecting Northbound to the Tier-0 Gateway."
+  },
+  {
+    "id": 102,
+    "question": "When configuring password management in VCF via SDDC Manager, what capabilities are provided natively?",
+    "options": [
+      "Automated password rotation, password policy enforcement, and credential management for core VCF service accounts",
+      "Storage of plain-text passwords in public GitHub repositories",
+      "Automatic generation of physical door access codes for datacenters",
+      "Bypassing password requirements for all ESXi hosts"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager includes password management features to rotate, auto-generate, and manage passwords securely across vCenter, ESXi, NSX, and SDDC Manager."
+  },
+  {
+    "id": 103,
+    "question": "An architect needs to design a disaster recovery strategy for a VCF deployment across two sites with an RPO of 5 minutes. Which solution should be integrated?",
+    "options": [
+      "VMware Live Recovery / vSphere Replication with Site Recovery Manager (SRM)",
+      "Daily manual export of OVF templates to external hard drives",
+      "vSphere Auto Deploy PXE boot scripts",
+      "SDDC Manager Cloud Builder re-installation"
+    ],
+    "answer": 0,
+    "explanation": "VMware Live Recovery (utilizing vSphere Replication and Orchestrated Disaster Recovery) provides hypervisor-based VM replication with RPOs down to 5 minutes."
+  },
+  {
+    "id": 104,
+    "question": "What is the primary role of Transport Node Profiles (TNP) in an NSX environment deployed by VCF?",
+    "options": [
+      "Automating the consistent configuration of NSX switches, transport zones, and TEP interfaces across all ESXi hosts in a cluster",
+      "Managing VM storage IOPS limits on vSAN datastores",
+      "Generating automated PDF reports for vCenter licensing",
+      "Configuring DNS forwarders on physical switches"
+    ],
+    "answer": 0,
+    "explanation": "Transport Node Profiles define the NSX configuration template (uplink profiles, transport zones, vDS switches), applying it uniformly to all hosts when prepared for NSX."
+  },
+  {
+    "id": 105,
+    "question": "In a VCF environment, what happens during a patch update orchestrated by SDDC Manager on an ESXi cluster?",
+    "options": [
+      "All VMs are powered off simultaneously to apply updates in parallel",
+      "SDDC Manager places hosts into Maintenance Mode one by one, evacuats workloads using vMotion, updates ESXi, and brings hosts back online rolling-style",
+      "The entire cluster is deleted and redeployed from scratch",
+      "Updates are applied without placing hosts in Maintenance Mode"
+    ],
+    "answer": 1,
+    "explanation": "SDDC Manager performs rolling updates: it evacuates workloads via vMotion, places the target host into Maintenance Mode, updates software/firmware, and returns it to production sequentially."
+  },
+  {
+    "id": 106,
+    "question": "Which component provides centralized visibility into physical and virtual network topology, traffic flows, and packet tracing in a VCF deployment?",
+    "options": [
+      "VMware Aria Operations for Networks (formerly vRealize Network Insight)",
+      "vSphere Auto Deploy Console",
+      "SDDC Manager Deployment Parameter Sheet",
+      "vSAN Health Plugin"
+    ],
+    "answer": 0,
+    "explanation": "Aria Operations for Networks provides end-to-end network visibility, traffic flow analysis, security planning, and troubleshooting across physical and virtual fabrics."
+  },
+  {
+    "id": 107,
+    "question": "What is the minimum number of physical NICs recommended per ESXi host in a standard VCF architecture design to ensure complete redundancy?",
+    "options": [
+      "1 physical NIC",
+      "2 physical NICs (connected to separate physical network cards/switches)",
+      "8 physical NICs exclusively",
+      "0 NICs when using wireless network bridges"
+    ],
+    "answer": 1,
+    "explanation": "A minimum of two physical NICs (preferably on separate PCIe adapters) connected to redundant ToR switches is required to eliminate single network points of failure."
+  },
+  {
+    "id": 108,
+    "question": "In VCF, what type of storage object is created on vSAN to store virtual machine configuration files, log files, and disk descriptor files?",
+    "options": [
+      "VM Home Namespace Object",
+      "iSCSI LUN Target",
+      "NFS Export Mount",
+      "Raw Device Block Mapping"
+    ],
+    "answer": 0,
+    "explanation": "On vSAN, virtual machine directories (containing `.vmx`, logs, descriptor files) are stored as 'VM Home' namespace objects governed by vSAN storage policies."
+  },
+  {
+    "id": 109,
+    "question": "An architect is planning a multi-instance VCF deployment across three regional datacenters. Which management architecture connects these instances for global governance?",
+    "options": [
+      "VCF Fleet Management / VCF Federation",
+      "Single centralized vCenter Server managing all three regions",
+      "Standalone Cloud Builder instances in loop",
+      "Local hosts connected via Windows Domain Trusts"
+    ],
+    "answer": 0,
+    "explanation": "VCF Fleet Management / Federation enables cross-instance management, unified visibility, and global policy controls across geographically distributed VCF instances."
+  },
+  {
+    "id": 110,
+    "question": "Which VMware Aria product provides automated capacity planning, performance monitoring, and cost optimization for VCF Workload Domains?",
+    "options": [
+      "VMware Aria Operations (formerly vRealize Operations)",
+      "VMware Aria Automation Orchestrator",
+      "vSphere Integrated Containers",
+      "NSX Edge Load Balancer"
+    ],
+    "answer": 0,
+    "explanation": "VMware Aria Operations provides AI-driven performance monitoring, capacity analytics, right-sizing recommendations, and cost management across VCF environments."
+  },
+  {
+    "id": 111,
+    "question": "What is the purpose of the 'Deployment Parameter Sheet' (Excel workbook / JSON) used prior to deploying VCF with Cloud Builder?",
+    "options": [
+      "It contains all IP addresses, hostnames, VLAN IDs, credentials, and topology details required to automate Management Domain bring-up",
+      "It lists hardware prices for purchasing physical servers from vendors",
+      "It acts as a backup file for virtual machine guest operating systems",
+      "It generates SSL certificates for external websites"
+    ],
+    "answer": 0,
+    "explanation": "The Deployment Parameter Sheet captures all environment-specific networking, host, and appliance configuration inputs required by Cloud Builder for bring-up."
+  },
+  {
+    "id": 112,
+    "question": "In an NSX Distributed Firewall (DFW) design within VCF, where are firewall security policies enforced?",
+    "options": [
+      "At the physical Top-of-Rack switch port only",
+      "At the kernel level of every ESXi host on the vNIC interface of each virtual machine",
+      "Exclusively on the central NSX Manager virtual appliance",
+      "On the physical edge firewall gateway"
+    ],
+    "answer": 1,
+    "explanation": "NSX DFW enforces stateful firewall rules directly at the ESXi kernel level on every VM's virtual NIC (vNIC), providing micro-segmentation independent of physical network topology."
+  },
+  {
+    "id": 113,
+    "question": "What type of vSAN deployment architecture allows non-vSAN vSphere clusters to mount a vSAN datastore from a remote VCF cluster over the network?",
+    "options": [
+      "vSAN HCI Mesh",
+      "vSAN Direct Access Mode",
+      "Local VMFS Datastore Mode",
+      "vSAN Stretched Witness Mirroring"
+    ],
+    "answer": 0,
+    "explanation": "vSAN HCI Mesh allows sharing vSAN datastore capacity across multiple vSphere clusters over high-speed networks, optimizing capacity utilization."
+  },
+  {
+    "id": 114,
+    "question": "What requirement must be met before removing or deleting a VI Workload Domain from SDDC Manager?",
+    "options": [
+      "All workload virtual machines must be migrated out or powered off and deleted, and dependent resources unassigned",
+      "Cloud Builder must be reinstalled",
+      "The Management Domain must be deleted first",
+      "Physical ToR switches must be powered off"
+    ],
+    "answer": 0,
+    "explanation": "Before deleting a VI Workload Domain, all hosted VM workloads must be evacuated or removed to avoid data loss and allow SDDC Manager to cleanly unprovision resources."
+  },
+  {
+    "id": 115,
+    "question": "Which component in NSX provides stateful NAT, Edge Firewall, and Load Balancing services for workloads in VCF?",
+    "options": [
+      "NSX Edge Appliance / Edge Cluster",
+      "vSphere Distributed Switch Port Group",
+      "vSAN Witness Node",
+      "SDDC Manager Controller"
+    ],
+    "answer": 0,
+    "explanation": "NSX Edge Appliances host Tier-0/Tier-1 service routers that perform centralized stateful services such as NAT, edge firewalls, VPNs, and load balancing."
+  },
+  {
+    "id": 116,
+    "question": "When designing a VCF environment with high availability in mind, what is the impact of placing two NSX Edge Node VMs on the same physical ESXi host?",
+    "options": [
+      "It creates a single point of failure where a single host crash takes down both active and standby routing instances",
+      "It doubles the network routing throughput automatically",
+      "It eliminates the need for BGP peering with physical switches",
+      "It reduces physical switch port requirements to zero"
+    ],
+    "answer": 0,
+    "explanation": "Placing active and standby Edge VMs on the same host creates a single point of failure. Anti-affinity rules must be configured to ensure Edge VMs run on separate ESXi hosts."
+  },
+  {
+    "id": 117,
+    "question": "What is the function of the 'Unallocated Host Pool' in SDDC Manager?",
+    "options": [
+      "It holds commissioned ESXi hosts that are ready to be assigned to new or existing Workload Domains",
+      "It stores decommissioned hard drives scheduled for destruction",
+      "It contains virtual machines that have no CPU limit assigned",
+      "It keeps backup copies of vCenter Server database files"
+    ],
+    "answer": 0,
+    "explanation": "Hosts that have been commissioned and validated are held in the Unallocated Host Pool until they are selected to create or expand Workload Domain clusters."
+  },
+  {
+    "id": 118,
+    "question": "Which security feature in vSphere and VCF prevents unauthorized code execution and ensures only signed, trusted binaries boot on ESXi hosts?",
+    "options": [
+      "UEFI Secure Boot and TPM 2.0 (Trusted Platform Module)",
+      "MAC Address Spoofing on vDS",
+      "vSAN Deduplication",
+      "NSX Geneve Framing"
+    ],
+    "answer": 0,
+    "explanation": "UEFI Secure Boot combined with TPM 2.0 validates the digital signature of the ESXi bootloader and kernel modules, ensuring host boot integrity."
+  },
+  {
+    "id": 119,
+    "question": "An architect is specifying network requirements for vMotion in a multi-cluster VCF deployment. Which setting is recommended for optimal vMotion performance?",
+    "options": [
+      "Dedicated vMotion VMkernel interfaces configured on a separate VLAN/subnet with jumbo frames (MTU 9000)",
+      "Sharing the management network interface with standard MTU 1500 without VLANs",
+      "Routing vMotion traffic over the public internet",
+      "Disabling vMotion across physical host clusters"
+    ],
+    "answer": 0,
+    "explanation": "Dedicated VMkernel adapters on a dedicated vMotion VLAN/subnet with Jumbo Frames ensure high-throughput, low-latency VM migrations without impacting management traffic."
+  },
+  {
+    "id": 120,
+    "question": "What is the primary architectural advantage of using VMware Cloud Foundation (VCF) over manually built vSphere/NSX/vSAN deployments?",
+    "options": [
+      "Automated bring-up, standardized architectures, unified lifecycle management (LCM), and end-to-end cloud platform automation",
+      "Elimination of all physical network hardware requirements",
+      "Ability to run vSphere without physical CPU processors",
+      "Free hardware replacement from server vendors"
+    ],
+    "answer": 0,
+    "explanation": "VCF delivers a standardized, fully automated Software-Defined Data Center (SDDC) platform with automated lifecycle management, reducing operational complexity and deployment risks."
+  }
+]
+[
+  {
+    "id": 121,
+    "question": "An architect is designing a VCF deployment utilizing vSAN Express Storage Architecture (ESA). What hardware requirement is mandatory for drive selection in vSAN ESA compared to OSA?",
+    "options": [
+      "NVMe High-Performance SSDs exclusively for a single tier architecture (no dedicated cache drives)",
+      "SAS mechanical hard drives for capacity tier",
+      "SATA SSDs for cache tier paired with NVMe for capacity",
+      "USB Flash drives connected directly to internal host ports"
+    ],
+    "answer": 0,
+    "explanation": "vSAN ESA uses a single tier of high-performance NVMe drives (Storage Pool) for both write buffering and capacity, eliminating the concept of separate cache and capacity drive groups used in OSA."
+  },
+  {
+    "id": 122,
+    "question": "In a VCF environment, an architect must design a high-availability solution for NSX Tier-0 Gateways delivering stateful services (e.g., Stateful NAT, Edge Firewall). Which routing/edge configuration is required?",
+    "options": [
+      "Active-Standby mode on NSX Edge Nodes",
+      "Active-Active mode with ECMP enabled across 8 Edge Nodes",
+      "Static routing without Edge Nodes",
+      "Layer 2 bridging without Tier-0 Gateways"
+    ],
+    "answer": 0,
+    "explanation": "Stateful services in NSX (such as stateful NAT or stateful Edge Firewall) require session state synchronization, which is supported in Active-Standby mode on Tier-0/Tier-1 Gateways."
+  },
+  {
+    "id": 123,
+    "question": "Which component in SDDC Manager is used to manage and replace TLS/SSL certificates across all core components of the Software-Defined Data Center (vCenter, NSX, SDDC Manager)?",
+    "options": [
+      "SDDC Manager Certificate Management / Lifecycle Services",
+      "vSphere Auto Deploy Certificate Authority",
+      "NSX Edge Local CLI Utility",
+      "Cloud Builder Certificate Engine"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager provides centralized Certificate Management to generate Certificate Signing Requests (CSRs), integrate with Microsoft CA or external CAs, and replace SSL certificates across the VCF stack."
+  },
+  {
+    "id": 124,
+    "question": "An architect needs to migrate virtual machine workloads from a legacy non-VCF vSphere environment into a newly deployed VCF VI Workload Domain with minimal downtime. Which integrated tool is recommended?",
+    "options": [
+      "VMware HCX (Hybrid Cloud Extension)",
+      "vSphere Content Library manual copy",
+      "Cold migration over SSH",
+      "SDDC Manager Cloud Builder"
+    ],
+    "answer": 0,
+    "explanation": "VMware HCX enables seamless workload mobility, network extension, and cross-cloud bulk or zero-downtime (RAV/vMotion) migrations between legacy environments and VCF."
+  },
+  {
+    "id": 125,
+    "question": "During a host maintenance operation on a vSAN cluster in VCF, which vSAN maintenance mode option ensures full data protection by copying all data components to other hosts before the host enters maintenance mode?",
+    "options": [
+      "Full Data Migration",
+      "Ensure Accessibility",
+      "No Data Migration",
+      "Cold Evacuation"
+    ],
+    "answer": 0,
+    "explanation": "'Full Data Migration' evacuates all data objects off the target host to other hosts in the cluster to maintain complete redundancy (FTT), requiring sufficient free capacity."
+  },
+  {
+    "id": 126,
+    "question": "What is the function of the BGP AS (Autonomous System) Number configuration when setting up Tier-0 Gateways in an NSX environment managed by VCF?",
+    "options": [
+      "Establishing BGP peering relationships with upstream physical Top-of-Rack (ToR) switches for dynamic route exchange",
+      "Configuring local DNS domain names on ESXi hosts",
+      "Authenticating vCenter Server with Active Directory",
+      "Assigning MAC address ranges to virtual network interfaces"
+    ],
+    "answer": 0,
+    "explanation": "BGP Autonomous System Numbers (ASN) are required to establish eBGP or iBGP neighbor relationships between NSX Tier-0 Gateways and physical ToR routers for dynamic route advertisement."
+  },
+  {
+    "id": 127,
+    "question": "An architect is designing an SDDC Manager backup policy. Which repository type is natively supported for automated file-based backups of SDDC Manager?",
+    "options": [
+      "External SFTP Server",
+      "Local USB Drive connected to ESXi host",
+      "Tape Drive Array",
+      "Public HTTP Website"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager supports automated, scheduled file-based backups directed to an external, secure SFTP server repository."
+  },
+  {
+    "id": 128,
+    "question": "When expanding a vSAN cluster in a VCF Workload Domain by adding a new commissioned host, what action does SDDC Manager take automatically regarding vSAN?",
+    "options": [
+      "It expands the existing vSAN datastore by claiming the local eligible drives on the new host and adding them to the cluster",
+      "It creates a second isolated vSAN datastore on the same cluster",
+      "It formats all existing hosts in the cluster",
+      "It requires manual CLI disk group creation on each host"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager automates cluster expansion by claiming drives on the newly added host according to the cluster's vSAN storage configuration and expanding the datastore capacity."
+  },
+  {
+    "id": 129,
+    "question": "In a multi-rack VCF deployment, what design construct ensures that vSAN data replicas are distributed across different physical server racks to tolerate an entire rack failure?",
+    "options": [
+      "vSAN Fault Domains",
+      "vSphere Resource Pools",
+      "NSX Transport Zones",
+      "vCenter Inventory Folders"
+    ],
+    "answer": 0,
+    "explanation": "vSAN Fault Domains allow grouping hosts by physical rack. vSAN then distributes object replicas across different fault domains so that a failure of a full rack does not cause data loss."
+  },
+  {
+    "id": 130,
+    "question": "Which VCF component is responsible for handling Identity Provider (IdP) federation using OIDC/SAML protocols to enable Single Sign-On across Aria Suite and SDDC Manager?",
+    "options": [
+      "Workspace ONE Access / vSphere Identity Federation",
+      "vSAN Witness Node",
+      "NSX Edge Load Balancer CLI",
+      "Cloud Builder Configurator"
+    ],
+    "answer": 0,
+    "explanation": "Workspace ONE Access (or vSphere Identity Federation) integrates VCF with corporate IdPs (like Azure AD, Okta, or Ping) using SAML/OIDC for unified Single Sign-On."
+  },
+  {
+    "id": 131,
+    "question": "What is the primary operational benefit of applying Async Patches in VCF via SDDC Manager?",
+    "options": [
+      "Applying critical security fixes or patches to specific components (like vCenter or ESXi) before the next major VCF bundle release",
+      "Converting physical switches into virtual routers automatically",
+      "Bypassing all hardware compatibility checks permanently",
+      "Upgrading physical BIOS without host reboots"
+    ],
+    "answer": 0,
+    "explanation": "Async Patch Tool allows applying out-of-band security patches or urgent bug fixes to individual components (vCenter, ESXi, NSX) without waiting for a full VCF BOM release."
+  },
+  {
+    "id": 132,
+    "question": "An architect is designing an NSX Edge deployment for a VI Workload Domain. Which Edge Form Factor should be chosen for high-throughput enterprise routing demanding dedicated hardware resources?",
+    "options": [
+      "Bare-Metal NSX Edge Nodes",
+      "Small Virtual Machine Edge Nodes",
+      "Micro-Sized Container Edge Instances",
+      "Nested ESXi Edge Nodes"
+    ],
+    "answer": 0,
+    "explanation": "Bare-Metal NSX Edge Nodes run directly on physical hardware without hypervisor overhead, offering maximum packet processing throughput and sub-millisecond latency."
+  },
+  {
+    "id": 133,
+    "question": "What happens during a 'Workload Domain Contraction' workflow in SDDC Manager when a host is removed from a cluster?",
+    "options": [
+      "The host is gracefully evacuated, removed from vCenter and NSX, cleansed, and returned to the Unallocated Host Pool",
+      "The host hardware is permanently disabled in the server BIOS",
+      "All data on the entire vSAN datastore across all hosts is deleted",
+      "The Management Domain is automatically reinstalled"
+    ],
+    "answer": 0,
+    "explanation": "Removing a host via SDDC Manager safely evacuates workloads, cleanses host configuration, unregisters it from vCenter/NSX, and moves it back to the Unallocated Host Pool."
+  },
+  {
+    "id": 134,
+    "question": "Which metric in vSAN Health monitoring alerts an administrator that object resynchronization traffic is occurring due to a host reboot or drive replacement?",
+    "options": [
+      "vSAN Resyncing Objects / Active Resync Data Traffic",
+      "CPU Ready Time (%RDY)",
+      "vMotion Network Packet Loss",
+      "DNS Query Response Latency"
+    ],
+    "answer": 0,
+    "explanation": "The vSAN Resyncing Objects monitor shows the remaining data, estimated completion time, and bandwidth used to rebuild or resynchronize vSAN objects across the cluster."
+  },
+  {
+    "id": 135,
+    "question": "An architect needs to ensure that management traffic in VCF is isolated from tenant data traffic at the physical network layer. Which design strategy achieves this?",
+    "options": [
+      "Using separate dedicated VLANs and isolated Distributed Port Groups for Management, vMotion, vSAN, and Geneve Overlay traffic",
+      "Combining all traffic types onto a single untagged Native VLAN",
+      "Disabling VLAN tagging completely across all physical switch ports",
+      "Routing management traffic through tenant virtual machines"
+    ],
+    "answer": 0,
+    "explanation": "VCF guidelines require strict network segmentation using dedicated VLANs for Management, vMotion, vSAN, and NSX Overlay traffic on vSphere Distributed Switches."
+  },
+  {
+    "id": 136,
+    "question": "In an NSX security architecture within VCF, what is the role of Distributed Identity-Based Firewalling (IDFW)?",
+    "options": [
+      "Enforcing firewall rules based on logged-in Active Directory user identities rather than static IP addresses",
+      "Filtering physical switch port MAC addresses exclusively",
+      "Blocking incoming spam emails on mail servers",
+      "Encrypting stored VMDK files on vSAN"
+    ],
+    "answer": 0,
+    "explanation": "Identity Firewall (IDFW) dynamically applies NSX DFW rules based on the authenticated Active Directory user session on a virtual machine, independent of IP addressing."
+  },
+  {
+    "id": 137,
+    "question": "Which VCF tool or log collector should an architect recommend for automated compliance auditing against VMware Security Configuration Guides?",
+    "options": [
+      "VMware Aria Operations Compliance Packs / Compliance Auditing",
+      "SDDC Manager Deployment Parameter Sheet",
+      "Cloud Builder Web Console",
+      "vSAN Benchmarking Tool"
+    ],
+    "answer": 0,
+    "explanation": "VMware Aria Operations includes compliance management packs that automatically benchmark VCF configurations against VMware Hardening Guides, PCI-DSS, HIPAA, and CIS standards."
+  },
+  {
+    "id": 138,
+    "question": "What is the minimum number of physical network interfaces recommended on an NSX Edge VM when deployed in a high-availability configuration in VCF?",
+    "options": [
+      "4 interfaces (Management, Overlay TEP, Uplink 1 to ToR-A, Uplink 2 to ToR-B)",
+      "1 single interface for all traffic",
+      "8 interfaces exclusively for storage",
+      "0 interfaces when using wireless bridging"
+    ],
+    "answer": 0,
+    "explanation": "NSX Edge VMs typically require interfaces for Management, Geneve Overlay TEP communication, and dedicated Uplink interfaces connected to distinct physical ToR switches."
+  },
+  {
+    "id": 139,
+    "question": "In a VCF environment, what is the impact of configuring 'vSAN Deduplication and Compression' on an OSA cluster?",
+    "options": [
+      "It reduces storage space consumption on capacity drives, applied at the disk group level, but requires all drives in a group to be claimed",
+      "It doubles physical RAM capacity on all ESXi hosts",
+      "It accelerates vMotion migration speed by 50%",
+      "It disables vSphere HA on all virtual machines"
+    ],
+    "answer": 0,
+    "explanation": "In vSAN OSA, deduplication and compression are enabled at the cluster level and applied per disk group when data is destaged from cache to capacity drives, maximizing space efficiency."
+  },
+  {
+    "id": 140,
+    "question": "What feature in SDDC Manager allows administrators to set schedule windows for downloading and applying lifecycle update bundles?",
+    "options": [
+      "Update Scheduling / Maintenance Windows in SDDC Manager LCM",
+      "vSphere Auto Deploy Rules Engine",
+      "NSX Edge Load Balancer Scheduler",
+      "Cloud Builder Day-0 Task Manager"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager LCM enables administrators to schedule update downloads and schedule bundle staging/application during predefined maintenance windows to prevent impact."
+  },
+  {
+    "id": 141,
+    "question": "An architect is designing an NSX Distributed Threat Prevention (IDS/IPS) architecture in VCF. Where is deep packet inspection performed?",
+    "options": [
+      "Distributed directly within the ESXi hypervisor kernel at the vNIC layer of each VM without hair-pinning traffic",
+      "On a centralized external hardware appliance outside the datacenter",
+      "Exclusively inside the physical ToR switches",
+      "On the vCenter Server virtual machine"
+    ],
+    "answer": 0,
+    "explanation": "NSX Distributed IDS/IPS processes threat inspection natively inside the ESXi kernel at every virtual interface, eliminating traffic hair-pinning to hair-pinned inspection appliances."
+  },
+  {
+    "id": 142,
+    "question": "In VCF, what is the role of the 'vSAN Storage Object Repair Timer' when a host unexpectedly goes offline?",
+    "options": [
+      "It delays automatic object rebuilding (default 60 minutes) to allow transient host reboots without triggering unnecessary data resynchronization across the network",
+      "It immediately formats all drives on remaining hosts after 1 minute",
+      "It powers off all VMs running on the cluster after 5 minutes",
+      "It deletes vCenter Server backups after 24 hours"
+    ],
+    "answer": 0,
+    "explanation": "The vSAN Object Repair Timer waits (by default 60 minutes) before rebuilding absent objects, preventing full network resynchronizations during brief host reboots."
+  },
+  {
+    "id": 143,
+    "question": "Which feature of vSphere Distributed Switch in VCF enables mirror copies of virtual machine network traffic to be sent to a collector VM or physical probe for deep packet analysis?",
+    "options": [
+      "Port Mirroring (ERSPAN / Encapsulated Remote Switched Port Analyzer)",
+      "LACP Uplink Teaming",
+      "NetNet MAC Address Binding",
+      "Traffic Shaping Peak Bandwidth"
+    ],
+    "answer": 0,
+    "explanation": "vDS Port Mirroring (including ERSPAN) captures and forwards network traffic from virtual ports to remote monitoring probes or virtual analysis appliances."
+  },
+  {
+    "id": 144,
+    "question": "What is a mandatory requirement for configuring vSphere Native Key Provider (NKP) in VCF for vSAN encryption or VM encryption?",
+    "options": [
+      "A key backup must be generated and secured by the administrator before the Native Key Provider becomes fully operational",
+      "An external third-party KMIP server must be installed on physical hardware",
+      "Disabling vCenter Server Single Sign-On",
+      "Configuring raw device mappings on all VMs"
+    ],
+    "answer": 0,
+    "explanation": "vSphere Native Key Provider requires backing up the primary key file before NKP can be used to perform encryption operations across the cluster."
+  },
+  {
+    "id": 145,
+    "question": "In a VCF multi-cluster design, what is the function of vSphere Proactive HA?",
+    "options": [
+      "It integrates with hardware monitoring agents (e.g., Dell OpenManage, HPE OneView) to migrate VMs off degradation-prone hosts before hardware failure occurs",
+      "It automatically orders replacement physical servers from vendors",
+      "It increases VM CPU frequency during high load",
+      "It backs up NSX Manager databases to public cloud"
+    ],
+    "answer": 0,
+    "explanation": "Proactive HA receives hardware health alerts (e.g., power supply failure, memory errors) from vendor plugins and proactively moves VMs off the unhealthy host using vMotion."
+  },
+  {
+    "id": 146,
+    "question": "When configuring BGP routing between NSX Tier-0 Gateways and physical ToR switches, what protocol parameter prevents BGP routing loops in multi-path topologies?",
+    "options": [
+      "BGP AS-Path check / AS-Path Prepending",
+      "STP Forward Delay",
+      "MTU Size Matching",
+      "IGMP Snooping"
+    ],
+    "answer": 0,
+    "explanation": "BGP uses the AS-Path attribute to detect and prevent routing loops; if a router sees its own Autonomous System Number in an advertised path, the route is rejected."
+  },
+  {
+    "id": 147,
+    "question": "An architect is planning a VCF deployment that requires multi-tenancy with strict network overlap (overlapping IP subnets across tenants). What NSX feature supports this?",
+    "options": [
+      "VRF-Lite (Virtual Routing and Forwarding) on Tier-0 Gateways / Isolated Tier-1 Gateways with NAT",
+      "vSphere Standard Switches with untagged VLANs",
+      "vSAN Direct Storage Pools",
+      "SDDC Manager Cloud Builder"
+    ],
+    "answer": 0,
+    "explanation": "NSX Tier-0 VRF-Lite allows creating isolated routing tables per tenant on the same physical Edge infrastructure, supporting overlapping IP address spaces."
+  },
+  {
+    "id": 148,
+    "question": "What is the function of the 'SDDC Manager Repository' in a VCF lifecycle management architecture?",
+    "options": [
+      "Storing downloaded VCF software update bundles, binaries, and patches before orchestrated installation",
+      "Hosting active virtual machine VMDK files",
+      "Storing physical switch firmware binaries exclusively",
+      "Keeping user Active Directory password hashes"
+    ],
+    "answer": 0,
+    "explanation": "The SDDC Manager Repository holds downloaded software bundles, upgrade files, and patches retrieved from VMware online depots prior to applying LCM updates."
+  },
+  {
+    "id": 149,
+    "question": "In a VCF design, which component handles automated IP address assignment for Geneve TEP interfaces on ESXi hosts during NSX preparation?",
+    "options": [
+      "NSX IP Pools or external DHCP Server",
+      "vCenter Server SSO Domain Authority",
+      "vSAN Witness Host Appliance",
+      "SDDC Manager SSH Key Generator"
+    ],
+    "answer": 0,
+    "explanation": "NSX TEP (Tunnel Endpoint) IP addresses can be dynamically assigned via pre-configured NSX IP Pools or designated DHCP scopes during host preparation."
+  },
+  {
+    "id": 150,
+    "question": "When designing a high-availability management plane in VCF, how many vCenter Server instances are deployed for a setup with 1 Management Domain and 2 VI Workload Domains?",
+    "options": [
+      "3 vCenter Server instances (1 for Management Domain, 1 for each VI Workload Domain)",
+      "1 single vCenter Server for all domains",
+      "6 vCenter Servers (2 per domain in active-active)",
+      "0 vCenter Servers (managed directly by SDDC Manager)"
+    ],
+    "answer": 0,
+    "explanation": "VCF deploys 1 dedicated vCenter Server for the Management Domain, plus 1 dedicated vCenter Server instance per VI Workload Domain, totaling 3 instances."
+  },
+  {
+    "id": 151,
+    "question": "Which feature in vSphere Lifecycle Manager (vLCM) prevents host image drift by automatically enforcing cluster-wide hardware and driver baselines?",
+    "options": [
+      "vLCM Cluster Image Compliance and Remediation",
+      "vSphere Auto Deploy PXE Server",
+      "Storage DRS Maintenance Mode",
+      "vSAN Witness Quorum Check"
+    ],
+    "answer": 0,
+    "explanation": "vLCM uses declarative Cluster Images to check host compliance against a target state and remediate non-compliant hosts to prevent configuration drift."
+  },
+  {
+    "id": 152,
+    "question": "What is the primary function of VMware Aria Operations for Networks in a VCF troubleshooting scenario?",
+    "options": [
+      "Discovering network traffic flows, mapping application dependencies, and pinpointing routing/firewall drops across physical and virtual fabrics",
+      "Rebuilding corrupted vSAN disk objects",
+      "Applying BIOS updates to ESXi host servers",
+      "Managing vCenter SSO domain user accounts"
+    ],
+    "answer": 0,
+    "explanation": "Aria Operations for Networks analyzes network paths, firewall block rules, and traffic flows across physical switches and virtual overlay switches for rapid troubleshooting."
+  },
+  {
+    "id": 153,
+    "question": "An architect is specifying network MTU settings for a VCF deployment. What MTU size must be configured on all physical network switch ports handling Geneve Overlay and vSAN traffic?",
+    "options": [
+      "MTU 9000 (Jumbo Frames) across the entire end-to-end physical path",
+      "MTU 1500 (Standard Ethernet)",
+      "MTU 1492 (ADSL Frame size)",
+      "MTU 576 (Default IPv4 minimum)"
+    ],
+    "answer": 0,
+    "explanation": "To prevent packet fragmentation and maximize performance, Jumbo Frames (MTU 9000) are recommended and required across physical switch fabrics for vSAN and NSX Geneve overlays."
+  },
+  {
+    "id": 154,
+    "question": "What happens if an administrator attempts to perform manual software upgrades on a vCenter Server managed by VCF without using SDDC Manager?",
+    "options": [
+      "It causes configuration drift, breaks VCF BOM compatibility, and may block future automated SDDC Manager upgrades",
+      "It automatically updates SDDC Manager in real time",
+      "It doubles vCenter processing speed",
+      "It has no operational impact whatsoever"
+    ],
+    "answer": 0,
+    "explanation": "Out-of-band manual upgrades break the validated Bill of Materials (BOM) tracking inside SDDC Manager, leading to system state inconsistencies and failed LCM workflows."
+  },
+  {
+    "id": 155,
+    "question": "Which storage architectural model in vSAN ESA replaces traditional vSAN Disk Groups (Cache + Capacity drives)?",
+    "options": [
+      "vSAN Storage Pools",
+      "vSphere Flash Read Caches",
+      "iSCSI Multipath Targets",
+      "RDM Pass-through Pools"
+    ],
+    "answer": 0,
+    "explanation": "vSAN ESA introduces 'Storage Pools' where all NVMe drives contribute to both write caching and capacity, eliminating rigid Disk Group constructs."
+  },
+  {
+    "id": 156,
+    "question": "In an NSX Edge Cluster deployment, what is the benefit of using BFD (Bidirectional Forwarding Detection) with static routing or BGP?",
+    "options": [
+      "Sub-second link failure detection enabling rapid traffic convergence to secondary paths",
+      "Encrypting network traffic over public internet connections",
+      "Compressing VMDK files during vMotion",
+      "Automating host IP address leasing"
+    ],
+    "answer": 0,
+    "explanation": "BFD provides sub-second heartbeat health monitoring between routing peers, triggering fast routing failovers if a physical link or node fails."
+  },
+  {
+    "id": 157,
+    "question": "What is the recommended design practice for SDDC Manager virtual appliance placement in a multi-cluster VCF environment?",
+    "options": [
+      "Deploy SDDC Manager inside the Management Domain cluster protected by vSphere HA and vSAN storage policies",
+      "Deploy SDDC Manager on an unmanaged standalone desktop PC",
+      "Host SDDC Manager inside a temporary tenant Workload Domain",
+      "Run SDDC Manager inside a public cloud VM without connection to ESXi"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager is a core management appliance that must reside within the highly available VCF Management Domain cluster."
+  },
+  {
+    "id": 158,
+    "question": "Which component of VMware Aria Suite provides infrastructure self-service provisioning, governance policies, and catalog-based deployment of VMs and Kubernetes clusters in VCF?",
+    "options": [
+      "VMware Aria Automation",
+      "VMware Aria Operations for Logs",
+      "vSphere Auto Deploy Console",
+      "vSAN Health Check Agent"
+    ],
+    "answer": 0,
+    "explanation": "VMware Aria Automation offers self-service cloud portals, infrastructure-as-code blueprints, and policy enforcement for multi-cloud deployments."
+  },
+  {
+    "id": 159,
+    "question": "In a VCF Stretched Cluster deployment, what happens if the data link between Site A and Site B fails, but both sites maintain connectivity to the Witness Site?",
+    "options": [
+      "The Witness Host acts as tie-breaker to determine quorum; Site A (preferred site) remains active while Site B components are marked absent",
+      "Both sites immediately delete all virtual machines",
+      "SDDC Manager triggers a full re-installation of vSphere",
+      "All physical network switches are rebooted automatically"
+    ],
+    "answer": 0,
+    "explanation": "The Witness Node determines quorum during an inter-site partition, allowing the Preferred Site to continue servicing workloads while preventing split-brain scenarios."
+  },
+  {
+    "id": 160,
+    "question": "What is the primary role of the 'Depot Settings' configuration in SDDC Manager?",
+    "options": [
+      "Configuring My VMware / Broadcom Portal credentials to authenticate and download official VCF update bundles and patches directly from VMware online depots",
+      "Setting up local NFS export paths for VM backups",
+      "Configuring NTP time sources for ESXi hosts",
+      "Managing physical ToR switch SNMP communities"
+    ],
+    "answer": 0,
+    "explanation": "Depot Settings store official account credentials so SDDC Manager can automatically connect to online software repositories to fetch new VCF release bundles."
   }
 ]
