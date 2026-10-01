@@ -1,0 +1,652 @@
+[
+{
+"question": "A customer created a workflow to execute during machine provisioning in a VM Apps organization within VMware Cloud Foundation (VCF) Automation 9. The workflow includes inputs that interact with the provisioning-payload data. When a machine is requested, provisioning completes successfully, but the workflow does not run. What is the cause of the workflow-execution failure?",
+"options": [
+"The workflow is signed.",
+"The Event Broker Subscription is set to blocking.",
+"The Event Broker Subscription is set to non-blocking.",
+"The workflow is not signed."
+],
+"answer": 3,
+"explanation": "According to the official exam questions, the cause of the workflow-execution failure is that the workflow is not signed (Correct Answer: D)."
+},
+{
+"question": "An Organization Administrator for an AllApps Organization in VMware Cloud Foundation (VCF) Automation must determine which networks are used by deployed workloads. How does the administrator view the networks?",
+"options": [
+"VPCs, connectivity profiles and the associated NSX segment and Tier-1 gateway details can be retrieved with vcf-cli deployment get.",
+"VPCs and connectivity profile assignments are visible in the Organization Portal, but the underlying NSX Tier-1 gateways and segments are not.",
+"The NSX Tier-1 gateway mappings for each workload in the Organization can be retrieved with kubectl get vm.",
+"The NSX segments mapped to each workload are visible by expanding deployment details for each deployed workload in the Organization Portal."
+],
+"answer": 1,
+"explanation": "VPCs and connectivity profile assignments are visible in the Organization Portal, but the underlying NSX Tier-1 gateways and segments are not exposed."
+},
+{
+"question": "An administrator has been tasked with creating one organization with the following characteristics: Connect directly to one or more vSphere clusters, Do not use the Supervisor, No sharing of infrastructure resources with other organizations. How can the administrator meet these requirements through the Provider Management Portal?",
+"options": [
+"Enable the Provider Consumption Organization.",
+"Create a VMApps organization.",
+"Create a new Region.",
+"Create an AllApps organization."
+],
+"answer": 1,
+"explanation": "Creating a VMApps organization allows connecting directly to vSphere clusters without using the Supervisor and without sharing resources across organizations."
+},
+{
+"question": "A VMware Cloud Foundation (VCF) Automation administrator is preparing to set up a new AllApps Organization. The new Organization must access the same elements as an existing Organization: storage classes, network settings, and topology-aware storage policies. What two steps must be performed? (Choose two.)",
+"options": [
+"Utilize the exported Organization data when creating the new Organization.",
+"Import the Supervisor configuration when creating a new Supervisor and assign the new Supervisor to the new Organization.",
+"Export all Content Hub items and import them after creating each Organization.",
+"Export the Organization data from the Provider Portal."
+],
+"answer": 0,
+"explanation": "The correct steps to duplicate these elements are to utilize exported Organization data when creating the new Organization and to export the Organization data from the Provider Portal (Answers A and D)."
+},
+{
+"question": "A company has deployed a new VMware Cloud Foundation (VCF) Fleet within their development environment. An administrator must configure the organization for VM Apps in a specific 5-step order. What is the correct order of steps?",
+"options": [
+"1. Create a provider content library, 2. Create a Cloud Account, 3. Create a new All Apps Organization, 4. Configure at least one Cloud Zone, 5. Create a Project and assign at least one cloud zone.",
+"1. Log in to the Organization portal, 2. Create an organization content library, 3. Configure at least one Cloud Zone, 4. Create a Project and assign at least one cloud zone, 5. Assign Groups and Users to the Project.",
+"1. Create a Cloud Account, 2. Create an organization content library, 3. Configure at least one Cloud Zone, 4. Create a Project, 5. Assign Users.",
+"1. Create a provider content library, 2. Create an organization content library, 3. Create a Cloud Account, 4. Configure Cloud Zone, 5. Create Project."
+],
+"answer": 0,
+"explanation": "Based on the Drag and Drop solution: 1) Create a provider content library, 2) Create a Cloud Account, 3) Create a new All Apps Organization, 4) Configure at least one Cloud Zone, 5) Create a Project and assign at least one cloud zone."
+},
+{
+"question": "An administrator must initiate the deployment of a 3-tier application architecture using VCF Automation. Which requirement represents a risk inherent to single-zone deployments?",
+"options": [
+"A higher latency between application tiers.",
+"A higher network complexity.",
+"A split-brain isolation.",
+"A shared failure domain for all application tiers."
+],
+"answer": 3,
+"explanation": "Deploying into a single zone places all components within a shared failure domain, exposing all tiers to failure if the zone goes down."
+},
+{
+"question": "In VMware Cloud Foundation (VCF) Automation, which construct within an AllApps organization consists of one or more Supervisors and supplies compute, memory, storage, and network resources to the organization?",
+"options": [
+"Region",
+"Cloud Account",
+"Cloud Zone",
+"Project"
+],
+"answer": 2,
+"explanation": "According to the official exam answer key, the correct construct is Cloud Zone (Answer C), while community consensus often points to Region (Answer A)."
+},
+{
+"question": "A customer created a workflow to execute during VM provisioning. Inputs on the blueprint interact with payload data, but when VMs are requested, payload fails to pass to the workflow. What is preventing payload data from passing?",
+"options": [
+"The event broker subscription is set to blocking.",
+"The workflow is not signed.",
+"The event broker subscription is set to non-blocking.",
+"The workflow is signed."
+],
+"answer": 2,
+"explanation": "The official key indicates non-blocking event broker subscription causes payload passing failure in this scenario."
+},
+{
+"question": "An administrator is deploying a Supervisor cluster in VCF Automation and notices that only one vSphere zone is configured. Which statement best describes the capabilities of the Supervisor cluster being deployed?",
+"options": [
+"The cluster will automatically upgrade to multi-zone when additional zones are provided.",
+"The cluster will not have zone-level fault isolation.",
+"The cluster will span multiple vSphere clusters for high availability.",
+"The cluster enables the use of a single control plane across multiple vCenter instances."
+],
+"answer": 1,
+"explanation": "A single vSphere zone configuration lacks zone-level fault isolation."
+},
+{
+"question": "An administrator needs to create and configure a new organization for VM Apps so users can log in using Active Directory. What is the correct ordered sequence of steps?",
+"options": [
+"1. Log into Provider Management portal, 2. Enable Classic Tenant Creation feature flag, 3. Create VM Apps Org, 4. Assign Organizational level roles, 5. Configure Access Control, 6. Launch Org portal, 7. Log out, 8. Create Cloud Account.",
+"1. Enable Classic Tenant Creation feature flag, 2. Log into Provider Management portal, 3. Create VM Apps Org, 4. Assign roles, 5. Configure Access Control, 6. Create Cloud Account, 7. Launch Org portal, 8. Create Project.",
+"1. Log into Provider Management portal, 2. Create VM Apps Org, 3. Assign roles, 4. Configure Access Control, 5. Enable feature flag, 6. Launch Org portal, 7. Create Cloud Account, 8. Create Project.",
+"1. Log into Provider Management portal, 2. Enable Classic Tenant Creation feature flag, 3. Create VM Apps Org, 4. Launch Org portal, 5. Create Cloud Account, 6. Assign roles, 7. Configure Access Control, 8. Log out."
+],
+"answer": 0,
+"explanation": "The correct sequence starts with logging into Provider Management Portal, enabling Classic Tenant Creation, creating the Org, assigning roles, configuring access control, launching the Org portal, logging out, and creating a Cloud Account."
+},
+{
+"question": "An administrator must enable developers to utilize Terraform to configure Content Libraries, Cloud Zones, and flavor/image mappings in VCF Automation. What solution satisfies the requirements?",
+"options": [
+"Terraform provider for VCF Automation.",
+"System Administrator role.",
+"Terraform configuration in VCF Automation.",
+"Organization Administrator role."
+],
+"answer": 0,
+"explanation": "The Terraform provider for VCF Automation exposes infrastructure configurations like Cloud Zones, Content Libraries, and image mappings."
+},
+{
+"question": "An administrator is creating a region to provide resources to an Organization in VCF Automation. Before creating the region, what two additional configurations should be validated? (Choose two.)",
+"options": [
+"All required virtual machine (VM) classes are present and have the same names across all vCenter instances.",
+"All Supervisors are configured with the same services across all vCenter instances.",
+"All required storage classes are present and have the same names across all vCenter instances.",
+"A Region Quota has been created and associated with the Organization."
+],
+"answer": 0,
+"explanation": "All required VM classes and storage classes must be present and identically named across all vCenter instances (Answers A and C)."
+},
+{
+"question": "A customer needs to register a resource with an external service during provisioning in a VMApps Organization without causing provisioning to fail, and logging strictly in the external service. What two constructs satisfy these requirements? (Choose two.)",
+"options": [
+"Bash script on the template.",
+"Cloud init stanza in the blueprint.",
+"Non-blocking event broker subscription.",
+"ABX action."
+],
+"answer": 2,
+"explanation": "A non-blocking event broker subscription combined with an ABX action satisfies asynchronous external registration requirements (Answers C and E)."
+},
+{
+"question": "Which statement describes Virtual Private Clouds (VPCs) in VCF Automation?",
+"options": [
+"Enables the provider administrator to create nested VCF instances with a private cloud.",
+"Enables multiple organizations to share virtualized GPUs.",
+"Enables the provider administrator to create multiple VCF instances nested within public clouds.",
+"Enables multiple organizations to share the same physical Supervisor cluster while consuming logically isolated networks."
+],
+"answer": 3,
+"explanation": "VPCs allow multiple organizations to share a physical Supervisor cluster using logically isolated networks."
+},
+{
+"question": "Which service can be used to reduce or eliminate the need to manually run commands such as 'kubectl apply'?",
+"options": [
+"ArgoCD",
+"Velero",
+"Secret store",
+"DSM",
+"Harbor"
+],
+"answer": 0,
+"explanation": "ArgoCD automates Kubernetes deployments following GitOps principles without needing manual kubectl commands."
+},
+{
+"question": "An administrator needs to share a Linux VM catalog item from the VCF Automation Provider Consumption Org to the AppDev project in the FinTech organization. What are the correct steps?",
+"options": [
+"1. Log into Provider Consumption Organization, 2. Add the Linux VM catalog item to the AppDev project, 3. Log into the FinTech Organization.",
+"1. Log into FinTech Organization, 2. Enable Show items without project, 3. Add Linux VM to AppDev project.",
+"1. Log into Provider Consumption Organization, 2. Add Windows VM to AppDev project, 3. Log into FinTech Organization.",
+"1. Log into FinTech Organization, 2. Disable Show items without project, 3. Add Linux VM to AppDev project."
+],
+"answer": 0,
+"explanation": "Based on the solution: 1) Log into Provider Consumption Organization, 2) Add Linux VM catalog item to AppDev project, 3) Log into FinTech Organization."
+},
+{
+"question": "The administrator is tasked with configuring hard tenancy in VMware Cloud Foundation (VCF) Automation. Which statement reflects how multi-tenancy is configured?",
+"options": [
+"VMApps organizations enable hard tenancy within VCF Automation.",
+"Namespace Classes enable hard tenancy construct within VCF Automation.",
+"AllApps organizations enable hard tenancy within VCF Automation.",
+"Namespaces enable hard tenancy within VCF Automation."
+],
+"answer": 0,
+"explanation": "VMApps organizations provide hard tenancy within VCF Automation."
+},
+{
+"question": "An administrator needs to automate VM metadata tracking into a CMDB upon provisioning in VCF Automation. Which three options can be performed? (Choose three.)",
+"options": [
+"Call a webhook endpoint on the CMDB API with payload containing the required metadata.",
+"Create a webhook endpoint on VCF with payload containing the required metadata.",
+"Request additional metadata as input during the deployment of the blueprint.",
+"Configure a subscription that reacts to VM provisioning requests."
+],
+"answer": 0,
+"explanation": "Calling a CMDB webhook API, requesting input metadata in blueprints, and configuring event subscriptions upon VM provisioning fulfill this (Answers A, C, and E)."
+},
+{
+"question": "What should an Organization Administrator configure to ensure that three environments (staging, development, and production) are completely isolated from each other?",
+"options": [
+"Create a single VPC for both staging and development with connectivity profile supporting multiple private CIDRs.",
+"Create a Namespace class for each environment, ensuring limits are configured.",
+"Create a VPC for each environment and ensure no connectivity profiles are selected.",
+"Create a VPC for each environment with a connectivity profile that has only a 'Private TGW' IPv4 block."
+],
+"answer": 2,
+"explanation": "Creating a VPC for each environment without selecting connectivity profiles isolates the environments completely."
+},
+{
+"question": "Which approach to manage, store, and distribute sensitive data supports secure automation workflows for Supervisor and vSphere Kubernetes Service (VKS) clusters in VCF Automation?",
+"options": [
+"Pass secrets as secure input variables during deployments from VCFA's UI, so the sensitive values are never included directly in blueprints.",
+"Store secrets in the YAML manifest files in Git, but make sure to mark the Git repository as private to limit exposure.",
+"Store secrets in a private Git repository and use environment variable substitution in the CI/CD pipeline to inject them into blueprints at build time.",
+"Use the Secret Store Service (SSS) and reference the required secrets during deployment."
+],
+"answer": 3,
+"explanation": "Secret Store Service (SSS) manages sensitive parameters securely for VKS and Supervisor workflows."
+},
+{
+"question": "A VCF Automation administrator is creating an organization for a team that requires self-service networking to provision workloads with VMs and Kubernetes services, attach them to VPCs, and customize ingress/egress. Which configuration meets the requirement?",
+"options": [
+"Create an AllApps Organization and use the default VPC with VPC connectivity profiles.",
+"Create a VMApps Organization and assign multiple vSphere-backed networks for consumers to select as needed.",
+"Create an AllApps Organization and assign multiple vSphere-backed networks for consumers to select as needed.",
+"Create a VMApps Organization and use the default VPC with VPC connectivity profiles."
+],
+"answer": 0,
+"explanation": "AllApps Organizations support self-service networking using VPCs and VPC connectivity profiles for Kubernetes and VM workloads."
+},
+{
+"question": "Which service provides the ability to backup and restore vSphere pods?",
+"options": [
+"VKS",
+"Contour",
+"Velero",
+"VM Service",
+"ArgoCD"
+],
+"answer": 2,
+"explanation": "Velero is the standard service for backing up and restoring vSphere pods and Kubernetes objects."
+},
+{
+"question": "A vSphere administrator creates a 'Gold Tier' storage policy mapped to NVMe datastores. What must be done in VCF Automation to permit access for a project in an AllApps organization?",
+"options": [
+"Create a new VMApps Organization for Engineering and ensure the Gold Tier vSphere storage policy is selected for new projects.",
+"Add the Storage Class backed by the Gold Tier storage policy to a Supervisor Namespace Class and bind that Namespace Class to the Performance Test Project.",
+"Configure a Day-2 policy on the Performance Test project to enforce Gold Tier as the preferred storage.",
+"Create a new Zone in VCF Automation, select the Gold Tier vSphere storage policy, and assign the Zone to the Performance Test Project."
+],
+"answer": 1,
+"explanation": "In AllApps organizations, storage policies are mapped to Storage Classes within a Supervisor Namespace Class bound to the Project."
+},
+{
+"question": "A Provider administrator needs custom IdP configurations where source directories differ between Provider Portal and Orgs, and Org admins cannot modify IdP config. What two requirements should be configured? (Choose two.)",
+"options": [
+"Deploy an Identity Broker cluster per organization.",
+"Push the VCF Automation system LDAP service to all organizations.",
+"Configure and publish a custom organization role for all organizations.",
+"Ensure that 'Do not use LDAP' is configured for each organization's SSO.",
+"Setup custom LDAP service configuration per organization."
+],
+"answer": 0,
+"explanation": "Deploying an Identity Broker cluster per organization and ensuring 'Do not use LDAP' is configured for each Org's SSO satisfies these constraints (Answers A and D)."
+},
+{
+"question": "An administrator wants to standardize inputs (size, OS, location) and constants (salt_master_id) across all existing and new blueprints in a project. Which three actions should be taken? (Choose three.)",
+"options": [
+"Create a new Property Group containing all required properties for the production project.",
+"Update all existing blueprints within the production project with the new Property Group(s).",
+"Create a new Property Group containing all input properties for the production project.",
+"Create a new Property Group containing all constant properties for the production project."
+],
+"answer": 0,
+"explanation": "Creating property groups for inputs and constants and updating existing blueprints ensures standardization (Answers A, B, and D)."
+},
+{
+"question": "An administrator is tasked to enable VMware Cloud Foundation (VCF) Automation to run ABX actions. What must be configured?",
+"options": [
+"Create a cloud account in the Organization Portal.",
+"Create a cloud account in the Provider Management Portal.",
+"Create a project in an AllApps Organization.",
+"Create a region in an AllApps Organization."
+],
+"answer": 0,
+"explanation": "Creating a cloud account in the Organization Portal is required to execute ABX actions."
+},
+{
+"question": "An administrator needs isolated network spaces, dedicated resources, and RBAC for multi-tenancy in VCF. Which action satisfies the requirement?",
+"options": [
+"Configure firewall rules at the datacenter edge level to isolate traffic between departments.",
+"Define and allocate IP blocks and quotas at the organization level, which will then be selected and consumed by users at deployment.",
+"Grant full administrative access for one responsible user in each department to create and manage their own network configurations.",
+"Define and allocate IP blocks and quotas at the organization level, which will then be consumed by the NSX VPCs created by the different departments."
+],
+"answer": 3,
+"explanation": "Allocating IP blocks and quotas at the Org level to be consumed by department NSX VPCs satisfies network isolation and governance."
+},
+{
+"question": "An administrator is configuring RBAC in VCF Automation: cluster lifecycle operations restricted to designated operations group, and NSX security policies restricted to network administrators. Which two role assignments meet these requirements? (Choose two.)",
+"options": [
+"Assign the Security Administrator role in NSX to the network administrators group at the project scope.",
+"Assign the Service Viewer role in VCF Automation to the operations group at the cluster scope.",
+"Assign the Cluster Administrator role in VCF Automation to the operations group at the cluster scope.",
+"Assign the Service User role in VCF Automation to the operations group at the cluster scope."
+],
+"answer": 0,
+"explanation": "Security Administrator in NSX at project scope and Cluster Administrator in VCF Automation at cluster scope meet the exact RBAC requirements (Answers A and C)."
+},
+{
+"question": "A system administrator needs to create a region for an AllApps organization. How would the administrator determine which vCenter Servers are available?",
+"options": [
+"Manually look up the UUID of the vCenter Server(s) in the VMware Kubernetes Service (VKS).",
+"Verify connections in the Provider Management portal.",
+"Verify connections in the Organization portal.",
+"Manually look up the UUID of the vCenter Server(s) in the vSphere Client."
+],
+"answer": 1,
+"explanation": "vCenter Server infrastructure connections are verified in the Provider Management portal."
+},
+{
+"question": "A team requires a 3-tier VM architecture (web, app, db), static IPs, NAT/load balancing, DMZ segmentation, and access to managed PostgreSQL database services. Which organization type should be configured with minimal complexity?",
+"options": [
+"Provider Organization",
+"VMApps Organization",
+"Kubernetes Apps Organization",
+"AllApps Organization"
+],
+"answer": 3,
+"explanation": "AllApps Organizations support VM workloads alongside managed Kubernetes/database services and advanced VPC networking."
+},
+{
+"question": "An administrator must provide workload storage that remains available even if one zone in a three-zone Supervisor cluster fails. Which action must be taken?",
+"options": [
+"Attach a Supervisor-based, topology-aware Storage Class to the organization.",
+"Create a new Cloud Zone that uses a RAID1-enabled vSphere storage policy and assign it to the organization.",
+"Increase the organization's storage quota so that workloads can use additional capacity for replicas.",
+"Export the Supervisor configuration from another region that utilizes vSAN-backed replicated storage."
+],
+"answer": 0,
+"explanation": "Attaching a Supervisor-based, topology-aware Storage Class ensures data availability across multiple Supervisor zones."
+},
+{
+"question": "An organization administrator is tasked with adding a SSL certificate to their organization in VCF Automation. What three actions are required in order?",
+"options": [
+"1. Log into the Organization Portal, 2. Import the certificate in PEM format, 3. Import the private key.",
+"1. Log into the Provider Portal, 2. Import certificate in DER format, 3. Log into VCF Operations.",
+"1. Import private key, 2. Import into Fleet Management, 3. Log into Provider Portal.",
+"1. Log into Organization Portal, 2. Import certificate in DER format, 3. Import private key."
+],
+"answer": 0,
+"explanation": "Based on the solution: 1) Log into Organization Portal, 2) Import certificate in PEM format, 3) Import the private key."
+},
+{
+"question": "An administrator is designing a service catalog item for microservices deployment requiring consistent configuration, minimal sprawl, and automated decommissioning. Which three capabilities of VCF Automation meet this? (Choose three.)",
+"options": [
+"Create DNS entry for cost center tracking.",
+"Provide a Virtual Machine (VM) template running Ubuntu with Docker pre-installed.",
+"Define and assign a lease policy.",
+"Create a custom cloud-init configuration to installing standard company tooling."
+],
+"answer": 1,
+"explanation": "Providing pre-built templates, defining lease policies for decommissioning, and using cloud-init configurations achieve these goals (Answers B, C, and D)."
+},
+{
+"question": "An administrator must enable VCF Automation for single private cloud hosting, RBAC enforcement, resource governance, and company segregation. What two actions must be performed? (Choose two.)",
+"options": [
+"Create and configure an AllApps Organization per company.",
+"Ensure that the vCenter instance has a Supervisor cluster enabled.",
+"Deploy a VCF Operations Orchestrator server to enable multi-tenancy.",
+"Deploy a vCenter instance with a Supervisor cluster per company."
+],
+"answer": 0,
+"explanation": "Creating an AllApps Organization per company and enabling Supervisor on the vCenter instance provides multi-tenant segregation and governance (Answers A and B)."
+},
+{
+"question": "Which three types of profiles do Virtual Private Clouds (VPCs) in VMware Cloud Foundation (VCF) leverage? (Choose three.)",
+"options": [
+"Security Profile",
+"VGPU Profile",
+"Connectivity Profile",
+"Service Profile",
+"QoS Profile"
+],
+"answer": 0,
+"explanation": "VPCs in VCF leverage Security Profiles, Connectivity Profiles, and QoS Profiles (Answers A, C, and E)."
+},
+{
+"question": "An administrator needs to implement a GitOps workflow to manage VCF Automation blueprints and infrastructure deployment. Which statement describes VCF Automation support for this?",
+"options": [
+"Supports export of YAML descriptions of deployed infrastructure and committing the results back to a Git repository for drift detection and rollback.",
+"Provides native management of ArgoCD instances, GitOps pipelines, and triggering of GitOps deployments directly from the VCFA UI.",
+"Supports continuous monitoring of Git repositories and automatic application of changes to running deployments.",
+"Provides version synchronization from a Git repository, enabling declarative infrastructure management and version control."
+],
+"answer": 3,
+"explanation": "VCF Automation supports Git version synchronization for declarative infrastructure management and version control."
+},
+{
+"question": "Which two prerequisites must be met before creating an AllApps Organization in VCF Automation to deploy Kubernetes workloads in a workload domain? (Choose two.)",
+"options": [
+"The VMware Kubernetes Service (VKS) must be activated within the VCF Management domain.",
+"A Region must be configured within the VCF Automation Provider Management Portal.",
+"The VCF workload domain must be configured for VMware NSX Federation.",
+"Supervisor must be activated within the VCF workload domain."
+],
+"answer": 1,
+"explanation": "A Region must be configured in Provider Management Portal and Supervisor must be activated in the workload domain (Answers B and E)."
+},
+{
+"question": "A product team requires self-service deployments presenting only approved application configurations without manual configuration in blueprints. Which approach meets this requirement?",
+"options": [
+"Integrate VCFA with a Git repository containing blueprint YAML files and train the team to update infrastructure parameters properly before committing changes.",
+"Publish pre-approved blueprints with all required inputs preconfigured to a catalog so team members can deploy them directly.",
+"Publish pre-approved blueprints to a catalog and allow the team to choose infrastructure options such as compute cluster and storage policy during deployment.",
+"Publish all available blueprints to a catalog so team members can choose what is required and adjust configurations as needed at request time."
+],
+"answer": 1,
+"explanation": "Publishing pre-approved blueprints with preconfigured inputs to a catalog eliminates manual parameter entry at request time."
+},
+{
+"question": "An administrator needs to create an action in VCF Operations Orchestrator named 'standardLogging' in 'lab.vcf.logging' accepting input 'sourceName' (string) and returning JSON format. Which steps are required?",
+"options": [
+"1. Set Module field on new Action to lab.vcf.logging, 2. Create new Action named standardLogging, 3. Set Return type field to string/Any, 4. Create new folder named lab.vcf.logging, 5. Add new Input named sourceName of type string.",
+"1. Set Runtime Environment to lab.vcf.logging, 2. Add Output named logOutput, 3. Create folder, 4. Add Input sourceName, 5. Set return type to string.",
+"1. Create folder lab.vcf.logging, 2. Create action standardLogging, 3. Set module, 4. Add string input sourceName, 5. Set return type to string.",
+"1. Add input sourceName, 2. Set module lab.vcf.logging, 3. Set return type to string, 4. Create action standardLogging, 5. Add output logOutput."
+],
+"answer": 0,
+"explanation": "Required configuration steps include setting module field, setting return type to Any/string, creating folder, setting standardLogging action name, and creating string input parameter."
+},
+{
+"question": "A customer requires a backup of blueprints within VCF Automation to a third-party solution each time a blueprint is released. What construct satisfies this?",
+"options": [
+"ArgoCD service",
+"Event broker subscription",
+"CloudConfig",
+"Velero service"
+],
+"answer": 1,
+"explanation": "An Event Broker Subscription triggers external backup operations upon blueprint release events."
+},
+{
+"question": "An organization requires monitoring IP space utilization, detecting network anomalies, and enforcing consistent network policies across VCF private cloud. Which three capabilities are required? (Choose three.)",
+"options": [
+"NSX Traceflows",
+"vDefend",
+"Integrated Security with VCF Operations",
+"VCF Operations lifecycle management",
+"NSX Subnetting"
+],
+"answer": 1,
+"explanation": "Community consensus selects vDefend, Integrated Security with VCF Operations, and VCF Operations lifecycle management (Answers B, C, and D)."
+},
+{
+"question": "An administrator wants an Event Subscription to create a DNS record only when a hostname input is provided. What condition should be configured?",
+"options": [
+"Add the event.data.customProperties['hostname'] != null condition to the Create DNS Record and Delete DNS Record subscriptions.",
+"Enable the Block execution of events in topic option in the Create DNS Record and Delete DNS Record subscriptions.",
+"Add the Delete DNS Record workflow as the Recovery Workflow of the Create DNS Record subscription.",
+"Add the event.data.customProperties['domainName'] != null condition to the Create DNS Record and Delete DNS Record subscriptions."
+],
+"answer": 0,
+"explanation": "Filtering for event.data.customProperties['hostname'] != null ensures execution only when hostname payload exists."
+},
+{
+"question": "When deploying an AllApps Organization within VCF Automation, which three NSX constructs will automatically be configured during regional networking creation? (Choose three.)",
+"options": [
+"A Virtual Private Cloud (VPC) connectivity profile.",
+"An NSX Transit Gateway.",
+"A Provider Tier-0 Gateway.",
+"A Default Virtual Private Cloud (VPC)."
+],
+"answer": 0,
+"explanation": "Regional networking automatically creates VPC connectivity profiles, NSX Transit Gateways, and Default VPCs (Answers A, B, and D)."
+},
+{
+"question": "An Org Admin notices public assigned IPs are being consumed by non-production workloads. What should be done to prevent public IP consumption?",
+"options": [
+"Create an IP Quota and associate it with the non-production namespace.",
+"Modify the default IP Quota that was shared by the provider.",
+"Create an IP Quota and associate it with the non-production VPC.",
+"Modify the existing VPC and remove the 'External IPv4 blocks'."
+],
+"answer": 2,
+"explanation": "Creating and associating an IP Quota with the non-production VPC limits public IP address consumption."
+},
+{
+"question": "The Terraform provider for VMware Cloud Foundation (VCF) Automation enables management of which two VCF Automation elements? (Choose two.)",
+"options": [
+"Provisioning of resources with Terraform",
+"VMApps Organizations",
+"AllApps Organizations",
+"VCF Operations Orchestrator",
+"VCF Automation Pipelines"
+],
+"answer": 0,
+"explanation": "The VCF Automation Terraform provider enables provisioning resources with Terraform and managing AllApps Organizations (Answers A and C)."
+},
+{
+"question": "Why do network options differ when creating a project in Development (AllApps Org) versus Finance (VMApps Org)? (Choose two.)",
+"options": [
+"VMApps Organizations provide access to Supervisor networks while AllApps Organizations restrict networking to isolated VPC networks.",
+"AllApps Organizations support only ephemeral Kubernetes ingress networks, so persistent routed networks are not available.",
+"Both Organization types use the same network options, but AllApps Organizations require enabling DHCP before routed networks are visible.",
+"AllApps Organization networking includes VPC-based networks.",
+"VMApps Organizations rely on traditional vSphere-backed or NSX-backed networks for virtual machine connectivity."
+],
+"answer": 3,
+"explanation": "AllApps networking uses VPC-based networks whereas VMApps relies on traditional vSphere or NSX-backed networks (Answers D and E)."
+},
+{
+"question": "An administrator is tasked with creating a Day 2 Operation that invokes vMotion migration on a virtual machine. Which two steps are required? (Choose two.)",
+"options": [
+"Create a blueprint named Migrate virtual machine with vMotion.",
+"Drag and drop the User Interaction schema element.",
+"Create an Orchestrator action.",
+"Call the pre-defined Orchestrator workflow named Migrate virtual machine with vMotion.",
+"Create a resource action.",
+"Create an ABX action named Migrate virtual machine with vMotion."
+],
+"answer": 3,
+"explanation": "Calling the pre-defined Orchestrator vMotion workflow and creating a Resource Action enables Day 2 vMotion operations (Answers D and E)."
+},
+{
+"question": "An administrator needs to configure an existing Organization backed by a Region with a single-zone GPU supervisor to allow users to create namespaces with GPU resources. What needs to be configured?",
+"options": [
+"NVIDIA GPU Operator.",
+"NVIDIA grid_a100-40c profile.",
+"Namespace Class with VM Class Reservations.",
+"GPU enabled VM Classes."
+],
+"answer": 2,
+"explanation": "A Namespace Class with VM Class Reservations allocates GPU-enabled VM classes to project namespaces."
+},
+{
+"question": "An administrator must configure tenant branding such that organization branding ONLY appears when logged into the organization portal. What three steps are involved?",
+"options": [
+"1. Log into Organization Portal, 2. Navigate to Branding, 3. Disable Enable Login and Logout Page Branding setting.",
+"1. Log into Provider Management Portal, 2. Navigate to Branding, 3. Enable Login Page Branding.",
+"1. Import branding theme, 2. Log into Provider Portal, 3. Enable Login Page Branding.",
+"1. Log into Organization Portal, 2. Import branding theme, 3. Enable Login Page Branding."
+],
+"answer": 0,
+"explanation": "Logging into Organization Portal, navigating to Branding, and disabling Login/Logout Page Branding ensures branding shows strictly post-login."
+},
+{
+"question": "Match the VCF Operations Orchestrator components (Workflow, Action, Scriptable task, Workflow Token, Resource Elements, Environments, Configuration Elements) to their descriptions.",
+"options": [
+"Workflow: Series of decisions/steps; Action: Function building block; Scriptable task: Canvas using JS/Python; Workflow Token: Details of specific run; Resource Elements: External objects; Environments: Modules/libraries; Configuration Elements: Constants across server.",
+"Workflow: Canvas using Python; Action: External objects; Scriptable task: Series of steps; Workflow Token: Modules/libraries.",
+"Workflow: Constants across server; Action: Series of steps; Scriptable task: Function building block.",
+"Workflow: Details of specific run; Action: Canvas using JS; Scriptable task: External objects."
+],
+"answer": 0,
+"explanation": "Workflow = series of automated steps; Action = building block function; Scriptable task = canvas for code; Workflow Token = details of run; Resource Elements = external objects; Environments = dependencies/libraries; Configuration Elements = global constants."
+},
+{
+"question": "Into which field must an organization administrator enter IP addresses available for inter-VPC communication?",
+"options": [
+"Private-Transit Gateway IP Blocks.",
+"External IP Blocks.",
+"Default Outbound NAT.",
+"N-S Ingress QoS Profile."
+],
+"answer": 0,
+"explanation": "Inter-VPC communications use IP blocks defined under Private-Transit Gateway IP Blocks."
+},
+{
+"question": "What are two prerequisites to enable provisioning VMs via kubectl against tenant resources? (Choose two.)",
+"options": [
+"Ask the Provider to generate a token via the system APIs.",
+"Create a new extensibility Action.",
+"Generate an API token from the VCF Automation UI.",
+"Create a context via kubectl.",
+"Create a context via VCF CLI."
+],
+"answer": 2,
+"explanation": "Generating an API token in VCFA UI and configuring a context via kubectl enables VM provisioning via kubectl (Answers C and D)."
+},
+{
+"question": "An administrator must create a new organization for VM Apps within an existing VCF Fleet with minimal operational overhead (an All Apps org already exists). Which three actions are required?",
+"options": [
+"1. Enable the Classic Tenant Creation feature flag, 2. Create a new VCF workload domain (shared NSX), 3. Create a new VCF workload domain (non-shared NSX).",
+"1. Deploy VCF Automation, 2. Deploy new hardware, 3. Deploy new VCF Instance.",
+"1. Enable Classic Tenant Creation feature flag, 2. Deploy VCF Automation, 3. Deploy new hardware.",
+"1. Create new VCF workload domain (shared NSX), 2. Deploy VCF Automation, 3. Deploy new VCF Instance."
+],
+"answer": 0,
+"explanation": "Minimal overhead requires enabling Classic Tenant Creation feature flag and attaching workload domains (shared or non-shared NSX)."
+},
+{
+"question": "Which two characteristics describe a hard tenancy deployment in VMware Cloud Foundation (VCF)? (Choose two.)",
+"options": [
+"VCF Operations allocates compute from a common pool across organizations.",
+"Each tenant is assigned a dedicated workload domain or cluster.",
+"Logical isolation is provided through NSX projects and policy-based controls.",
+"Physical separation of infrastructure supports regulatory compliance.",
+"Shared management plane and infrastructure improves utilization efficiency."
+],
+"answer": 1,
+"explanation": "Hard tenancy provides physical separation of infrastructure and dedicated workload domains or clusters per tenant (Answers B and D)."
+},
+{
+"question": "An administrator must ensure all newly deployed VMs in Finance (AllApps Org) are automatically configured for disaster recovery protection using VMware Live Recovery (VLR). Which statement meets this?",
+"options": [
+"Create a Day 2 policy that adds the VMs to a VLR Protection Group. Attach the policy to all catalog items available in the Finance Organization.",
+"Create a Day 2 action, scoped to the Finance Organization, that assigns the appropriate VLR Protection Group to all deployments.",
+"Configure an Event Subscription that triggers an Orchestrator workflow to protect the VMs in VLR.",
+"Create a catalog item that calls an ABX workflow to add the VMs to VLR."
+],
+"answer": 0,
+"explanation": "Creating a Day 2 policy attaching VMs to a VLR Protection Group across catalog items fulfills automated DR onboarding."
+},
+{
+"question": "An administrator must configure a provider content library named 'West' as a local content library. Select the four required steps in order.",
+"options": [
+"1. Log into Provider Management Portal, 2. Click CREATE CONTENT LIBRARY, 3. Specify region called West, 4. Ensure Subscribe to an external library is disabled.",
+"1. Log into Org Portal, 2. Click CREATE CONTENT LIBRARY, 3. Enable Subscribe to external library, 4. Specify West.",
+"1. Specify West region, 2. Log into Org Portal, 3. Disable external subscription, 4. Click CREATE CONTENT LIBRARY.",
+"1. Log into Provider Portal, 2. Enable external subscription, 3. Specify West, 4. Click CREATE CONTENT LIBRARY."
+],
+"answer": 0,
+"explanation": "Steps: 1) Log into Provider Management Portal, 2) Click CREATE CONTENT LIBRARY, 3) Specify region West, 4) Ensure 'Subscribe to an external library' is disabled."
+},
+{
+"question": "In VCF Automation, which two statements identify the relationship between a storage policy and a region? (Choose two.)",
+"options": [
+"Regions can only use the default vSphere storage policy.",
+"Regions automatically create storage policies based on cluster configuration.",
+"Storage policies determine which datastores are available in a region.",
+"Storage policies must be replicated across all regions using the VCF Automation REST API.",
+"A storage policy can be associated with one or more regions."
+],
+"answer": 2,
+"explanation": "Storage policies determine available datastores in a region and can be associated with one or more regions (Answers C and E)."
+},
+{
+"question": "An administrator is configuring an Orchestrator workflow to take a snapshot before maintenance and automatically delete all snapshots after a 5-day cooling period using two scheduled workflows. What five steps are required?",
+"options": [
+"1. Add a Variable named currentDate (string), 2. Add 'Create a Snapshot' workflow element, 3. Map currentDate to name input, 4. Add 'Schedule workflow' element using 'Remove all snapshots', 5. Configure Scheduled workflow to run 5 days from currentDate.",
+"1. Add output parameter currentDate, 2. Add Waiting timer element for 5 days, 3. Add 'Remove all snapshots' workflow, 4. Map currentDate to output, 5. Add Schedule workflow.",
+"1. Add Waiting timer element, 2. Map currentDate to input, 3. Add 'Create snapshot', 4. Add 'Remove snapshots', 5. Run scheduled workflow.",
+"1. Add Variable currentDate, 2. Add Waiting timer element, 3. Add Create snapshot, 4. Add Output parameter, 5. Map name parameter."
+],
+"answer": 0,
+"explanation": "The workflow sequence requires storing currentDate, executing snapshot creation, mapping the snapshot name, and registering a scheduled workflow task for removal 5 days later."
+}
+]
