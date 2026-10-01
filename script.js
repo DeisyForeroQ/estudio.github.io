@@ -21,19 +21,23 @@ async function selectExam(jsonFile, examTitle) {
   if (titleElem) titleElem.textContent = examTitle;
   if (counterElem) counterElem.textContent = "Cargando preguntas...";
 
+  // Alternar pantallas
   document.getElementById('exam-selector-screen').style.display = 'none';
   document.getElementById('quiz-screen').style.display = 'block';
 
-  // Ocultar resultados previos si existen
+  // Ocultar resultados previos si existen y mostrar botón de enviar
   const resultsContainer = document.getElementById('results-summary');
   if (resultsContainer) resultsContainer.style.display = 'none';
+
+  const submitBtn = document.getElementById('btn-submit-exam');
+  if (submitBtn) submitBtn.style.display = 'block'; // RESTAURAR VISIBILIDAD DEL BOTÓN
 
   try {
     const response = await fetch(jsonFile);
     if (!response.ok) throw new Error(`No se pudo cargar el archivo: ${jsonFile}`);
     
     currentQuestions = await response.json();
-    userAnswers = {}; 
+    userAnswers = {}; // Reiniciar respuestas anteriores
 
     if (counterElem) {
       counterElem.textContent = `Total de preguntas: ${currentQuestions.length}`;
@@ -47,7 +51,7 @@ async function selectExam(jsonFile, examTitle) {
     if (wrapper) {
       wrapper.innerHTML = `
         <div style="text-align: center; color: #ff6b6b; padding: 20px;">
-          <p>⚠️️ No se pudo cargar el archivo <strong>${jsonFile}</strong>.</p>
+          <p>⚠️ No se pudo cargar el archivo <strong>${jsonFile}</strong>.</p>
           <p>Asegúrate de crear este archivo en la misma carpeta que el <code>index.html</code>.</p>
         </div>
       `;
@@ -103,21 +107,24 @@ function saveAnswer(questionIndex, optionIndex) {
 
 // 4. Evaluar el examen completo
 function evaluateExam() {
-  if (currentQuestions.length === 0) return;
+  if (!currentQuestions || currentQuestions.length === 0) {
+    alert("No hay preguntas cargadas para evaluar.");
+    return;
+  }
 
   let correctCount = 0;
   let incorrectCount = 0;
 
   currentQuestions.forEach((q, qIndex) => {
     const selectedAnswer = userAnswers[qIndex];
-    const correctAnswer = q.answer; // Índice de la respuesta correcta en tu JSON
+    const correctAnswer = q.answer; // Debe coincidir con la posición (0, 1, 2, 3...) en el JSON
     const feedbackElem = document.getElementById(`feedback-${qIndex}`);
 
-    // Deshabilitar todos los inputs para bloquear cambios
+    // Deshabilitar las opciones
     const inputs = document.querySelectorAll(`input[name="question_${qIndex}"]`);
     inputs.forEach(input => input.disabled = true);
 
-    // Resaltar la opción correcta siempre en verde
+    // Resaltar la respuesta correcta siempre en verde
     const correctLabel = document.getElementById(`label-${qIndex}-${correctAnswer}`);
     if (correctLabel) {
       correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
@@ -136,7 +143,7 @@ function evaluateExam() {
     } else {
       incorrectCount++;
       
-      // Si el usuario seleccionó una opción incorrecta, marcarla en rojo
+      // Si respondió mal, marcar la opción elegida en rojo
       if (selectedAnswer !== undefined) {
         const wrongLabel = document.getElementById(`label-${qIndex}-${selectedAnswer}`);
         if (wrongLabel) {
@@ -159,7 +166,7 @@ function evaluateExam() {
     }
   });
 
-  // Mostrar el resumen del puntaje
+  // Mostrar el panel de puntaje superior
   const resultsContainer = document.getElementById('results-summary');
   if (resultsContainer) {
     const scorePercentage = Math.round((correctCount / currentQuestions.length) * 100);
@@ -176,12 +183,12 @@ function evaluateExam() {
       </div>
     `;
     
-    // Desplazar la pantalla hacia arriba para ver los resultados
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Ocultar el botón de enviar evaluación
-  document.getElementById('btn-submit-exam').style.display = 'none';
+  // Ocultar el botón después de evaluar
+  const submitBtn = document.getElementById('btn-submit-exam');
+  if (submitBtn) submitBtn.style.display = 'none';
 }
 
 // 5. Volver al menú principal
