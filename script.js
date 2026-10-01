@@ -2,6 +2,16 @@
 let currentQuestions = [];
 let userAnswers = {};
 
+// Función auxiliar para desordenar un arreglo aleatoriamente (Algoritmo Fisher-Yates)
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
 // Inicializar eventos al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
   const btnArchitecture = document.getElementById('btn-architecture');
@@ -13,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// 1. Cargar examen desde el JSON
+// 1. Cargar examen desde el JSON seleccionando 60 preguntas aleatorias
 async function selectExam(jsonFile, examTitle) {
   const titleElem = document.getElementById('app-title');
   const counterElem = document.getElementById('question-counter');
@@ -36,7 +46,12 @@ async function selectExam(jsonFile, examTitle) {
     const response = await fetch(jsonFile);
     if (!response.ok) throw new Error(`No se pudo cargar el archivo: ${jsonFile}`);
     
-    currentQuestions = await response.json();
+    const allQuestions = await response.json();
+
+    // Mezclar el banco de preguntas y seleccionar únicamente 60
+    const shuffledQuestions = shuffleArray(allQuestions);
+    currentQuestions = shuffledQuestions.slice(0, 60);
+
     userAnswers = {}; // Reiniciar respuestas anteriores
 
     if (counterElem) {
