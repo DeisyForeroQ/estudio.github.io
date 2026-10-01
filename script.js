@@ -48,8 +48,10 @@ async function selectExam(jsonFile, examTitle) {
     
     const allQuestions = await response.json();
 
-    // Mezclar el banco de preguntas y seleccionar únicamente 60
+    // 1. Mezclar todo el banco de preguntas de forma aleatoria
     const shuffledQuestions = shuffleArray(allQuestions);
+    
+    // 2. Cortar estrictamente a un máximo de 60 preguntas
     currentQuestions = shuffledQuestions.slice(0, 60);
 
     userAnswers = {}; // Reiniciar respuestas anteriores
