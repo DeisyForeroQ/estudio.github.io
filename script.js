@@ -1,49 +1,104 @@
-let allQuestions = [];
-let selectedQuestions = [];
+// Variables globales
+let currentQuestions = [];
+let userAnswers = {};
 
-// 1. Función para seleccionar el examen desde la pantalla principal
-async function selectExam(jsonFile, examName) {
-  document.getElementById('app-title').textContent = examName;
+// 1. Función principal invocada al hacer clic en cualquier tarjeta
+async function selectExam(jsonFile, examTitle) {
+  // Cambiar el título del encabezado
+  const titleElem = document.getElementById('app-title');
+  const counterElem = document.getElementById('question-counter');
+  
+  if (titleElem) titleElem.textContent = examTitle;
+  if (counterElem) counterElem.textContent = "Cargando preguntas...";
+
+  // Alternar pantallas
   document.getElementById('exam-selector-screen').style.display = 'none';
   document.getElementById('quiz-screen').style.display = 'block';
 
-  await loadExamQuestions(jsonFile);
-}
-
-// 2. Carga dinámica del archivo JSON seleccionado
-async function loadExamQuestions(jsonFile) {
+  // Cargar preguntas desde el JSON
   try {
     const response = await fetch(jsonFile);
-    if (!response.ok) {
-      throw new Error(`Error HTTP! Estado: ${response.status}`);
+    if (!response.ok) throw new Error(`No se pudo cargar el archivo: ${jsonFile}`);
+    
+    currentQuestions = await response.json();
+    userAnswers = {}; // Reiniciar respuestas anteriores
+
+    if (counterElem) {
+      counterElem.textContent = `Total de preguntas: ${currentQuestions.length}`;
     }
-    
-    allQuestions = await response.json();
-    
-    const limit = Math.min(100, allQuestions.length);
-    selectedQuestions = shuffleArray(allQuestions).slice(0, limit);
-    
-    startExam(selectedQuestions);
+
+    // Renderizar la pantalla de preguntas
+    renderQuestions(currentQuestions);
+
   } catch (error) {
-    console.error(`Error al cargar ${jsonFile}:`, error);
-    const counter = document.getElementById('question-counter');
-    if (counter) {
-      counter.textContent = "Error al cargar las preguntas. Verifica el archivo JSON.";
+    console.error(error);
+    const wrapper = document.getElementById('questions-wrapper');
+    if (wrapper) {
+      wrapper.innerHTML = `
+        <div style="text-align: center; color: #ff6b6b; padding: 20px;">
+          <p>⚠️ No se pudo cargar el archivo <strong>${jsonFile}</strong>.</p>
+          <p>Asegúrate de crear este archivo en la misma carpeta que el <code>index.html</code>.</p>
+        </div>
+      `;
     }
   }
 }
 
-// 3. Volver al menú de selección de exámenes
+// 2. Función para renderizar las preguntas en el DOM
+function renderQuestions(questions) {
+  const container = document.getElementById('questions-wrapper');
+  container.innerHTML = ''; // Limpiar contenido previo
+
+  questions.forEach((q, qIndex) => {
+    const questionCard = document.createElement('div');
+    questionCard.className = 'question-card';
+    questionCard.style.cssText = `
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    `;
+
+    // Texto de la pregunta
+    let optionsHTML = '';
+    q.options.forEach((opt, oIndex) => {
+      optionsHTML += `
+        <label style="display: block; margin: 10px 0; cursor: pointer; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+          <input type="radio" name="question_${qIndex}" value="${oIndex}" onchange="saveAnswer(${qIndex}, ${oIndex})">
+          <span style="margin-left: 8px;">${opt}</span>
+        </label>
+      `;
+    });
+
+    questionCard.innerHTML = `
+      <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #00d2ff;">
+        Pregunta ${qIndex + 1}: ${q.question}
+      </h3>
+      <div class="options-container">
+        ${optionsHTML}
+      </div>
+    `;
+
+    container.appendChild(questionCard);
+  });
+}
+
+// 3. Guardar la opción seleccionada por el usuario
+function saveAnswer(questionIndex, optionIndex) {
+  userAnswers[questionIndex] = optionIndex;
+}
+
+// 4. Volver al menú principal
 function goBackToMenu() {
   document.getElementById('exam-selector-screen').style.display = 'block';
   document.getElementById('quiz-screen').style.display = 'none';
-  document.getElementById('questions-wrapper').innerHTML = '';
-  document.getElementById('score-box').style.display = 'none';
-  document.getElementById('question-counter').textContent = '';
-  document.getElementById('app-title').textContent = 'Simulador de Exámenes VMware';
-}
+  
+  const titleElem = document.getElementById('app-title');
+  const counterElem = document.getElementById('question-counter');
 
-// Quitar o actualizar el evento DOMContentLoaded original para que no cargue automáticamente preguntas
-document.addEventListener('DOMContentLoaded', () => {
-  // Inicialización limpia
-});
+  if (titleElem) titleElem.textContent = "Simulador de Certificaciones";
+  if (counterElem) counterElem.textContent = "Selecciona tu ruta de certificación oficial para comenzar";
+  
+  document.getElementById('questions-wrapper').innerHTML = '';
+}
