@@ -20,8 +20,8 @@
         <span class="logo-text">BROADCOM PARTNER</span>
         <span class="badge-vcf">PROVEN PROFESSIONAL</span>
       </div>
-      <h1>Simulador de Certificaciones</h1>
-      <p class="subtitle">Selecciona tu ruta de certificación oficial para comenzar</p>
+      <h1 id="app-title">Simulador de Certificaciones</h1>
+      <p class="subtitle" id="question-counter">Selecciona tu ruta de certificación oficial para comenzar</p>
     </header>
 
     <!-- PANTALLA PRINCIPAL: SELECTOR DE EXÁMENES -->
@@ -36,7 +36,7 @@
         <div class="grid-cards">
 
           <!-- Implementation -->
-          <a class="exam-card card-platform" href="questions.html?exam=vcf-implementation.json&title=VMware%20Cloud%20Foundation%20-%20Implementation">
+          <a class="exam-card card-platform" href="#" onclick="selectExam('vcf-implementation.json', 'VMware Cloud Foundation - Implementation'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VMware Cloud Foundation - Implementation</span>
             <div class="card-footer">
@@ -46,7 +46,7 @@
           </a>
 
           <!-- Architecture -->
-          <a class="exam-card card-platform" href="questions.html?exam=vcf-architecture.json&title=VMware%20Cloud%20Foundation%20-%20Architecture">
+          <a id="btn-architecture" class="exam-card card-platform" href="#" onclick="selectExam('architecture-questions.json', 'VMware Cloud Foundation - Architecture'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VMware Cloud Foundation - Architecture</span>
             <div class="card-footer">
@@ -67,7 +67,7 @@
         <div class="grid-cards">
 
           <!-- Storage -->
-          <a class="exam-card card-gold" href="questions.html?exam=vcap-storage.json&title=Storage%20Specialization">
+          <a class="exam-card card-gold" href="#" onclick="selectExam('vcap-storage.json', 'Storage Specialization'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Storage</span>
             <div class="card-footer">
@@ -77,7 +77,7 @@
           </a>
 
           <!-- Networking -->
-          <a class="exam-card card-gold" href="questions.html?exam=vcap-networking.json&title=Networking%20Specialization">
+          <a class="exam-card card-gold" href="#" onclick="selectExam('vcap-networking.json', 'Networking Specialization'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Networking</span>
             <div class="card-footer">
@@ -87,7 +87,7 @@
           </a>
 
           <!-- Operations -->
-          <a class="exam-card card-gold" href="questions.html?exam=vcap-operations.json&title=Operations%20Specialization">
+          <a class="exam-card card-gold" href="#" onclick="selectExam('vcap-operations.json', 'Operations Specialization'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Operations</span>
             <div class="card-footer">
@@ -97,7 +97,7 @@
           </a>
 
           <!-- Automation -->
-          <a class="exam-card card-gold" href="questions.html?exam=vcap-automation.json&title=Automation%20Specialization">
+          <a class="exam-card card-gold" href="#" onclick="selectExam('vcap-automation.json', 'Automation Specialization'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Automation</span>
             <div class="card-footer">
@@ -107,7 +107,7 @@
           </a>
 
           <!-- VKS -->
-          <a class="exam-card card-gold new-tag" href="questions.html?exam=vcap-vks.json&title=VKS%20Specialization">
+          <a class="exam-card card-gold new-tag" href="#" onclick="selectExam('vcap-vks.json', 'VKS Specialization'); return false;">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VKS</span>
             <div class="card-footer">
@@ -120,7 +120,16 @@
       </section>
 
     </main>
+
+    <!-- PANTALLA SECUNDARIA: CUESTIONARIO/SIMULADOR (Soportado por script.js) -->
+    <main id="quiz-screen" style="display: none;">
+      <button onclick="goBackToMenu()" style="margin-bottom: 20px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 6px; cursor: pointer;">
+        ← Volver al menú
+      </button>
+      <div id="questions-wrapper"></div>
+    </main>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
