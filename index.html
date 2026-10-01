@@ -1,25 +1,127 @@
-<div class="container">
-  <header>
-    <h1 id="app-title">Simulador de Exámenes VMware</h1>
-    <p id="question-counter"></p>
-  </header>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VMware Certification Simulator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Fuentes e Íconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <!-- PANTALLA PRINCIPAL: Selección de examen -->
-  <div id="exam-selector-screen">
-    <h2>Selecciona un examen para comenzar:</h2>
-    <div class="exam-buttons" style="display: flex; gap: 15px; margin-top: 20px;">
-      <button onclick="selectExam('vcf-exam.json', 'VMware Cloud Foundation')">Examen VCF</button>
-      <button onclick="selectExam('vsphere-exam.json', 'VMware vSphere')">Examen vSphere</button>
+  <!-- Capa de fondo temático VMware -->
+  <div class="vmware-bg"></div>
+
+  <div class="app-container">
+    <header class="main-header">
+      <div class="brand">
+        <span class="logo-text">VMware</span>
+        <span class="badge-vcf">VCF 9.0</span>
+      </div>
+      <h1 id="app-title">Simulador de Certificaciones</h1>
+      <p id="question-counter" class="subtitle">Selecciona un track de examen para evaluar tus conocimientos</p>
+    </header>
+
+    <!-- PANTALLA PRINCIPAL: SELECTOR DE EXÁMENES -->
+    <main id="exam-selector-screen">
+
+      <!-- SECCIÓN 1: VCAP ADVANCED SPECIALIST (De la imagen) -->
+      <section class="exam-group">
+        <h2>VCAP Advanced Specialist (VCF 9.0)</h2>
+        <div class="grid-cards">
+          
+          <button class="exam-card gold" onclick="selectExam('vcap-automation.json', 'VCAP - Automation (3V0-21.25)')">
+            <span class="card-title">VCAP - Automation</span>
+            <span class="card-code">VCF 9.0 Automation (3V0-21.25)</span>
+          </button>
+
+          <button class="exam-card gold" onclick="selectExam('vcap-operations.json', 'VCAP - Operations (3V0-22.25)')">
+            <span class="card-title">VCAP - Operations</span>
+            <span class="card-code">VCF 9.0 Operations (3V0-22.25)</span>
+          </button>
+
+          <button class="exam-card gold" onclick="selectExam('vcap-storage.json', 'VCAP - Storage (3V0-23.25)')">
+            <span class="card-title">VCAP - Storage</span>
+            <span class="card-code">VCF 9.0 Storage (3V0-23.25)</span>
+          </button>
+
+          <button class="exam-card gold" onclick="selectExam('vcap-networking.json', 'VCAP - Networking (3V0-25.25)')">
+            <span class="card-title">VCAP - Networking</span>
+            <span class="card-code">VCF 9.0 Networking (3V0-25.25)</span>
+          </button>
+
+          <button class="exam-card gold new-badge" onclick="selectExam('vcap-vks.json', 'VCAP - VKS (3V0-24.25)')">
+            <span class="card-title">VCAP - VKS</span>
+            <span class="card-code">VCF 9.0 VKS (3V0-24.25)</span>
+          </button>
+
+          <button class="exam-card gold new-badge disabled" disabled>
+            <span class="card-title">VCAP – Cyber Compliance</span>
+            <span class="card-code">TBD</span>
+          </button>
+
+          <button class="exam-card gold new-badge disabled" disabled>
+            <span class="card-title">VCAP - Private AI</span>
+            <span class="card-code">TBD</span>
+          </button>
+
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: ARQUITECTURA E IMPLEMENTACIÓN -->
+      <section class="exam-group">
+        <h2>Diseño & Implementación (Architecture / Deployment)</h2>
+        <div class="grid-cards">
+
+          <button class="exam-card blue" onclick="selectExam('vcap-dcv-deploy.json', 'VCAP-DCV Deploy')">
+            <span class="card-tag">Implementation</span>
+            <span class="card-title">VCAP - Data Center Deploy</span>
+            <span class="card-code">vSphere Advanced Deploy</span>
+          </button>
+
+          <button class="exam-card blue" onclick="selectExam('vcap-dcv-design.json', 'VCAP-DCV Design')">
+            <span class="card-tag">Architecture</span>
+            <span class="card-title">VCAP - Data Center Design</span>
+            <span class="card-code">vSphere Advanced Design</span>
+          </button>
+
+          <button class="exam-card blue" onclick="selectExam('vcap-nv-deploy.json', 'VCAP-NV Deploy')">
+            <span class="card-tag">Implementation</span>
+            <span class="card-title">VCAP - Network Virtualization Deploy</span>
+            <span class="card-code">NSX Advanced Deploy</span>
+          </button>
+
+          <button class="exam-card blue" onclick="selectExam('vcap-nv-design.json', 'VCAP-NV Design')">
+            <span class="card-tag">Architecture</span>
+            <span class="card-title">VCAP - Network Virtualization Design</span>
+            <span class="card-code">NSX Advanced Design</span>
+          </button>
+
+          <button class="exam-card purple" onclick="selectExam('vdxx-architect.json', 'VCDX - Architect')">
+            <span class="card-tag">Design Master</span>
+            <span class="card-title">VCDX - Enterprise Architect</span>
+            <span class="card-code">Defense & Design Review</span>
+          </button>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- PANTALLA DE PREGUNTAS (OCULTA INICIALMENTE) -->
+    <div id="quiz-screen" style="display: none;">
+      <div id="score-box" class="score-box"></div>
+      <main id="questions-wrapper"></main>
+      <div class="actions">
+        <button id="submit-btn" class="btn-primary" onclick="evaluateExam()">Finalizar y Calificar</button>
+        <button class="btn-secondary" onclick="goBackToMenu()">← Volver al Menú</button>
+      </div>
     </div>
+
   </div>
 
-  <!-- PANTALLA DE PREGUNTAS (Oculta al inicio) -->
-  <div id="quiz-screen" style="display: none;">
-    <div id="score-box" class="score-box"></div>
-    <main id="questions-wrapper"></main>
-    <div class="actions">
-      <button id="submit-btn" onclick="evaluateExam()">Finalizar y Calificar</button>
-      <button onclick="goBackToMenu()" style="background-color: #6c757d; margin-top: 10px;">Volver al Menú</button>
-    </div>
-  </div>
-</div>
+</body>
+</html>
