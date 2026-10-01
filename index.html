@@ -20,8 +20,8 @@
         <span class="logo-text">BROADCOM PARTNER</span>
         <span class="badge-vcf">PROVEN PROFESSIONAL</span>
       </div>
-      <h1 id="app-title">Simulador de Certificaciones</h1>
-      <p id="question-counter" class="subtitle">Selecciona tu ruta de certificación oficial para comenzar</p>
+      <h1>Simulador de Certificaciones</h1>
+      <p class="subtitle">Selecciona tu ruta de certificación oficial para comenzar</p>
     </header>
 
     <!-- PANTALLA PRINCIPAL: SELECTOR DE EXÁMENES -->
@@ -36,24 +36,24 @@
         <div class="grid-cards">
 
           <!-- Implementation -->
-          <button class="exam-card card-platform" onclick="selectExam('vcf-implementation.json', 'VCF - Implementation')">
+          <a class="exam-card card-platform" href="questions.html?exam=vcf-implementation.json&title=VMware%20Cloud%20Foundation%20-%20Implementation">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VMware Cloud Foundation - Implementation</span>
             <div class="card-footer">
               <span class="status-pill">Examen Activo</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
           <!-- Architecture -->
-          <button class="exam-card card-platform" onclick="selectExam('vcf-architecture.json', 'VMware Cloud Foundation - Architecture')">
-  <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
-  <span class="card-title">VMware Cloud Foundation - Architecture</span>
-  <div class="card-footer">
-    <span class="status-pill">Examen Activo</span>
-    <span class="arrow-icon">→</span>
-  </div>
-</button>
+          <a class="exam-card card-platform" href="questions.html?exam=vcf-architecture.json&title=VMware%20Cloud%20Foundation%20-%20Architecture">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
+            <span class="card-title">VMware Cloud Foundation - Architecture</span>
+            <div class="card-footer">
+              <span class="status-pill">Examen Activo</span>
+              <span class="arrow-icon">→</span>
+            </div>
+          </a>
 
         </div>
       </section>
@@ -67,70 +67,59 @@
         <div class="grid-cards">
 
           <!-- Storage -->
-          <button class="exam-card card-gold" onclick="selectExam('vcap-storage.json', 'Storage Specialization')">
+          <a class="exam-card card-gold" href="questions.html?exam=vcap-storage.json&title=Storage%20Specialization">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Storage</span>
             <div class="card-footer">
               <span class="status-pill gold-pill">VCF 9.0 (3V0-23.25)</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
           <!-- Networking -->
-          <button class="exam-card card-gold" onclick="selectExam('vcap-networking.json', 'Networking Specialization')">
+          <a class="exam-card card-gold" href="questions.html?exam=vcap-networking.json&title=Networking%20Specialization">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Networking</span>
             <div class="card-footer">
               <span class="status-pill gold-pill">VCF 9.0 (3V0-25.25)</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
           <!-- Operations -->
-          <button class="exam-card card-gold" onclick="selectExam('vcap-operations.json', 'Operations Specialization')">
+          <a class="exam-card card-gold" href="questions.html?exam=vcap-operations.json&title=Operations%20Specialization">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Operations</span>
             <div class="card-footer">
               <span class="status-pill gold-pill">VCF 9.0 (3V0-22.25)</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
           <!-- Automation -->
-          <button class="exam-card card-gold" onclick="selectExam('vcap-automation.json', 'Automation Specialization')">
+          <a class="exam-card card-gold" href="questions.html?exam=vcap-automation.json&title=Automation%20Specialization">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Automation</span>
             <div class="card-footer">
               <span class="status-pill gold-pill">VCF 9.0 (3V0-21.25)</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
           <!-- VKS -->
-          <button class="exam-card card-gold new-tag" onclick="selectExam('vcap-vks.json', 'VKS Specialization')">
+          <a class="exam-card card-gold new-tag" href="questions.html?exam=vcap-vks.json&title=VKS%20Specialization">
             <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VKS</span>
             <div class="card-footer">
               <span class="status-pill gold-pill">VCF 9.0 (3V0-24.25)</span>
               <span class="arrow-icon">→</span>
             </div>
-          </button>
+          </a>
 
         </div>
       </section>
 
     </main>
-
-    <!-- PANTALLA DE PREGUNTAS (OCULTA INICIALMENTE) -->
-    <div id="quiz-screen" style="display: none;">
-      <div id="score-box" class="score-box"></div>
-      <main id="questions-wrapper"></main>
-      <div class="actions">
-        <button id="submit-btn" class="btn-primary" onclick="evaluateExam()">Finalizar y Calificar</button>
-        <button class="btn-secondary" onclick="goBackToMenu()">← Volver al Menú Principal</button>
-      </div>
-    </div>
-
   </div>
 
 </body>
