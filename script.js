@@ -2,7 +2,19 @@
 let currentQuestions = [];
 let userAnswers = {};
 
-// 1. Función principal invocada al hacer clic en cualquier tarjeta
+// Inicializar eventos al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+  // Enlazar el botón de Architecture con el archivo JSON correspondiente
+  const btnArchitecture = document.getElementById('btn-architecture');
+  if (btnArchitecture) {
+    btnArchitecture.addEventListener('click', (e) => {
+      e.preventDefault();
+      selectExam('architecture-questions.json', 'Architecture Certification Exam');
+    });
+  }
+});
+
+// 1. Función principal invocada al hacer clic en cualquier tarjeta/botón
 async function selectExam(jsonFile, examTitle) {
   // Cambiar el título del encabezado
   const titleElem = document.getElementById('app-title');
