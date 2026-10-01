@@ -121,14 +121,23 @@
 
     </main>
 
-    <!-- PANTALLA SECUNDARIA: CUESTIONARIO/SIMULADOR (Soportado por script.js) -->
-    <main id="quiz-screen" style="display: none;">
-      <button onclick="goBackToMenu()" style="margin-bottom: 20px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 6px; cursor: pointer;">
-        ← Volver al menú
-      </button>
-      <div id="questions-wrapper"></div>
-    </main>
-  </div>
+<!-- PANTALLA SECUNDARIA: CUESTIONARIO/SIMULADOR -->
+<main id="quiz-screen" style="display: none;">
+  <button onclick="goBackToMenu()" style="margin-bottom: 20px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 6px; cursor: pointer;">
+    ← Volver al menú
+  </button>
+
+  <!-- Contenedor donde se mostrará el resumen del puntaje -->
+  <div id="results-summary" style="display: none;"></div>
+
+  <!-- Contenedor de preguntas -->
+  <div id="questions-wrapper"></div>
+
+  <!-- Botón para finalizar y evaluar -->
+  <button id="btn-submit-exam" onclick="evaluateExam()" style="display: block; width: 100%; padding: 15px; background: #00d2ff; color: #0f172a; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 20px;">
+    Finalizar y Evaluar Examen
+  </button>
+</main>
 
   <script src="script.js"></script>
 </body>
