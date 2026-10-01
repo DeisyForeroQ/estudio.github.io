@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Capa de fondo temático VMware / Broadcom -->
+  <!-- Capa de fondo azul dinámico tipo VMware -->
   <div class="vmware-bg"></div>
 
   <div class="app-container">
@@ -21,59 +21,99 @@
         <span class="badge-vcf">PROVEN PROFESSIONAL</span>
       </div>
       <h1 id="app-title">Simulador de Certificaciones</h1>
-      <p id="question-counter" class="subtitle">Selecciona el examen de certificación oficial para comenzar</p>
+      <p id="question-counter" class="subtitle">Selecciona tu ruta de certificación oficial para comenzar</p>
     </header>
 
     <!-- PANTALLA PRINCIPAL: SELECTOR DE EXÁMENES -->
     <main id="exam-selector-screen">
 
-      <!-- SECCIÓN: BROADCOM PARTNER CERTIFICATIONS -->
+      <!-- SECCIÓN 1: PLATFORM TECHNICAL -->
       <section class="exam-group">
-        <h2>Broadcom Partner Certification - Proven Professional</h2>
+        <div class="group-header">
+          <span class="group-badge platform-badge">Core Platform</span>
+          <h2>Platform Technical</h2>
+        </div>
         <div class="grid-cards">
 
-          <!-- 1. Implementation -->
-          <button class="exam-card blue" onclick="selectExam('vcf-implementation.json', 'Proven Professional - VCF Implementation')">
-            <span class="card-tag">Implementation</span>
+          <!-- Implementation -->
+          <button class="exam-card card-platform" onclick="selectExam('vcf-implementation.json', 'VCF - Implementation')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VMware Cloud Foundation - Implementation</span>
-            <span class="card-code">Broadcom Partner Certification</span>
+            <div class="card-footer">
+              <span class="status-pill">Examen Activo</span>
+              <span class="arrow-icon">→</span>
+            </div>
           </button>
 
-          <!-- 2. Architecture -->
-          <button class="exam-card blue" onclick="selectExam('vcf-architecture.json', 'Proven Professional - VCF Architecture')">
-            <span class="card-tag">Architecture</span>
+          <!-- Architecture -->
+          <button class="exam-card card-platform" onclick="selectExam('vcf-architecture.json', 'VCF - Architecture')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VMware Cloud Foundation - Architecture</span>
-            <span class="card-code">Broadcom Partner Certification</span>
+            <div class="card-footer">
+              <span class="status-pill">Examen Activo</span>
+              <span class="arrow-icon">→</span>
+            </div>
           </button>
 
-          <!-- 3. Automation -->
-          <button class="exam-card gold" onclick="selectExam('vcap-automation.json', 'Proven Professional - Automation')">
-            <span class="card-title">Automation</span>
-            <span class="card-code">VCF 9.0 Automation (3V0-21.25)</span>
-          </button>
+        </div>
+      </section>
 
-          <!-- 4. Operations -->
-          <button class="exam-card gold" onclick="selectExam('vcap-operations.json', 'Proven Professional - Operations')">
-            <span class="card-title">Operations</span>
-            <span class="card-code">VCF 9.0 Operations (3V0-22.25)</span>
-          </button>
+      <!-- SECCIÓN 2: SPECIALIZATION TECHNICAL -->
+      <section class="exam-group">
+        <div class="group-header">
+          <span class="group-badge spec-badge">Specialist Tracks</span>
+          <h2>Specialization Technical</h2>
+        </div>
+        <div class="grid-cards">
 
-          <!-- 5. Storage -->
-          <button class="exam-card gold" onclick="selectExam('vcap-storage.json', 'Proven Professional - Storage')">
+          <!-- Storage -->
+          <button class="exam-card card-gold" onclick="selectExam('vcap-storage.json', 'Storage Specialization')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Storage</span>
-            <span class="card-code">VCF 9.0 Storage (3V0-23.25)</span>
+            <div class="card-footer">
+              <span class="status-pill gold-pill">VCF 9.0 (3V0-23.25)</span>
+              <span class="arrow-icon">→</span>
+            </div>
           </button>
 
-          <!-- 6. Networking -->
-          <button class="exam-card gold" onclick="selectExam('vcap-networking.json', 'Proven Professional - Networking')">
+          <!-- Networking -->
+          <button class="exam-card card-gold" onclick="selectExam('vcap-networking.json', 'Networking Specialization')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">Networking</span>
-            <span class="card-code">VCF 9.0 Networking (3V0-25.25)</span>
+            <div class="card-footer">
+              <span class="status-pill gold-pill">VCF 9.0 (3V0-25.25)</span>
+              <span class="arrow-icon">→</span>
+            </div>
           </button>
 
-          <!-- 7. VKS -->
-          <button class="exam-card gold new-badge" onclick="selectExam('vcap-vks.json', 'Proven Professional - VKS')">
+          <!-- Operations -->
+          <button class="exam-card card-gold" onclick="selectExam('vcap-operations.json', 'Operations Specialization')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
+            <span class="card-title">Operations</span>
+            <div class="card-footer">
+              <span class="status-pill gold-pill">VCF 9.0 (3V0-22.25)</span>
+              <span class="arrow-icon">→</span>
+            </div>
+          </button>
+
+          <!-- Automation -->
+          <button class="exam-card card-gold" onclick="selectExam('vcap-automation.json', 'Automation Specialization')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
+            <span class="card-title">Automation</span>
+            <div class="card-footer">
+              <span class="status-pill gold-pill">VCF 9.0 (3V0-21.25)</span>
+              <span class="arrow-icon">→</span>
+            </div>
+          </button>
+
+          <!-- VKS -->
+          <button class="exam-card card-gold new-tag" onclick="selectExam('vcap-vks.json', 'VKS Specialization')">
+            <span class="card-subtitle">Broadcom Partner Certification - Proven Professional</span>
             <span class="card-title">VKS</span>
-            <span class="card-code">VCF 9.0 VKS (3V0-24.25)</span>
+            <div class="card-footer">
+              <span class="status-pill gold-pill">VCF 9.0 (3V0-24.25)</span>
+              <span class="arrow-icon">→</span>
+            </div>
           </button>
 
         </div>
