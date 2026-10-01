@@ -44,12 +44,12 @@
 "explanation": "To replicate storage classes, network settings, and topology policies, you must export the Organization data from the Provider Portal and utilize it when creating the new Organization (Answers A and D)."
 },
 {
-"question": "An administrator must configure a new organization for VM Apps. Arrange the following steps in the correct order (from Position 1 to Position 5):\n\n[Step A] Create a Provider Content Library\n[Step B] Create a Cloud Account\n[Step C] Create a new All Apps Organization\n[Step D] Configure at least one Cloud Zone\n[Step E] Create a Project and assign at least one cloud zone\n\nWhich numerical order sequence is correct?",
+"question": "An administrator must configure a new organization for VM Apps. Select and arrange the following steps in the correct order (from Position 1 to Position 5):\n\n[Available Steps]\n[Step A] Create a Provider Content Library\n[Step B] Create a Cloud Account\n[Step C] Create a new All Apps Organization\n[Step D] Configure at least one Cloud Zone\n[Step E] Create a Project and assign at least one cloud zone\n\nWhich sequence represents the correct configuration order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C -> Position 4: Step D -> Position 5: Step E",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step D -> Position 4: Step C -> Position 5: Step E",
-"Position 1: Step C -> Position 2: Step A -> Position 3: Step B -> Position 4: Step D -> Position 5: Step E",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B -> Position 4: Step E -> Position 5: Step D"
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step D -> 5. Step E",
+"1. Step B -> 2. Step A -> 3. Step D -> 4. Step C -> 5. Step E",
+"1. Step C -> 2. Step A -> 3. Step B -> 4. Step D -> 5. Step E",
+"1. Step A -> 2. Step C -> 3. Step B -> 4. Step E -> 5. Step D"
 ],
 "answer": 0,
 "explanation": "Correct order sequence: Step A (Provider Content Library) -> Step B (Cloud Account) -> Step C (All Apps Organization) -> Step D (Cloud Zone) -> Step E (Project assignment)."
@@ -99,15 +99,15 @@
 "explanation": "Deploying across a single vSphere zone deprives the Supervisor cluster of zone-level fault isolation."
 },
 {
-"question": "An administrator needs to create and configure a new organization for VM Apps so users can log in using Active Directory. Place the following steps in the correct order (Positions 1 to 8):\n\n[Step A] Log into Provider Management portal\n[Step B] Enable Classic Tenant Creation feature flag\n[Step C] Create VM Apps Org\n[Step D] Assign Organizational level roles\n[Step E] Configure Access Control\n[Step F] Launch Org portal\n[Step G] Log out\n[Step H] Create Cloud Account\n\nWhich sequence represents the correct order?",
+"question": "An administrator needs to create and configure a new organization for VM Apps so users can log in using Active Directory. Select the 7 correct steps in order (Position 1 to Position 7) from the 10 available options:\n\n[Available Steps]\n[Step A] Log into the Provider Management portal.\n[Step B] Enable the Classic Tenant Creation feature flag.\n[Step C] Create the new Organization for VM Apps.\n[Step D] Assign Organizational level roles.\n[Step E] Launch the Organization portal.\n[Step F] Create a Cloud Account.\n[Step G] Log out of the Organization portal.\n[Step H] Configure Access Control for the Organization. (Distractor)\n[Step I] Create a Project. (Distractor)\n[Step J] Create the new Organization for All Apps. (Distractor)\n\nWhich sequence represents the exact correct configuration order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C -> Position 4: Step D -> Position 5: Step E -> Position 6: Step F -> Position 7: Step G -> Position 8: Step H",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step C -> Position 4: Step D -> Position 5: Step E -> Position 6: Step H -> Position 7: Step F -> Position 8: Step G",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B -> Position 4: Step E -> Position 5: Step D -> Position 6: Step F -> Position 7: Step G -> Position 8: Step H",
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C -> Position 4: Step F -> Position 5: Step H -> Position 6: Step D -> Position 7: Step E -> Position 8: Step G"
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step D -> 5. Step E -> 6. Step F -> 7. Step G",
+"1. Step A -> 2. Step J -> 3. Step H -> 4. Step I -> 5. Step E -> 6. Step F -> 7. Step G",
+"1. Step B -> 2. Step A -> 3. Step C -> 4. Step F -> 5. Step E -> 6. Step D -> 7. Step G",
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step E -> 5. Step F -> 6. Step D -> 7. Step G"
 ],
 "answer": 0,
-"explanation": "The correct execution sequence is Step A -> Step B -> Step C -> Step D -> Step E -> Step F -> Step G -> Step H."
+"explanation": "Based on the official exam solution:\n1. Log into the Provider Management portal. (Step A)\n2. Enable the Classic Tenant Creation feature flag. (Step B)\n3. Create the new Organization for VM Apps. (Step C)\n4. Assign Organizational level roles. (Step D)\n5. Launch the Organization portal. (Step E)\n6. Create a Cloud Account. (Step F)\n7. Log out of the Organization portal. (Step G)"
 },
 {
 "question": "An administrator must enable developers to utilize Terraform to configure Content Libraries, Cloud Zones, and flavor/image mappings in VCF Automation. What solution satisfies the requirements?",
@@ -166,12 +166,12 @@
 "explanation": "ArgoCD provides declarative GitOps automation, removing the need to manually execute kubectl apply."
 },
 {
-"question": "An administrator needs to share a Linux VM catalog item from the VCF Automation Provider Consumption Org to the AppDev project in the FinTech organization. Arrange the following steps in correct order (Positions 1 to 3):\n\n[Step A] Log into Provider Consumption Organization\n[Step B] Add the Linux VM catalog item to the AppDev project\n[Step C] Log into the FinTech Organization\n\nWhich sequence represents the correct order?",
+"question": "An administrator needs to share a Linux VM catalog item from the VCF Automation Provider Consumption Org to the AppDev project in the FinTech organization. Arrange the following steps in correct order (Positions 1 to 3):\n\n[Available Steps]\n[Step A] Log into Provider Consumption Organization\n[Step B] Add the Linux VM catalog item to the AppDev project\n[Step C] Log into the FinTech Organization\n\nWhich sequence represents the correct order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C",
-"Position 1: Step C -> Position 2: Step A -> Position 3: Step B",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step C"
+"1. Step A -> 2. Step B -> 3. Step C",
+"1. Step C -> 2. Step A -> 3. Step B",
+"1. Step A -> 2. Step C -> 3. Step B",
+"1. Step B -> 2. Step A -> 3. Step C"
 ],
 "answer": 0,
 "explanation": "Correct order: Position 1 = Step A (Log into Provider Org), Position 2 = Step B (Add catalog item to AppDev project), Position 3 = Step C (Log into FinTech Org)."
@@ -344,12 +344,12 @@
 "explanation": "Topology-aware Storage Classes attached to the Supervisor maintain storage availability across multi-zone cluster failures."
 },
 {
-"question": "An organization administrator is tasked with adding an SSL certificate to their organization in VCF Automation. Arrange the following steps in correct order (Positions 1 to 3):\n\n[Step A] Log into the Organization Portal\n[Step B] Import the certificate in PEM format\n[Step C] Import the private key\n\nWhich sequence represents the correct order?",
+"question": "An organization administrator is tasked with adding an SSL certificate to their organization in VCF Automation. Select and arrange the steps in the correct order (Positions 1 to 3):\n\n[Available Steps]\n[Step A] Log into the Organization Portal\n[Step B] Import the certificate in PEM format\n[Step C] Import the private key\n\nWhich sequence represents the correct order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step C",
-"Position 1: Step C -> Position 2: Step B -> Position 3: Step A",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B"
+"1. Step A -> 2. Step B -> 3. Step C",
+"1. Step B -> 2. Step A -> 3. Step C",
+"1. Step C -> 2. Step B -> 3. Step A",
+"1. Step A -> 2. Step C -> 3. Step B"
 ],
 "answer": 0,
 "explanation": "Correct order: Position 1 = Step A (Log into Org Portal), Position 2 = Step B (Import PEM certificate), Position 3 = Step C (Import private key)."
@@ -422,15 +422,15 @@
 "explanation": "Publishing catalog items with pre-configured parameters prevents manual input errors during request time."
 },
 {
-"question": "An administrator needs to create an action in VCF Operations Orchestrator named 'standardLogging' in module 'lab.vcf.logging' accepting input 'sourceName' (string) and returning JSON format. Place the steps in the correct order (Positions 1 to 5):\n\n[Step A] Set Module field on new Action to lab.vcf.logging\n[Step B] Create new Action named standardLogging\n[Step C] Set Return type field to string/Any\n[Step D] Create new folder named lab.vcf.logging\n[Step E] Add new Input named sourceName of type string\n\nWhich sequence represents the correct order?",
+"question": "An administrator needs to create an action in VCF Operations Orchestrator named 'standardLogging' in module 'lab.vcf.logging' accepting input 'sourceName' (string) and returning JSON format. Select and arrange the steps in the correct order (Positions 1 to 5):\n\n[Available Steps]\n[Step A] Create new folder named lab.vcf.logging\n[Step B] Create new Action named standardLogging\n[Step C] Set Module field on new Action to lab.vcf.logging\n[Step D] Add new Input named sourceName of type string\n[Step E] Set Return type field to string/Any\n\nWhich sequence represents the correct order?",
 "options": [
-"Position 1: Step D -> Position 2: Step B -> Position 3: Step A -> Position 4: Step E -> Position 5: Step C",
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C -> Position 4: Step D -> Position 5: Step E",
-"Position 1: Step B -> Position 2: Step D -> Position 3: Step A -> Position 4: Step C -> Position 5: Step E",
-"Position 1: Step D -> Position 2: Step A -> Position 3: Step B -> Position 4: Step C -> Position 5: Step E"
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step D -> 5. Step E",
+"1. Step C -> 2. Step B -> 3. Step E -> 4. Step A -> 5. Step D",
+"1. Step B -> 2. Step A -> 3. Step C -> 4. Step E -> 5. Step D",
+"1. Step A -> 2. Step C -> 3. Step B -> 4. Step E -> 5. Step D"
 ],
 "answer": 0,
-"explanation": "Correct order: Create module folder (Step D) -> Create action standardLogging (Step B) -> Set module to lab.vcf.logging (Step A) -> Add input sourceName (Step E) -> Set return type to string/Any (Step C)."
+"explanation": "Correct order: Create module folder (Step A) -> Create action standardLogging (Step B) -> Set module to lab.vcf.logging (Step C) -> Add input sourceName (Step D) -> Set return type to string/Any (Step E)."
 },
 {
 "question": "A customer requires a backup of blueprints within VCF Automation to a third-party solution each time a blueprint is released. What construct satisfies this?",
@@ -537,12 +537,12 @@
 "explanation": "Creating a Namespace Class with VM Class Reservations allocates GPU-capable VM classes to project namespaces."
 },
 {
-"question": "An administrator must configure tenant branding such that organization branding ONLY appears when logged into the organization portal. Arrange the following steps in correct order (Positions 1 to 3):\n\n[Step A] Log into Organization Portal\n[Step B] Navigate to Branding\n[Step C] Disable Enable Login and Logout Page Branding setting\n\nWhich sequence represents the correct order?",
+"question": "An administrator must configure tenant branding such that organization branding ONLY appears when logged into the organization portal. Select and arrange the steps in correct order (Positions 1 to 3):\n\n[Available Steps]\n[Step A] Log into Organization Portal\n[Step B] Navigate to Branding\n[Step C] Disable Enable Login and Logout Page Branding setting\n\nWhich sequence represents the correct order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step C",
-"Position 1: Step C -> Position 2: Step B -> Position 3: Step A",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B"
+"1. Step A -> 2. Step B -> 3. Step C",
+"1. Step B -> 2. Step A -> 3. Step C",
+"1. Step C -> 2. Step B -> 3. Step A",
+"1. Step A -> 2. Step C -> 3. Step B"
 ],
 "answer": 0,
 "explanation": "Correct order: Position 1 = Step A (Log into Org Portal), Position 2 = Step B (Navigate to Branding), Position 3 = Step C (Disable login page branding)."
@@ -616,12 +616,12 @@
 "explanation": "Creating a Day 2 policy attaching newly deployed VMs to a VLR Protection Group across catalog items achieves automated disaster recovery configuration."
 },
 {
-"question": "An administrator must configure a provider content library named 'West' as a local content library. Arrange the following steps in correct order (Positions 1 to 4):\n\n[Step A] Log into Provider Management Portal\n[Step B] Click CREATE CONTENT LIBRARY\n[Step C] Specify region called West\n[Step D] Ensure Subscribe to an external library is disabled\n\nWhich sequence represents the correct order?",
+"question": "An administrator must configure a provider content library named 'West' as a local content library. Select and arrange the steps in correct order (Positions 1 to 4):\n\n[Available Steps]\n[Step A] Log into Provider Management Portal\n[Step B] Click CREATE CONTENT LIBRARY\n[Step C] Specify region called West\n[Step D] Ensure Subscribe to an external library is disabled\n\nWhich sequence represents the correct order?",
 "options": [
-"Position 1: Step A -> Position 2: Step B -> Position 3: Step C -> Position 4: Step D",
-"Position 1: Step B -> Position 2: Step A -> Position 3: Step D -> Position 4: Step C",
-"Position 1: Step C -> Position 2: Step A -> Position 3: Step B -> Position 4: Step D",
-"Position 1: Step A -> Position 2: Step C -> Position 3: Step B -> Position 4: Step D"
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step D",
+"1. Step B -> 2. Step A -> 3. Step D -> 4. Step C",
+"1. Step C -> 2. Step A -> 3. Step B -> 4. Step D",
+"1. Step A -> 2. Step C -> 3. Step B -> 4. Step D"
 ],
 "answer": 0,
 "explanation": "Correct order: Position 1 = Step A (Log into Provider Portal), Position 2 = Step B (Click Create Content Library), Position 3 = Step C (Specify region West), Position 4 = Step D (Disable external subscription)."
@@ -639,14 +639,14 @@
 "explanation": "Storage policies govern accessible datastores in a region and can be assigned across one or more regions (Answers C and E)."
 },
 {
-"question": "An administrator is configuring an Orchestrator workflow to take a snapshot before maintenance and automatically delete all snapshots after a 5-day cooling period using two scheduled workflows. Arrange the selected 5 steps in the correct order (Position 1 to Position 5):\n\n[Possible Steps]\n- Add an output parameter of type string to the workflow named currentDate for storing the current date and time value.\n- Add a Variable of type string to the workflow named currentDate for storing the current date and time value.\n- Add a Workflow element to the schema and configure it to use the Remove all snapshots workflow.\n- Configure the Scheduled workflow to run 5 days from the value of the currentDate variable.\n- Add a Workflow element to the schema and configure it to use the Create a Snapshot workflow provided by the orchestrator workflow library.\n- Map the name input parameter to the currentDate variable to define the name of the snapshot.\n- Map the name input parameter to the currentDate output parameter to define the name of the snapshot.\n- Add a Waiting timer element to the workflow and configure it to wait for 5 days.\n- Add a Schedule workflow element to the schema and configure it to use the Remove all snapshots workflow.\n\nWhich sequence represents the exact correct order?",
+"question": "An administrator is configuring an Orchestrator workflow to take a snapshot before maintenance and automatically delete all snapshots after a 5-day cooling period using two scheduled workflows. Select the 5 correct steps in order (Position 1 to Position 5) from the 9 available options:\n\n[Available Steps]\n[Step A] Add a Variable of type string to the workflow named currentDate for storing the current date and time value.\n[Step B] Add a Workflow element to the schema and configure it to use the Create a Snapshot workflow provided by the orchestrator workflow library.\n[Step C] Map the name input parameter to the currentDate variable to define the name of the snapshot.\n[Step D] Add a Schedule workflow element to the schema and configure it to use the Remove all snapshots workflow.\n[Step E] Configure the Scheduled workflow to run 5 days from the value of the currentDate variable.\n[Step F] Add an output parameter of type string to the workflow named currentDate for storing current date and time value. (Distractor)\n[Step G] Add a Workflow element to the schema and configure it to use the Remove all snapshots workflow. (Distractor)\n[Step H] Map the name input parameter to the currentDate output parameter to define the name of the snapshot. (Distractor)\n[Step I] Add a Waiting timer element to the workflow and configure it to wait for 5 days. (Distractor)\n\nWhich sequence represents the exact correct order?",
 "options": [
-"Position 1: Add a Variable of type string (currentDate)\nPosition 2: Add Create a Snapshot workflow element\nPosition 3: Map name input parameter to currentDate variable\nPosition 4: Add Schedule workflow element (Remove all snapshots)\nPosition 5: Configure Scheduled workflow to run 5 days from currentDate variable",
-"Position 1: Add an output parameter of type string (currentDate)\nPosition 2: Add Create a Snapshot workflow element\nPosition 3: Map name input parameter to currentDate output parameter\nPosition 4: Add Waiting timer element (5 days)\nPosition 5: Add Remove all snapshots workflow element",
-"Position 1: Add Create a Snapshot workflow element\nPosition 2: Add a Variable of type string (currentDate)\nPosition 3: Map name input parameter to currentDate variable\nPosition 4: Add Waiting timer element (5 days)\nPosition 5: Configure Scheduled workflow to run 5 days from currentDate",
-"Position 1: Add Schedule workflow element (Remove all snapshots)\nPosition 2: Add a Variable of type string (currentDate)\nPosition 3: Add Create a Snapshot workflow element\nPosition 4: Map name input parameter to currentDate variable\nPosition 5: Configure Scheduled workflow to run 5 days from currentDate"
+"1. Step A -> 2. Step B -> 3. Step C -> 4. Step D -> 5. Step E",
+"1. Step F -> 2. Step B -> 3. Step H -> 4. Step I -> 5. Step G",
+"1. Step B -> 2. Step A -> 3. Step C -> 4. Step I -> 5. Step E",
+"1. Step D -> 2. Step A -> 3. Step B -> 4. Step C -> 5. Step E"
 ],
 "answer": 0,
-"explanation": "Based on the official VCF Orchestrator drag-and-drop solution (image reference):\n1. Add Variable of type string named currentDate.\n2. Add Workflow element: 'Create a Snapshot'.\n3. Map 'name' input parameter to 'currentDate' variable.\n4. Add 'Schedule workflow' element configured for 'Remove all snapshots'.\n5. Configure Scheduled workflow to run 5 days from 'currentDate' variable."
+"explanation": "Based on the official VCF Orchestrator drag-and-drop solution (Image 1 reference):\n1. Step A: Add a Variable of type string (currentDate).\n2. Step B: Add Create a Snapshot workflow element.\n3. Step C: Map name input parameter to currentDate variable.\n4. Step D: Add Schedule workflow element (Remove all snapshots).\n5. Step E: Configure Scheduled workflow to run 5 days from currentDate variable."
 }
 ]
