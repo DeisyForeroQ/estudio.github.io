@@ -3,107 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VMware Certification Simulator</title>
+  <title>Broadcom Partner Certification Simulator</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Fuentes e Íconos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Capa de fondo temático VMware -->
+  <!-- Capa de fondo temático VMware / Broadcom -->
   <div class="vmware-bg"></div>
 
   <div class="app-container">
     <header class="main-header">
       <div class="brand">
-        <span class="logo-text">VMware</span>
-        <span class="badge-vcf">VCF 9.0</span>
+        <span class="logo-text">BROADCOM PARTNER</span>
+        <span class="badge-vcf">PROVEN PROFESSIONAL</span>
       </div>
       <h1 id="app-title">Simulador de Certificaciones</h1>
-      <p id="question-counter" class="subtitle">Selecciona un track de examen para evaluar tus conocimientos</p>
+      <p id="question-counter" class="subtitle">Selecciona el examen de certificación oficial para comenzar</p>
     </header>
 
     <!-- PANTALLA PRINCIPAL: SELECTOR DE EXÁMENES -->
     <main id="exam-selector-screen">
 
-      <!-- SECCIÓN 1: VCAP ADVANCED SPECIALIST (De la imagen) -->
+      <!-- SECCIÓN: BROADCOM PARTNER CERTIFICATIONS -->
       <section class="exam-group">
-        <h2>VCAP Advanced Specialist (VCF 9.0)</h2>
+        <h2>Broadcom Partner Certification - Proven Professional</h2>
         <div class="grid-cards">
-          
-          <button class="exam-card gold" onclick="selectExam('vcap-automation.json', 'VCAP - Automation (3V0-21.25)')">
-            <span class="card-title">VCAP - Automation</span>
+
+          <!-- 1. Implementation -->
+          <button class="exam-card blue" onclick="selectExam('vcf-implementation.json', 'Proven Professional - VCF Implementation')">
+            <span class="card-tag">Implementation</span>
+            <span class="card-title">VMware Cloud Foundation - Implementation</span>
+            <span class="card-code">Broadcom Partner Certification</span>
+          </button>
+
+          <!-- 2. Architecture -->
+          <button class="exam-card blue" onclick="selectExam('vcf-architecture.json', 'Proven Professional - VCF Architecture')">
+            <span class="card-tag">Architecture</span>
+            <span class="card-title">VMware Cloud Foundation - Architecture</span>
+            <span class="card-code">Broadcom Partner Certification</span>
+          </button>
+
+          <!-- 3. Automation -->
+          <button class="exam-card gold" onclick="selectExam('vcap-automation.json', 'Proven Professional - Automation')">
+            <span class="card-title">Automation</span>
             <span class="card-code">VCF 9.0 Automation (3V0-21.25)</span>
           </button>
 
-          <button class="exam-card gold" onclick="selectExam('vcap-operations.json', 'VCAP - Operations (3V0-22.25)')">
-            <span class="card-title">VCAP - Operations</span>
+          <!-- 4. Operations -->
+          <button class="exam-card gold" onclick="selectExam('vcap-operations.json', 'Proven Professional - Operations')">
+            <span class="card-title">Operations</span>
             <span class="card-code">VCF 9.0 Operations (3V0-22.25)</span>
           </button>
 
-          <button class="exam-card gold" onclick="selectExam('vcap-storage.json', 'VCAP - Storage (3V0-23.25)')">
-            <span class="card-title">VCAP - Storage</span>
+          <!-- 5. Storage -->
+          <button class="exam-card gold" onclick="selectExam('vcap-storage.json', 'Proven Professional - Storage')">
+            <span class="card-title">Storage</span>
             <span class="card-code">VCF 9.0 Storage (3V0-23.25)</span>
           </button>
 
-          <button class="exam-card gold" onclick="selectExam('vcap-networking.json', 'VCAP - Networking (3V0-25.25)')">
-            <span class="card-title">VCAP - Networking</span>
+          <!-- 6. Networking -->
+          <button class="exam-card gold" onclick="selectExam('vcap-networking.json', 'Proven Professional - Networking')">
+            <span class="card-title">Networking</span>
             <span class="card-code">VCF 9.0 Networking (3V0-25.25)</span>
           </button>
 
-          <button class="exam-card gold new-badge" onclick="selectExam('vcap-vks.json', 'VCAP - VKS (3V0-24.25)')">
-            <span class="card-title">VCAP - VKS</span>
+          <!-- 7. VKS -->
+          <button class="exam-card gold new-badge" onclick="selectExam('vcap-vks.json', 'Proven Professional - VKS')">
+            <span class="card-title">VKS</span>
             <span class="card-code">VCF 9.0 VKS (3V0-24.25)</span>
-          </button>
-
-          <button class="exam-card gold new-badge disabled" disabled>
-            <span class="card-title">VCAP – Cyber Compliance</span>
-            <span class="card-code">TBD</span>
-          </button>
-
-          <button class="exam-card gold new-badge disabled" disabled>
-            <span class="card-title">VCAP - Private AI</span>
-            <span class="card-code">TBD</span>
-          </button>
-
-        </div>
-      </section>
-
-      <!-- SECCIÓN 2: ARQUITECTURA E IMPLEMENTACIÓN -->
-      <section class="exam-group">
-        <h2>Diseño & Implementación (Architecture / Deployment)</h2>
-        <div class="grid-cards">
-
-          <button class="exam-card blue" onclick="selectExam('vcap-dcv-deploy.json', 'VCAP-DCV Deploy')">
-            <span class="card-tag">Implementation</span>
-            <span class="card-title">VCAP - Data Center Deploy</span>
-            <span class="card-code">vSphere Advanced Deploy</span>
-          </button>
-
-          <button class="exam-card blue" onclick="selectExam('vcap-dcv-design.json', 'VCAP-DCV Design')">
-            <span class="card-tag">Architecture</span>
-            <span class="card-title">VCAP - Data Center Design</span>
-            <span class="card-code">vSphere Advanced Design</span>
-          </button>
-
-          <button class="exam-card blue" onclick="selectExam('vcap-nv-deploy.json', 'VCAP-NV Deploy')">
-            <span class="card-tag">Implementation</span>
-            <span class="card-title">VCAP - Network Virtualization Deploy</span>
-            <span class="card-code">NSX Advanced Deploy</span>
-          </button>
-
-          <button class="exam-card blue" onclick="selectExam('vcap-nv-design.json', 'VCAP-NV Design')">
-            <span class="card-tag">Architecture</span>
-            <span class="card-title">VCAP - Network Virtualization Design</span>
-            <span class="card-code">NSX Advanced Design</span>
-          </button>
-
-          <button class="exam-card purple" onclick="selectExam('vdxx-architect.json', 'VCDX - Architect')">
-            <span class="card-tag">Design Master</span>
-            <span class="card-title">VCDX - Enterprise Architect</span>
-            <span class="card-code">Defense & Design Review</span>
           </button>
 
         </div>
@@ -117,7 +87,7 @@
       <main id="questions-wrapper"></main>
       <div class="actions">
         <button id="submit-btn" class="btn-primary" onclick="evaluateExam()">Finalizar y Calificar</button>
-        <button class="btn-secondary" onclick="goBackToMenu()">← Volver al Menú</button>
+        <button class="btn-secondary" onclick="goBackToMenu()">← Volver al Menú Principal</button>
       </div>
     </div>
 
