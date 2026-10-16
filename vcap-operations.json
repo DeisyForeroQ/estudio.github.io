@@ -1,0 +1,222 @@
+[
+  {
+    "question": "An administrator has been tasked with scaling an existing VCF instance that consists of one workload domain that uses vSAN as its principal storage.\nThe following requirements must be met:\nAdd an additional workload domain.\nManage the new workload domain from the existing vCenter.\nWhich two actions must the administrator take to successfully complete the objective? (Choose two.)",
+    "options": [
+      "Ensure the new workload domain uses the same SSO domain as the existing workload domains.",
+      "Ensure the existing workload domain uses the same NSX Manager as the management domain.",
+      "Ensure the new hosts are commissioned with the valid storage type and mapped to a network pool prior to domain creation.",
+      "Configure vCenter Enhanced Link-mode to link the two workload domain vCenters.",
+      "Ensure the new workload domain is configured using vSAN storage with compatible disks installed.",
+      "Create a vCenter Linking Group to link the two workload domain vCenters."
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "To manage workload domains under the same vCenter/SSO domain structure in VCF, new workload domains must share the same Single Sign-On (SSO) domain, and new ESXi hosts must be commissioned with proper storage and network pool mappings prior to domain creation."
+  },
+  {
+    "question": "An administrator successfully integrated VCF Operations fleet management with a Microsoft Certificate Authority and deployed certificates to vCenter, NSX, VCF Operations, and ESX hosts successfully in the past. VCF Operations fleet management has begun presenting errors that all certificates are nearing expiration no matter how often it is cleared. Examining the configuration the administrator sees that the automatic renew did successfully rotate certificates on all systems a week ago, and the certificate template is set to allow for all certificates to last one year.\nWhat is the reason that certificates warnings are still being generated?",
+    "options": [
+      "The Microsoft CA Root or Intermediate certificates are nearing expiration.",
+      "The certificate alert in VCF Operations has not been properly cleared.",
+      "SDDC Manager has lost contact with the Microsoft CA.",
+      "The administrator must manually click “Renew Certificate” on desired items."
+    ],
+    "answer": 0,
+    "explanation": "Even if leaf certificates are renewed and valid for one year, if the Root or Intermediate CA certificates in the chain are nearing expiration, system-wide certificate expiration alerts will continue to trigger."
+  },
+  {
+    "question": "An administrator is responsible for scaling up VMware Cloud Foundation Operations vertically by using Fleet Management.\nWhen the administrator initiates the Vertical Scale Up operation for the VCF Operations component, the workflow enters a “Needs Attention” state, indicating that the Fleet Management inventory information is not current.\nWhich action must the administrator take to allow the scale-up process to continue?",
+    "options": [
+      "The administrator must take the VCF Operations cluster offline.",
+      "The administrator must take the mandatory snapshots.",
+      "The administrator must scale up the Cloud Proxies.",
+      "The administrator must perform the inventory sync."
+    ],
+    "answer": 3,
+    "explanation": "When a Fleet Management workflow enters 'Needs Attention' due to outdated inventory data, performing an inventory sync updates the state and allows the scale-up workflow to proceed."
+  },
+  {
+    "question": "An administrator is trying to configure an action-based notification in VCF Operations. When trying to set the Outbound Method, the administrator is not able to continue.\nWhat type of Plugin must the administrator configure to successfully compete the task?",
+    "options": [
+      "Log File",
+      "SMTP Trap",
+      "Standard Email",
+      "Webhook Notification"
+    ],
+    "answer": 3,
+    "explanation": "Action-based notifications in VCF Operations require configuring a Webhook Notification plugin as the outbound payload mechanism."
+  },
+  {
+    "question": "Which type of Plugin must the administrator configure to enable WLP Action-based notifications?",
+    "options": [
+      "Webhook Notification",
+      "Standard Email",
+      "Network Share",
+      "SNMP Trap"
+    ],
+    "answer": 0,
+    "explanation": "Webhook Notification plugins allow external REST payloads to be triggered automatically by Workload Placement (WLP) action-based events."
+  },
+  {
+    "question": "An administrator has been tasked with creating a custom group for NSX edges.\nThe first two NSX Edges have been tagged with the tag, nsx:edge.\nThe custom group has the following configuration:\nObject Type = Edge Cluster\nMembership Criteria:\nTag Category is nsx\nTag Value is edge\nAfter 60 minutes the custom group still doesn’t list any members.\nWhat action must the administrator take ensure that the custom group to populates correctly?",
+    "options": [
+      "Change the object type to ‘Edge Transport Node’.",
+      "Change the object type to ‘Virtual Machine’.",
+      "Change the Tag Value to nsx:edge.",
+      "Change the Tag Category to edge."
+    ],
+    "answer": 0,
+    "explanation": "Individual NSX Edge appliances are represented in VCF Operations as 'Edge Transport Node' objects, whereas 'Edge Cluster' refers to the logical grouping container."
+  },
+  {
+    "question": "An administrator deploys a company’s first two VMware Cloud Foundation (VCF) instances within a single VCF Fleet then properly connects both VCF Instances to a VCF Operations Fleet Management Single Sign-On configuration managed by the first VCF instance that uses an LDAP Identity Provider.\nThe administrator is informed the second VCF instance must be connected to a new Security Assertion Markup Language (SAML 2.0) Identity Provider and Single Sign-On configuration.\nWhat action must the administrator take to begin configuring the second VCF instance to use a new VCF Single Sign-On configuration?",
+    "options": [
+      "Reset the VCF Single Sign-On that is associated with the second VCF Instance.",
+      "Reset the VCF Single Sign-On that is associated with the first VCF Instance.",
+      "Deregister the first VCF Instance from the Single Sign-On configuration.",
+      "Deregister the second VCF Instance from the Single Sign-On configuration."
+    ],
+    "answer": 3,
+    "explanation": "To reassign a VCF Instance to a different SSO domain or SAML provider, it must first be deregistered from its existing shared SSO domain configuration."
+  },
+  {
+    "question": "An administrator is tasked with creating an alert definition that will send a notification when the following conditions are met:\nFor any NSX Edge Node that has a CPU Utilization > 95%\nWhich base object-type must the administrator use?",
+    "options": [
+      "NSX: Transport Node",
+      "vCenter: Entity Status",
+      "vCenter: Virtual Machine",
+      "NSX: Edge Cluster"
+    ],
+    "answer": 0,
+    "explanation": "Metrics regarding specific CPU utilization for NSX Edge devices are collected under the 'NSX: Transport Node' object type in VCF Operations."
+  },
+  {
+    "question": "An administrator has been tasked with customizing the “Live! Heavy Hitters” Dashboard to include the metric “Cost | VM Cost Trend”.\nWhat action should the administrator task to complete this task?",
+    "options": [
+      "Within the Manage Dashboards panel, Export the dashboard and add the relevant metric.",
+      "Within the Manage Dashboards panel, click the checkbox for the dashboard, click Edit and add the relevant metric.",
+      "Within the Manage Dashboards panel, Clone the dashboard and add the relevant metric.",
+      "Within the Manage Dashboards panel, click “Change Ownership” to assign edit permission and add the relevant metric.",
+      "Within the Dashboards Overview panel, click the “Live! Heavy Hitters” Dashboard, click the Edit action and add the relevant metric."
+    ],
+    "answer": 2,
+    "explanation": "System factory dashboards in VCF Operations are read-only and cannot be modified directly; they must be cloned to create a customizable copy."
+  },
+  {
+    "question": "An administrator has been tasked with setting up Log Assist in VCF Operation to streamline troubleshooting and support interactions with Broadcom Support in VMware Cloud Foundation (VCF).\nThe objective includes:\nGenerate a log bundle on demand\nLink the bundle to a support case\nAttach diagnostic findings to your support case\nWhat are the two minimum requirements to configure Log Assist? (Choose two.)",
+    "options": [
+      "Within Administration Integrations enable Activate Log Collection within the VMware vCenter adapter.",
+      "Register licenses with the VCF Business Services console in Connected mode.",
+      "Within Administration Cloud Proxies enable Log Assist within the Unified Cloud Proxy.",
+      "Register licenses with Broadcom Support Portal.",
+      "Register licenses with the VCF Business Services console in Disconnected mode."
+    ],
+    "answer": [
+      1,
+      2
+    ],
+    "explanation": "Log Assist requires registering VCF licenses in Connected mode through VCF Business Services and enabling Log Assist within the Unified Cloud Proxy."
+  },
+  {
+    "question": "An administrator is configuring an offline depot for a newly deployed VMware Cloud Foundation (VCF) fleet. The VCF Download Tool is used to populate the depot because the installation is operating in a dark site environment.\nWhat does the VCF Download Tool require to authenticate with the Broadcom Business Portal and download the required software binaries?",
+    "options": [
+      "The VCF or VVF bundleId to be downloaded.",
+      "A Download Token from the Broadcom Business Portal.",
+      "A download sku using the --sku option.",
+      "The target component using the --component option."
+    ],
+    "answer": 1,
+    "explanation": "The VCF Download Tool utilizes an API Download Token generated from the Broadcom Business Portal to authenticate offline binary downloads."
+  },
+  {
+    "question": "An administrator has just deployed a VMware Cloud Foundation (VCF) Private Cloud and now must ensure it is correctly licensed. The administrator has registered the VCF deployment with the VCF Business Services console and has downloaded the necessary license file and keys.\nWhich three products would be licensed using a license file? (Choose three.)",
+    "options": [
+      "VMware Private AI Foundation with NVIDIA",
+      "vSAN Add-on Capacity",
+      "VMware HCX Enterprise",
+      "VMware vDefend",
+      "VMware Data Services Manager",
+      "VMware Tanzu Platform"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "VCF subscription licensing management uses license files for core add-on services such as VMware Private AI Foundation, vSAN Add-on Capacity, and VMware vDefend."
+  },
+  {
+    "question": "The Development team has asked that their log file “/var/log/app/server.log” be collected by VCF Operations for logs agent. They have provided an excerpt from the file.\nLog messages, especially errors, can be multiple lines.\nWhat is the correct method to ensure that multi-line logs are captured properly as a single event?",
+    "options": [
+      "Create an event marker regular expression that defines the beginning of a new log message.",
+      "Create an event marker with the number of characters that define a new log message.",
+      "The log cannot be captured because it is not in either Syslog format RFC 5424 or RFC 3164.",
+      "Extract a field that represents the beginning of a log message and name it “log header”."
+    ],
+    "answer": 0,
+    "explanation": "In VCF Operations for Logs (vRLI) agents, defining an event marker regular expression (such as a timestamp regex) identifies the start of a log entry, grouping all subsequent lines into a single multi-line log event until the next match."
+  },
+  {
+    "question": "A workload (Workload-01) is a member of four custom groups:\nCG-01 (assigned to policy 1)\nCG-04 (assigned to policy 1a)\nCG-02 (assigned to policy 2)\nCG-03 (assigned to policy 2a)\nWhich policy is applied to Workload-01?",
+    "options": [
+      "policy 2a",
+      "policy 1",
+      "policy 2",
+      "policy 1a"
+    ],
+    "answer": 3,
+    "explanation": "When an object belongs to multiple custom groups assigned to different policies, policy precedence determines the effective policy based on priority rank (where child policies like 1a override base policies like 1 or lower-ranked policies)."
+  },
+  {
+    "question": "An administrator has deployed a VMware vSphere Foundation (VVF) instance into production. The following month the administrator leaves the company without providing the local administrator password for VCF Operations to the new administrator. However, the new administrator has all VVF root passwords and AD administrator access.\nWhat action must the new administrator take to reset the VCF Operations Administrator Password?",
+    "options": [
+      "Log into VCF Operations administration interface as root, in Administrator Settings, select Change Administrator Password.",
+      "In the VCF Operations administration interface using an AD administrator account, in Administrator Settings, select Change Administrator Password.",
+      "Log into the VCF Operations master node command-line console as root. Execute the vcopssetadminPassword.py --reset CLI Command.",
+      "In VCF Operations Fleet Management > Passwords, select the VCF Operations admin account and select Update Password."
+    ],
+    "answer": 2,
+    "explanation": "Root CLI access to the VCF Operations master node allows running the script 'vcopssetadminPassword.py --reset' to reset the admin user password."
+  },
+  {
+    "question": "Which VMware Cloud Foundation Domain Component “root” account cannot be updated using the VCF Operations user interface?",
+    "options": [
+      "NSX",
+      "vCenter",
+      "SDDC Manager",
+      "ESX"
+    ],
+    "answer": 2,
+    "explanation": "SDDC Manager credentials and root account lifecycle operations are managed directly through SDDC Manager itself or VCF Fleet tools, not from the VCF Operations UI."
+  },
+  {
+    "question": "An administrator has been tasked with assigning a policy to a group of virtual machines (VMs).\nFollowing information has been provided:\nThe group of virtual machines should be updated automatically when the application owner adds or deletes virtual machines.\nThe virtual machines do not use the same naming convention and are deployed on different subnets.\nWhat three actions must the administrator take to complete the task? (Choose three.)",
+    "options": [
+      "Add each VMs as an object to the custom group.",
+      "Add virtual machines to a dedicated folder.",
+      "Select tag as the criteria for group membership.",
+      "Add the same tag to the selected virtual machines.",
+      "Add all VMs to the same subnet.",
+      "Create a custom group."
+    ],
+    "answer": [
+      2,
+      3,
+      5
+    ],
+    "explanation": "Creating a dynamic custom group based on tag membership criteria allows virtual machines with matching tags to automatically enter or leave the group dynamically."
+  },
+  {
+    "question": "An administrator has been tasked with enabling Service Discovery within VCF Operations.\nWhat steps must an administrator take to Install and Configure Service Discovery?",
+    "options": [
+      "Within Administration, Click Integrations and modify the properties of the vCenter by selecting the Service Discovery radio button to activate.",
+      "Within Infrastructure Operations, Click Configurations, select Service Discovery and click “Configure Service Discovery”.",
+      "Within Workload Operations, Click Manage SDMP Services and select Actions “Activate Service Monitoring”.",
+      "Service Discovery is enabled by default for all servers with VMware Tools installed, no action required."
+    ],
+    "answer": 0,
+    "explanation": "Service Discovery is enabled by editing the vCenter adapter properties under Administration > Integrations and activating the Service Discovery toggle."
+  }
+]
