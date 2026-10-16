@@ -1,161 +1,1206 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuestionario VMware Cloud Foundation (VCF)</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f9; color: #333; line-height: 1.5; }
-        .container { max-width: 900px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #0056b3; }
-        .question-card { background: #fafafa; border: 1px solid #ddd; padding: 20px; margin-bottom: 20px; border-radius: 8px; }
-        .question-title { font-weight: bold; margin-bottom: 15px; color: #222; }
-        .options-list { list-style-type: none; padding: 0; }
-        .options-list li { margin: 8px 0; }
-        label { cursor: pointer; display: flex; align-items: flex-start; gap: 10px; }
-        input { margin-top: 4px; }
-        .note { font-size: 0.85em; color: #666; font-style: italic; margin-bottom: 8px; }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>Cuestionario de Preparación VMware Cloud Foundation (VCF)</h1>
-    <form id="vcf-quiz">
-
-        <!-- Pregunta 1 -->
-        <div class="question-card">
-            <div class="question-title">1. An architect has made an assumption that existing support staff are adequately skilled to operate the proposed infrastructure design. The risk associated with this assumption would be that existing support staff are inadequately skilled to operate the proposed infrastructure design. How would the architect mitigate the risk?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q1" value="0"> Complete a skills assessment of the existing support staff to identity the skill gap.</label></li>
-                <li><label><input type="radio" name="q1" value="1"> Allocate the necessary time and budget to train existing support staff on the necessary skills required to operate.</label></li>
-                <li><label><input type="radio" name="q1" value="2"> Engage a third-party company to deploy and configure the proposed solution.</label></li>
-                <li><label><input type="radio" name="q1" value="3"> Hire additional support staff with the same skillsets to add more support capacity.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 2 -->
-        <div class="question-card">
-            <div class="question-title">2. An architect is designing a VMware Cloud Foundation (VCF)-based solution. The company policy mandates that all VCF patches and upgrades must be tested in a development environment before applying to production. Which VCF construct design decision would comply with this mandate?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q2" value="0"> Deploy two VCF vSphere Clusters within a VCF Domain.</label></li>
-                <li><label><input type="radio" name="q2" value="1"> Deploy two VCF Domains within a VCF Instance.</label></li>
-                <li><label><input type="radio" name="q2" value="2"> Deploy two VCF Instances within a VCF Fleet.</label></li>
-                <li><label><input type="radio" name="q2" value="3"> Deploy two VCF Fleets within a VCF Private Cloud.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 3 -->
-        <div class="question-card">
-            <div class="question-title">3. An architect is responsible for designing a VMware Cloud Foundation (VCF)-based solution for a customer. The customer has the following requirement: There should be no single points of failure within the solution. To comply with the customer requirement, the architect has decided to include physical NIC teaming for all ESX servers in the design. When documenting this design decision, which consideration should the architect make?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q3" value="0"> Only 10GbE NICs should be used for NIC teaming.</label></li>
-                <li><label><input type="radio" name="q3" value="1"> Embedded NICs should not be used for NIC teaming.</label></li>
-                <li><label><input type="radio" name="q3" value="2"> Each NIC team must include NICs from the same physical NIC Card.</label></li>
-                <li><label><input type="radio" name="q3" value="3"> Each NIC team must include NICs from different physical NIC Cards.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 4 -->
-        <div class="question-card">
-            <div class="question-title">4. An architect is designing a Business Continuity Disaster Recovery (BCDR) strategy for a Virtual Cloud Foundation (VCF) environment with a management domain and multiple workload domains deployed in two datacenters located in the same city. During one of the initial workshops with stakeholders, the following information was identified: The Recovery Time Objective (RTO) for workloads is 24 hours. The management domain must remain continuously available with Recovery Point Objective (RPO) of 0. Hardware overhead should be minimized by utilizing standby resources that hosts test workloads during normal operation. Operational overhead should be minimized. Latency between both datacenters is 2 ms. Which design decision should the architect document to satisfy provided requirements?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q4" value="0"> Use VCF Automation to redeploy the entire environment in case of a failure.</label></li>
-                <li><label><input type="radio" name="q4" value="1"> Use asynchronous replication for both management and workload domains.</label></li>
-                <li><label><input type="radio" name="q4" value="2"> Back up all workloads daily and store them in a central repository to meet RTO expectations.</label></li>
-                <li><label><input type="radio" name="q4" value="3"> Implement vSAN stretched cluster for the management domain and Live Recovery for the workload domains.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 5 -->
-        <div class="question-card">
-            <div class="question-title">5. An architect is responsible for the design of a VMware Cloud Foundation (VCF) Fleet and the following risk has been identified: RISK001: There is a risk that frequent infrastructure design changes may break Disaster Recovery (DR) plans and Service Level Objectives. What should the architect suggest to mitigate this risk?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q5" value="0"> Configure VM replication with recovery point object of 5 minutes or less for all workloads from the primary to DR site.</label></li>
-                <li><label><input type="radio" name="q5" value="1"> Setup monitoring & alerting against defined infrastructure service level objectives.</label></li>
-                <li><label><input type="radio" name="q5" value="2"> Develop a process to review and update DR plans between changes and schedule monthly end to end DR tests.</label></li>
-                <li><label><input type="radio" name="q5" value="3"> Limit infrastructure design change frequency to a maximum of once a month.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 6 (Múltiple) -->
-        <div class="question-card">
-            <div class="question-title">6. As part of the VMware Cloud Foundation (VCF) logical design, the architect documented the following requirement: The solution must include high security hardening levels to meet military compliance standards. Which two physical design decisions will meet this security requirement in the workload domain? (Choose two.)</div>
-            <div class="note">Selecciona 2 opciones.</div>
-            <ul class="options-list">
-                <li><label><input type="checkbox" name="q6" value="0"> VCF Operations will be configured to renew the SSL certificate for vCenter Server per security policies.</label></li>
-                <li><label><input type="checkbox" name="q6" value="1"> The vSAN storage policy will be configured as Secondary Failures to Tolerate = 1.</label></li>
-                <li><label><input type="checkbox" name="q6" value="2"> The certificate of the VI workload domain vCenter Server will be issued by RootCA.Military.Domain.com.</label></li>
-                <li><label><input type="checkbox" name="q6" value="3"> The advanced setting UserVars.SuppressShell Warning will be configured to 0 across all ESXi hosts in a VI workload domain cluster.</label></li>
-                <li><label><input type="checkbox" name="q6" value="4"> NTP will be configured to the internal NTP servers of 192.168.12.1 and 192.168.24.1.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 7 (Múltiple) -->
-        <div class="question-card">
-            <div class="question-title">7. An architect is designing a new VMware Cloud Foundation (VCF) solution. During the discovery workshops with the customer, the following information was shared: The company is structured into multiple business units. Some business units were formed through the acquisition of other companies. As the acquisitions were completed recently, these business units use their own Active Directory (AD) instances for authentication. All business units operate independently of each other, and need their own dedicated development environments. The customer wants to use VCF Automation to provide its employees with the ability to self-service the provisioning and ongoing management of their resources within defined boundaries. Which two design decisions should the architect include in the design when documenting the configuration of VCF Automation? (Choose two.)</div>
-            <div class="note">Selecciona 2 opciones.</div>
-            <ul class="options-list">
-                <li><label><input type="checkbox" name="q7" value="0"> A VCF Automation tenant will be created for each business unit.</label></li>
-                <li><label><input type="checkbox" name="q7" value="1"> A VCF Automation project will be created for each business unit.</label></li>
-                <li><label><input type="checkbox" name="q7" value="2"> All tenants will be configured to use their dedicated AD instance for authentication.</label></li>
-                <li><label><input type="checkbox" name="q7" value="3"> All projects will be configured to use their dedicated AD instance for authentication.</label></li>
-                <li><label><input type="checkbox" name="q7" value="4"> All tenants will be configured to use the corporate AD instance for authentication.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 8 (Múltiple) -->
-        <div class="question-card">
-            <div class="question-title">8. An architect is responsible for designing a VMware Cloud Foundation (VCF)-based private cloud for a customer. The architect noted the following requirements during a design workshop: Co-locate application workloads with VCF management component workloads within the same vSphere cluster. Shared storage data is always available and 100% current in the event of a single site outage. Have two sites available no more than 10 miles apart (10ms latency) connected with high speed network technology to host their virtual infrastructure. Protect against outages of a single site designated as an availability zone. Which two storage technologies could meet the stated requirements? (Choose two.)</div>
-            <div class="note">Selecciona 2 opciones.</div>
-            <ul class="options-list">
-                <li><label><input type="checkbox" name="q8" value="0"> NVME over Fibre Channel (FC)</label></li>
-                <li><label><input type="checkbox" name="q8" value="1"> VMFS on Fibre Channel (FC)</label></li>
-                <li><label><input type="checkbox" name="q8" value="2"> vSphere Virtual Volumes (vVols)</label></li>
-                <li><label><input type="checkbox" name="q8" value="3"> NVME over TCP</label></li>
-                <li><label><input type="checkbox" name="q8" value="4"> vSAN</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 9 -->
-        <div class="question-card">
-            <div class="question-title">9. As part of the VMware Cloud Foundation (VCF) logical design, the architect has determined that the VCF Private Cloud will encompass multiple VCF instances contained within a single VCF Fleet. The architect documented the following requirements when using VCF Operations: Monitoring downtime must be minimized. Alerting downtime must be minimized. Which design decision supports these requirements?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q9" value="0"> Deploy two VCF Operations instances and configure the Aggregator Management Pack.</label></li>
-                <li><label><input type="radio" name="q9" value="1"> Deploy a single VCF Operations instance across a multi-VCF instance fleet.</label></li>
-                <li><label><input type="radio" name="q9" value="2"> Deploy VCF Operations using the High Availability model with Collector nodes at remote sites.</label></li>
-                <li><label><input type="radio" name="q9" value="3"> Deploy VCF Operations using the Simple model with Collector nodes at remote sites.</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 10 -->
-        <div class="question-card">
-            <div class="question-title">10. As part of the initial design workshop, one of the customer stakeholders has stated the following: All Virtual Machines must be encrypted. How would the architect classify this statement?</div>
-            <ul class="options-list">
-                <li><label><input type="radio" name="q10" value="0"> An Assumption</label></li>
-                <li><label><input type="radio" name="q10" value="1"> A Requirement</label></li>
-                <li><label><input type="radio" name="q10" value="2"> A risk</label></li>
-                <li><label><input type="radio" name="q10" value="3"> A Constraint</label></li>
-            </ul>
-        </div>
-
-        <!-- Pregunta 30 (La de la imagen) -->
-        <div class="question-card">
-            <div class="question-title">30. An architect is gathering business requirements for a new VMware Cloud Foundation (VCF) solution from the customer stakeholders and subject matter experts. Which two factors should the architect discuss with the customer to determine any potential impact on the business requirements? (Choose two.)</div>
-            <div class="note">Selecciona 2 opciones.</div>
-            <ul class="options-list">
-                <li><label><input type="checkbox" name="q30" value="0"> Service-level agreements (SLAs)</label></li>
-                <li><label><input type="checkbox" name="q30" value="1"> Product versions</label></li>
-                <li><label><input type="checkbox" name="q30" value="2"> Storage capacity</label></li>
-                <li><label><input type="checkbox" name="q30" value="3"> Organizational structure</label></li>
-                <li><label><input type="checkbox" name="q30" value="4"> Average virtual machine size</label></li>
-            </ul>
-        </div>
-
-        <!-- Nota aclaratoria general sobre el archivo completo -->
-        <p style="text-align: center; color: #666; margin-top: 30px;">
-            <em>Nota: Puedes copiar este bloque de código y guardarlo como un archivo <code>index.html</code> para abrirlo en cualquier navegador web y realizar tus prácticas con selección múltiple habilitada mediante casillas de verificación.</em>
-        </p>
-    </form>
-</div>
-</body>
-</html>
+[
+  {
+    "question": "An architect has made an assumption that existing support staff are adequately skilled to operate the proposed infrastructure design. The risk associated with this assumption would be that existing support staff are inadequately skilled to operate the proposed infrastructure design. How would the architect mitigate the risk?",
+    "options": [
+      "Complete a skills assessment of the existing support staff to identity the skill gap.",
+      "Allocate the necessary time and budget to train existing support staff on the necessary skills required to operate.",
+      "Engage a third-party company to deploy and configure the proposed solution.",
+      "Hire additional support staff with the same skillsets to add more support capacity."
+    ],
+    "answer": 0,
+    "explanation": "A comprehensive skills assessment objectively identifies the specific gap between the existing support staff's capabilities and the necessary skills required for managing the new cloud environment."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF)-based solution. The company policy mandates that all VCF patches and upgrades must be tested in a development environment before applying to production. Which VCF construct design decision would comply with this mandate?",
+    "options": [
+      "Deploy two VCF vSphere Clusters within a VCF Domain.",
+      "Deploy two VCF Domains within a VCF Instance.",
+      "Deploy two VCF Instances within a VCF Fleet.",
+      "Deploy two VCF Fleets within a VCF Private Cloud."
+    ],
+    "answer": 1,
+    "explanation": "Deploying two VCF Domains within a VCF Instance allows independent patching and upgrading of individual domains via SDDC Manager."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF)-based solution for a customer. The customer has the following requirement: There should be no single points of failure within the solution. To comply with the customer requirement, the architect has decided to include physical NIC teaming for all ESX servers in the design. When documenting this design decision, which consideration should the architect make?",
+    "options": [
+      "Only 10GbE NICs should be used for NIC teaming.",
+      "Embedded NICs should not be used for NIC teaming.",
+      "Each NIC team must include NICs from the same physical NIC Card.",
+      "Each NIC team must include NICs from different physical NIC Cards."
+    ],
+    "answer": 3,
+    "explanation": "If NIC teaming is used to provide redundancy, the failure of one physical NIC card must not take down the entire team, so NICs must come from different physical NIC cards."
+  },
+  {
+    "question": "An architect is designing a Business Continuity Disaster Recovery (BCDR) strategy for a Virtual Cloud Foundation (VCF) environment with a management domain and multiple workload domains deployed in two datacenters located in the same city. During one of the initial workshops with stakeholders, the following information was identified: The Recovery Time Objective (RTO) for workloads is 24 hours. The management domain must remain continuously available with Recovery Point Objective (RPO) of 0. Hardware overhead should be minimized by utilizing standby resources that hosts test workloads during normal operation. Operational overhead should be minimized. Latency between both datacenters is 2 ms. Which design decision should the architect document to satisfy provided requirements?",
+    "options": [
+      "Use VCF Automation to redeploy the entire environment in case of a failure.",
+      "Use asynchronous replication for both management and workload domains.",
+      "Back up all workloads daily and store them in a central repository to meet RTO expectations.",
+      "Implement vSAN stretched cluster for the management domain and Live Recovery for the workload domains."
+    ],
+    "answer": 3,
+    "explanation": "A vSAN stretched cluster satisfies the RPO of 0 for the management domain, and Live Recovery meets the 24-hour RTO while utilizing standby resources for test workloads."
+  },
+  {
+    "question": "An architect is responsible for the design of a VMware Cloud Foundation (VCF) Fleet and the following risk has been identified: RISK001: There is a risk that frequent infrastructure design changes may break Disaster Recovery (DR) plans and Service Level Objectives. What should the architect suggest to mitigate this risk?",
+    "options": [
+      "Configure VM replication with recovery point object of 5 minutes or less for all workloads from the primary to DR site.",
+      "Setup monitoring & alerting against defined infrastructure service level objectives.",
+      "Develop a process to review and update DR plans between changes and schedule monthly end to end DR tests.",
+      "Limit infrastructure design change frequency to a maximum of once a month."
+    ],
+    "answer": 2,
+    "explanation": "Developing a process to review/update DR plans between changes and scheduling monthly end-to-end tests ensures DR procedures evolve synchronously with the infrastructure."
+  },
+  {
+    "question": "As part of the VMware Cloud Foundation (VCF) logical design, the architect documented the following requirement: The solution must include high security hardening levels to meet military compliance standards. Which two physical design decisions will meet this security requirement in the workload domain? (Choose two.)",
+    "options": [
+      "VCF Operations will be configured to renew the SSL certificate for vCenter Server per security policies.",
+      "The vSAN storage policy will be configured as Secondary Failures to Tolerate = 1.",
+      "The certificate of the VI workload domain vCenter Server will be issued by RootCA.Military.Domain.com.",
+      "The advanced setting UserVars.SuppressShell Warning will be configured to 0 across all ESXi hosts in a VI workload domain cluster.",
+      "NTP will be configured to the internal NTP servers of 192.168.12.1 and 192.168.24.1."
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explanation": "Issuing vCenter certificates from the military Root CA establishes a trusted PKI, and utilizing internal NTP servers ensures secure, precise time synchronization for auditing without relying on external sources."
+  },
+  {
+    "question": "An architect is designing a new VMware Cloud Foundation (VCF) solution. During the discovery workshops with the customer, the following information was shared: The company is structured into multiple business units. Some business units were formed through the acquisition of other companies. As the acquisitions were completed recently, these business units use their own Active Directory (AD) instances for authentication. All business units operate independently of each other, and need their own dedicated development environments. The customer wants to use VCF Automation to provide its employees with the ability to self-service the provisioning and ongoing management of their resources within defined boundaries. Which two design decisions should the architect include in the design when documenting the configuration of VCF Automation? (Choose two.)",
+    "options": [
+      "A VCF Automation tenant will be created for each business unit.",
+      "A VCF Automation project will be created for each business unit.",
+      "All tenants will be configured to use their dedicated AD instance for authentication.",
+      "All projects will be configured to use their dedicated AD instance for authentication.",
+      "All tenants will be configured to use the corporate AD instance for authentication."
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "Creating a tenant per business unit establishes dedicated administrative boundaries, and linking each tenant to its dedicated Active Directory instance respects existing authentication structures."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF)-based private cloud for a customer. The architect noted the following requirements during a design workshop: Co-locate application workloads with VCF management component workloads within the same vSphere cluster. Shared storage data is always available and 100% current in the event of a single site outage. Have two sites available no more than 10 miles apart (10ms latency) connected with high speed network technology to host their virtual infrastructure. Protect against outages of a single site designated as an availability zone. Which two storage technologies could meet the stated requirements? (Choose two.)",
+    "options": [
+      "NVME over Fibre Channel (FC)",
+      "VMFS on Fibre Channel (FC)",
+      "vSphere Virtual Volumes (vVols)",
+      "NVME over TCP",
+      "vSAN"
+    ],
+    "answer": [
+      1,
+      4
+    ],
+    "explanation": "vSAN in a stretched cluster configuration and VMFS on Fibre Channel with array-based synchronous replication both provide synchronous data mirroring across low-latency sites to ensure 100% current data availability (RPO=0) during a site outage."
+  },
+  {
+    "question": "As part of the VMware Cloud Foundation (VCF) logical design, the architect has determined that the VCF Private Cloud will encompass multiple VCF instances contained within a single VCF Fleet. The architect documented the following requirements when using VCF Operations: Monitoring downtime must be minimized. Alerting downtime must be minimized. Which design decision supports these requirements?",
+    "options": [
+      "Deploy two VCF Operations instances and configure the Aggregator Management Pack.",
+      "Deploy a single VCF Operations instance across a multi-VCF instance fleet.",
+      "Deploy VCF Operations using the High Availability model with Collector nodes at remote sites.",
+      "Deploy VCF Operations using the Simple model with Collector nodes at remote sites."
+    ],
+    "answer": 2,
+    "explanation": "Deploying VCF Operations in High Availability mode protects the core analytics engine from single-node failures, while remote Collector nodes ensure continuous, buffered metric collection across sites."
+  },
+  {
+    "question": "As part of the initial design workshop, one of the customer stakeholders has stated the following: All Virtual Machines must be encrypted. How would the architect classify this statement?",
+    "options": [
+      "An Assumption",
+      "A Requirement",
+      "A risk",
+      "A Constraint"
+    ],
+    "answer": 3,
+    "explanation": "A mandatory, non-negotiable policy or boundary imposed by stakeholders that restricts design options (such as mandating VM encryption via KMS) is classified as a Constraint."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) solution for a customer. During the discovery phase, the customer outlined the following availability requirements: All business-critical applications and workloads must adhere to a Recovery Point Objective (RPO) of 2 business hours. The infrastructure components supporting the VCF solution must comply with a Recovery Time Objective (RTO) of 8 business hours. Based on this context, what does the RTO metric represent?",
+    "options": [
+      "The minimum acceptable duration required to recover a service to an operational state",
+      "The maximum allowable time within which a system or service must be restored to a usable state",
+      "The maximum amount of data loss that is considered acceptable during a failure",
+      "The minimum volume of data loss tolerated in the event of a disruption"
+    ],
+    "answer": 1,
+    "explanation": "Recovery Time Objective (RTO) defines the maximum tolerable duration that a system or service can remain offline following a disaster before service restoration."
+  },
+  {
+    "question": "An architect has compiled a list of statements following a workshop with the business stakeholders. Which statement would be included in a conceptual model?",
+    "options": [
+      "The solution must meet a Mean Time To Recovery (MTTR) of 6 hours.",
+      "Sites A and B will each have a stretched layer-2 for their management network.",
+      "The das.isolationshutdowntimeout setting will be configured to 120 seconds.",
+      "Users will connect to the application servers via the NSX Advanced Load Balancer."
+    ],
+    "answer": 0,
+    "explanation": "A conceptual model focuses on high-level business goals and non-functional requirements (such as MTTR metrics) without specifying products, configurations, or technical implementations."
+  },
+  {
+    "question": "The following requirements were gathered during the customer workshops: For critical transactional database workloads, the solution must provide low-latency and high performance storage to support processing of real-time financial transactions. For all non-critical workloads, the solution must provide the most efficient capacity utilization. Which three design decisions would the architect make to meet the requirements for the workload domain cluster? (Choose three.)",
+    "options": [
+      "Configure vSAN Policies (RAID-1) for all workloads.",
+      "Deploy a vSAN ESA cluster with a minimum of 6 nodes.",
+      "Configure vSAN Policies (RAID-5) for all critical transactional database workloads.",
+      "Configure vSAN Policies (RAID-5/6) for all non-critical workloads.",
+      "Deploy a vSAN OSA (All-NVMe) cluster with a minimum of 4 nodes.",
+      "Configure vSAN Policies (RAID-1) for all critical transactional database workloads."
+    ],
+    "answer": [
+      1,
+      3,
+      5
+    ],
+    "explanation": "Deploying a 6-node vSAN ESA cluster provides high-performance All-NVMe storage. Applying RAID-1 guarantees lowest latency for database workloads, while RAID-5/6 maximizes storage capacity efficiency for non-critical workloads."
+  },
+  {
+    "question": "The architect documented a requirement for 99.95% high availability to meet the customer's resiliency needs. Which two physical design decisions will help meet this requirement in the management domain? (Choose two.)",
+    "options": [
+      "Host Overlay DHCP Scope Lease: 14 Days",
+      "vSAN Cache Tier Sizing: 800GB",
+      "Host isolation response: Power Off and restart VM",
+      "Physical Switch MTU: 9000",
+      "Management Port Group: Route based on physical NIC load"
+    ],
+    "answer": [
+      3,
+      4
+    ],
+    "explanation": "Enabling MTU 9000 (Jumbo Frames) eliminates network packet fragmentation for vSAN and NSX, while configuring 'Route based on physical NIC load' ensures dynamic network redundancy and load distribution."
+  },
+  {
+    "question": "Which type of design would include specific details about server hardware, port connections, or Fibre Channel zones?",
+    "options": [
+      "Logical",
+      "Service",
+      "Conceptual",
+      "Physical"
+    ],
+    "answer": 3,
+    "explanation": "Physical design specifies tangible hardware details, including specific server models, port mappings, cabling, and SAN/Fibre Channel zoning configurations."
+  },
+  {
+    "question": "An architect is tasked to plan for an upgrade of an existing vSphere only deployment utilizing vSAN to VMware Cloud Foundation (VCF). Which three new infrastructure components are required for the upgrade? (Choose three.)",
+    "options": [
+      "SDDC Manager",
+      "VCF Operations",
+      "vSphere Supervisor",
+      "NSX",
+      "VCF Identity Broker"
+    ],
+    "answer": [
+      0,
+      1,
+      3
+    ],
+    "explanation": "Upgrading to VCF introduces SDDC Manager for centralized automated LCM, NSX for software-defined networking, and VCF Operations for comprehensive stack-wide operational management."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF)-based private cloud. During the design requirements gathering workshop, the following information was captured: The solution must capture events from all infrastructure components of the VCF fleet. The solution must provide a single pane of glass management interface for troubleshooting, alerting, and monitoring using metrics, events, and flows. The solution must meet a 99.9% Service Level Agreement for Availability. Which three design decisions should the architect make to meet the stated requirements? (Choose three.)",
+    "options": [
+      "The solution will configure VCF Operations for logs to capture events from only VCF Management components.",
+      "The solution will configure the integration for VCF Operations and VCF Operations for logs.",
+      "The solution will configure the integration for VCF Operations and VCF Automation.",
+      "The solution will deploy VCF Operations for logs in a Simple model.",
+      "The solution will deploy VCF Operations for logs in a High Availability model.",
+      "The solution will configure VCF Operations for logs to capture events from all VCF infrastructure components."
+    ],
+    "answer": [
+      1,
+      4,
+      5
+    ],
+    "explanation": "Integrating VCF Operations with VCF Operations for Logs provides unified metrics and event visibility. Capturing logs from all components ensures completeness, and an HA deployment model guarantees meeting the 99.9% SLA."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: The solution must ensure all components are configured with SSL certificates that have been signed by the corporate Certificate Authority. The solution must ensure that users with administrative access are authenticated through an approved Identity Provider. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Security",
+      "Recoverability",
+      "Manageability",
+      "Availability"
+    ],
+    "answer": 0,
+    "explanation": "Requirements covering signed SSL certificates for encrypted communication and Identity Provider integration for admin authentication fall under the Security design quality."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: The solution must support the monitoring of up to 10,000 objects. The solution must support 24 months retention for all monitoring data. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Manageability",
+      "Availability",
+      "Performance",
+      "Recoverability"
+    ],
+    "answer": 0,
+    "explanation": "Object monitoring capacity and long-term historical data retention directly address operational oversight and administrative capabilities, placing them under Manageability."
+  },
+  {
+    "question": "During a discovery workshop for a VMware Cloud Foundation (VCF) design, the customer provided the following information: Business Units pay for their own compute hardware. Business Units expect exclusive access to their compute hardware. IT Services is expected to maintain and manage all compute infrastructure within a single workload domain. IT Services are expected to design and offer standardized catalog items. Which VCF Automation feature achieves this requirement?",
+    "options": [
+      "Project Constraints",
+      "Cloud Account",
+      "Cloud Zones",
+      "Project-Level Placement Policy"
+    ],
+    "answer": 2,
+    "explanation": "Cloud Zones partition compute resources in VCF Automation, enabling dedicated, isolated hardware allocation to specific business units while keeping infrastructure management centralized."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: The solution must ensure that all workloads running on the platform comply with the Payment Card Industry Data Security Standard (PCI-DSS). When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Recoverability",
+      "Performance",
+      "Security",
+      "Manageability"
+    ],
+    "answer": 2,
+    "explanation": "Mandating adherence to PCI-DSS standards explicitly relates to data protection, encryption, micro-segmentation, and access control, placing it under Security."
+  },
+  {
+    "question": "Which statement would be classified as a functional (business) requirement?",
+    "options": [
+      "The solution must provide the ability for users to view and track the progress of their requests.",
+      "Applications must be designed to tolerate the failure of a single datacenter.",
+      "Third-party pen testing must be executed against the solution yearly with a pass rate of 80 percent or higher.",
+      "The self service catalog must meet the Service Level Objective (SLO) of 75% successful requests measured over a 12 month period."
+    ],
+    "answer": 0,
+    "explanation": "Providing a user-facing feature to view and track request progress defines a specific action/behavior the system must perform, making it a functional requirement."
+  },
+  {
+    "question": "An organization is evacuating their current datacenter and moving all workloads to a new datacenter. The organization has a total of 800 workloads to move, and the migration must be completed with no downtime within a planned change window that is scheduled to occur in four weeks. What migration method will meet the requirements?",
+    "options": [
+      "HCX Replication Assisted vMotion",
+      "Cross vCenter vMotion",
+      "HCX OS Assisted Migration",
+      "HCX Bulk Migration"
+    ],
+    "answer": 0,
+    "explanation": "HCX Replication Assisted vMotion (RAV) bulk-replicates disk data in the background and executes a vMotion cutover, enabling zero-downtime migrations at scale across datacenters."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based private cloud. During the discovery workshops, the following information was captured from key customer stakeholders: The private cloud will operate with three different monitoring levels: For the Self-Managed Service, the solution will be responsible for monitoring the virtual machine construct only. For the OS Managed Service, the solution will be responsible for monitoring operating system level metrics and virtual machine constructs. For the Fully Managed Service, the solution will be responsible for monitoring approved infrastructure applications, operating system level metrics, and virtual machine constructs. The approved infrastructure applications are: Microsoft IIS, Microsoft SQL Server, MySQL, PostgresSQL, Tomcat Server, and Apache HTTPD. For an application team to be able to deploy workloads into the private cloud, each workload must subscribe to a monitoring level at request time or when the service is onboarded. The solution must ensure minimal management overhead for the ongoing management monitoring agents. Which two design decision should the architect make to meet the stated monitoring requirements? (Choose two.)",
+    "options": [
+      "Deploy the Open Source Telegraf Agent for all workloads that subscribe to the Fully Managed service.",
+      "Configure the Service Discovery for all workloads that subscribe to the Self-Managed service.",
+      "Deploy the Managed Telegraf Agent for all workloads that subscribe to the Fully Managed service.",
+      "Deploy the Managed Telegraf Agent for all workloads that subscribe Self-Managed service.",
+      "Deploy the Managed Telegraf Agent for all workloads that subscribe to the OS Managed service."
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explanation": "Deploying the Managed Telegraf Agent through vRealize Operations collects OS-level and application-level metrics while minimizing administrative overhead via automated agent lifecycle management."
+  },
+  {
+    "question": "During a VMware Cloud Foundation (VCF) architectural design workshop, one of the stakeholders made the following comment: 'The company has just used the remaining budget to purchase eight vSAN Ready Nodes for this project.' How would the architect classify this statement within the conceptual model document?",
+    "options": [
+      "Constraint",
+      "Assumption",
+      "Requirement",
+      "Risk"
+    ],
+    "answer": 0,
+    "explanation": "Having already purchased a fixed quantity of specific hardware (eight vSAN Ready Nodes) with no remaining budget represents an unchangeable limitation, or Constraint."
+  },
+  {
+    "question": "A company is deploying a new VMware Cloud Foundation (VCF) environment to support their growing infrastructure requirements. The company is planning to scale their environment over time by adding more workload domains as new applications and departments are onboarded. The company requires that the architecture must be highly scalable and flexible, able to accommodate both current and future demands. They also require a seamless transition when adding new workload domains. Which design decisions should the architect make to meet the stated scalability requirements and facilitate the future growth?",
+    "options": [
+      "Use a single workload domain for all departments and increase the size of the vSphere clusters as the demand grows.",
+      "Use multiple workload domains for each department and ensure that each workload domain is independently scaled.",
+      "Use multiple workload domains for each department but combine them into a single vSphere cluster to reduce complexity.",
+      "Use a single workload domain and rely on storage and network scaling to accommodate future growth."
+    ],
+    "answer": 1,
+    "explanation": "Utilizing dedicated, independently scaled workload domains per department enforces strong logical/physical isolation and allows modular, seamless expansion as demands grow."
+  },
+  {
+    "question": "An architect is planning resources for a new cluster that will be part of an existing workload domain. The new cluster will provide resources for a number of new workloads, including a mission-critical application consisting of five resource-intensive virtual machines. The following requirements were provided for the new cluster: The solution must ensure that the new workload cluster meets the company's availability standard of N+1. The solution must minimize the overall investment in hardware. Which two design recommendations should the architect make to meet the stated requirements? (Choose two.)",
+    "options": [
+      "Use automated placement rules to keep the mission-critical application virtual machines apart.",
+      "Create a cluster with five hosts.",
+      "Use automated placement rules to keep the mission-critical application virtual machines together.",
+      "Use resource pools to prioritise resource for the mission-critical application virtual machines.",
+      "Create a cluster with six hosts."
+    ],
+    "answer": [
+      0,
+      3
+    ],
+    "explanation": "Anti-affinity rules prevent single host failures from downing multiple critical VMs, and resource pools prioritize CPU/RAM resources without requiring excessive host over-provisioning."
+  },
+  {
+    "question": "An architect is designing a private cloud infrastructure based on VMware Cloud Foundation (VCF) for a client. The architect documented the following requirements and constraints from the client. The client has three datacenters, all located within a 1 mile radius of the headquarter campus with high speed LAN connectivity between them. The private cloud must be hosted within the client's on-premise datacenter at their headquarters. The client would like to protect against outages with no data loss in the event of losing a single datacenter. Which design model would meet these requirements and constraints?",
+    "options": [
+      "VCF fleet with fault domains on a stretched cluster model",
+      "VCF fleet with disaster recovery on a single-rack cluster model",
+      "VCF fleet with disaster recovery on a multi-rack cluster model",
+      "VCF fleet with fault domains on a multi-rack cluster model"
+    ],
+    "answer": 0,
+    "explanation": "A vSAN stretched cluster across low-latency datacenters provides synchronous data replication (RPO=0) and automated failover in the event of an entire site outage."
+  },
+  {
+    "question": "An architect is expanding an existing private cloud infrastructure based on VMware Cloud Foundation (VCF). the requirement is to deploy two additional instances of VCF at two separate datacenters within the existing private cloud with minimal additional footprint. Datacenter A is 90 miles from the existing VCF fleet instance with a network round trip time of 90ms. Datacenter B is 120 miles from the existing VCF fleet instance with a network round trip time of 120ms. Which design decision would meet the requirement for this expansion?",
+    "options": [
+      "Deploy two additional VCF instances within the existing VCF fleet, one each in datacenters A and B.",
+      "Deploy an additional VCF fleet in datacenter B and an additional VCF instance within the existing VCF fleet in datacenter A.",
+      "Deploy two additional VCF fleets, one for each VCF instance in datacenters A and B.",
+      "Deploy an additional VCF fleet in datacenter A and an additional VCF instance within the existing VCF fleet in datacenter B."
+    ],
+    "answer": 1,
+    "explanation": "Datacenter A (90ms) leverages existing fleet management to minimize footprint, whereas Datacenter B's high latency (120ms) mandates deploying an independent VCF fleet for stability."
+  },
+  {
+    "question": "Which VMware Cloud Foundation (VCF) Storage Model can be deployed to scale storage capacity independent of compute and network?",
+    "options": [
+      "vSAN Capacity Cluster Model",
+      "vSAN ESA Storage Cluster Model",
+      "vSAN Compute Cluster Storage Model",
+      "vSAN ESA Storage Model"
+    ],
+    "answer": 1,
+    "explanation": "The vSAN ESA Storage Cluster Model disaggregates storage into dedicated storage clusters (usable via vSAN HCI Mesh), allowing storage to scale independently of compute clusters."
+  },
+  {
+    "question": "An architect is gathering business requirements for a new VMware Cloud Foundation (VCF) solution from the customer stakeholders and subject matter experts. Which two factors should the architect discuss with the customer to determine any potential impact on the business requirements? (Choose two.)",
+    "options": [
+      "Service-level agreements (SLAs)",
+      "Product versions",
+      "Storage capacity",
+      "Organizational structure",
+      "Average virtual machine size"
+    ],
+    "answer": [
+      0,
+      3
+    ],
+    "explanation": "Service-level agreements (SLAs) directly dictate resiliency and availability expectations, while Organizational structure influences operational governance, ownership, and multi-tenancy models."
+  },
+  {
+    "question": "An architect is working with an organization on the creation of a new VMware Cloud Foundation (VCF) Private Cloud. The organization has provided the following business objectives they wish to achieve with the new platform: Reduce the operating costs associated with running separate areas of hosting capacity and separate/duplicate systems. Reduce the risks, time and effort associated with managing platforms that are out of vendor support. Reduce the operating costs associated with native public cloud usage. Reduce the risks associated with having incomplete documentation for application inventory and dependency mappings. They have grouped these business objectives into a set of use cases: Migration - Provide a platform that supports the migration of virtualized workloads from existing platforms. Containerization - Provide a platform that supports the deployment of containerized workloads. Centralization and Consolidation - Provide a central private cloud platform accessible to all relevant areas of the business. When considering these objectives and use cases, what should the architect include in the design documentation as a part of the Conceptual Model?",
+    "options": [
+      "A requirement that the solution will provide support for provisioning and managing workloads based on virtualization and containerization technologies.",
+      "A constraint that the solution must be accessible via a HTTPS GUI to all relevant areas of the business.",
+      "A risk that the solution may not support the migration of containerized workloads.",
+      "An assumption that a complete mapping of application dependencies is not available."
+    ],
+    "answer": 0,
+    "explanation": "Defining a high-level requirement for unified virtualization and containerization support directly addresses the core migration, consolidation, and containerization use cases within the Conceptual Model."
+  },
+  {
+    "question": "An organization is designing a VMware Cloud Foundation (VCF) solution hosting a business-critical database. The application owners specified the following requirements: All workload domains will use vSAN for storage. A maximum acceptable data loss of 5 minutes (Recovery Point Objective (RPO)=5 minutes). An automated failover in case of a site outage where Recovery Time Objective should not exceed 30 minutes. The performance impact should be minimized. Which design approach aligns with the application's requirement?",
+    "options": [
+      "Use vSAN stretched cluster.",
+      "Use synchronous replication on the storage array level.",
+      "Use asynchronous replication with snapshots taken every 30 minutes to reduce storage impact.",
+      "Configure backup-based recovery with backup jobs scheduler set to every 30 minutes."
+    ],
+    "answer": 0,
+    "explanation": "A vSAN stretched cluster provides synchronous data mirroring (RPO=0) across sites and automated vSphere HA failover, exceeding the 5-minute RPO and 30-minute RTO targets."
+  },
+  {
+    "question": "An architect is developing a VMware Cloud Foundation (VCF) solution with NSX VPC Full Services Model for single tenant with the following requirement: The configuration must prevent advertisements from being dropped by the BGP loop detection check. When designing the network architecture to support this solution, what element should be considered as part of the physical network design?",
+    "options": [
+      "Use a unique, private BGP AS number for each Tier-0 gateway.",
+      "Configure edge datapath interface to transports only TEP traffic.",
+      "Use iBGP as the routing protocol between the Tier-0 gateway and the physical network.",
+      "Adjust the default BGP timers."
+    ],
+    "answer": 0,
+    "explanation": "Assigning a unique private BGP AS number to each Tier-0 gateway ensures that BGP AS_PATH loop prevention does not discard routes passed through the physical network."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: In the event of a disaster affecting the primary site, all tier 1 production services must be restored to the secondary site within 1 hour. In the event of a disaster affecting the primary site, all tier 3 production services must be restored to the secondary site within 8 hours. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Manageability",
+      "Recoverability",
+      "Availability",
+      "Performance"
+    ],
+    "answer": 1,
+    "explanation": "Setting specific Recovery Time Objectives (RTOs) for restoring services after a site outage classifies directly under Recoverability."
+  },
+  {
+    "question": "Which configuration should the architect recommend as part of the design of a VMware Cloud Foundation (VCF) solution to ensure optimal performance in a multi-tenant environment?",
+    "options": [
+      "Configure all workloads to operate on a single ESXi host to minimize network latency.",
+      "Allow an unlimited number of virtual machines per host to consume all available resources.",
+      "Implement vSAN with tiered storage policies to ensure high I/O performance and low latency for tenant workloads.",
+      "Use a single large datastore for all tenants to simplify management."
+    ],
+    "answer": 2,
+    "explanation": "Tiered storage policies in vSAN allow custom assignment of IOPS, RAID levels, and flash caching to guarantee performance SLAs and prevent noisy-neighbor issues."
+  },
+  {
+    "question": "A financial services company is deploying a VMware Cloud Foundation (VCF)-based solution for its core banking applications. The architect needs to ensure that the design can handle peak transaction loads while maintaining the performance SLA. Which two approaches should be included in the design validation strategy? (Choose two.)",
+    "options": [
+      "Conduct stress testing using representative workloads to evaluate system behavior under extreme load conditions.",
+      "Simulate peak transaction loads in a staging environment to validate resource scalability and vSAN performance.",
+      "Rely on vendor-supplied performance benchmarks that were provided for the selected hardware and validate manually the Live Recovery configuration.",
+      "Perform the live recovery test for the master recovery plan to ensure the Recovery Time Objective (RTO) is within the defined SLA.",
+      "Deploy the solution to production first and optimize based on live performance feedback from end users."
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explanation": "Validating resource scaling in staging under peak load and conducting stress tests under extreme conditions ensure that core banking SLAs are thoroughly verified before production."
+  },
+  {
+    "question": "An architect is tasked with designing a new VMware Cloud Foundation (VCF) solution. During workshops with the customer, the following requirements were captured: REQ01: The solution must provide a self service catalog. REQ02: The solution must support the segregation of the Development and Production resources (networks, virtual machines, users). When documenting the design decisions, which statement should the architect include in order to help meet these requirements?",
+    "options": [
+      "VCF Automation will be configured with separate service catalog instances for Development and Production.",
+      "VCF Automation will be configured with separate organizations for Development and Production.",
+      "Separate workload domains must be configured to provide segregation between the Development and Production environments.",
+      "VCF Automation does not support the use of multiple Active Directory domains."
+    ],
+    "answer": 1,
+    "explanation": "Organizations in Aria/VCF Automation provide distinct multi-tenancy boundaries for user groups, catalogs, and resource provisioning, ensuring segregation of Dev and Prod."
+  },
+  {
+    "question": "An architect is designing a private cloud infrastructure for two departments (HR and Finance) based on VMware Cloud Foundation (VCF) and has been given the following requirements: HR and Finance superusers require access to VCF Operations. VCF Operations access, monitoring, and logging information must not be shared across departments. Which design decision would meet the requirement?",
+    "options": [
+      "Deploy two VCF Fleet instances within the private cloud, one for HR and one for Finance.",
+      "Configure two tenant instance within VCF Operations, one for HR and one for Finance.",
+      "Deploy two VCF Operations instances within a VCF Fleet, one for HR and one for Finance.",
+      "Configure two sets of scopes and index partitions within VCF Operations, one for HR and one for Finance."
+    ],
+    "answer": 2,
+    "explanation": "Deploying separate, dedicated VCF Operations instances for HR and Finance provides complete physical data separation, guaranteeing that superusers cannot view cross-departmental log or metric data."
+  },
+  {
+    "question": "Which statement defines the purpose of Technical Requirements?",
+    "options": [
+      "They define which goals and objectives can be achieved.",
+      "They define how the goals and objectives can be achieved.",
+      "They define what goals and objectives need to be achieved.",
+      "They define which audience need to be involved."
+    ],
+    "answer": 1,
+    "explanation": "Technical requirements translate high-level business goals and functional expectations into concrete implementation parameters, specifying 'how' objectives will be realized."
+  },
+  {
+    "question": "An architect is designing the network model for a new VMware Cloud Foundation (VCF) solution. During the requirements gathering phase, the customer stated that the VCF solution must comply with the organization's security policy for traffic separation. The customer provided the architect with the following information from the policy: The physical network architecture is divided into multiple security zones. Traffic is not permitted to traverse between the zones with the exception of pre-approved monitoring tools. Physical servers may not may connected to multiple zones via a single network interface. Management and Storage traffic must be kept within network zone 1. Workload traffic must be kept within network zone 2. The architect makes a design decision to use two vSphere Distributed Switches per cluster for both the Management and VI Workload domains. Which two additional design decisions should the architect include in the virtual networking design for the separation of traffic between the vSphere Distributed Switches? (Choose two.)",
+    "options": [
+      "Configure one vSphere Distributed Switch for ESX Management, Storage and vMotion traffic.",
+      "Configure one vSphere Distributed Switch for all workload traffic and all NSX - Host and Edge TEP/Edge Uplinks.",
+      "Configure one vSphere Distributed Switch for ESX Management, Storage, vMotion traffic and NSX - Host and Edge TEP/Edge Uplinks.",
+      "Configure one vSphere Distributed Switch for all NSX - Host and Edge TEP/Edge Uplinks.",
+      "Configure one vSphere Distributed Switch for all storage traffic."
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explanation": "Dedicating one vDS to Management, Storage, and vMotion traffic (Zone 1) and a second vDS to Workload and NSX TEP/Uplink traffic (Zone 2) satisfies strict physical and logical traffic separation."
+  },
+  {
+    "question": "The architect documented a requirement for 99.95% high availability to meet the customer's resiliency needs. Which two physical design decisions will help meet this requirement in the management domain? (Choose two.)",
+    "options": [
+      "Configure vCenter HA for the management domain vCenter server.",
+      "Advanced Cluster Setting: das.iostatsinterval = 0",
+      "Set the restart priority policy for the vCenter Server appliance to high.",
+      "ESX Host Uplink Setting: EtherChannel = Enable",
+      "ESX Host Uplink Setting: EtherChannel = Disable"
+    ],
+    "answer": [
+      0,
+      2
+    ],
+    "explanation": "Configuring vCenter HA protects against active vCenter application failures, and assigning High restart priority in vSphere HA guarantees rapid recovery during host outages."
+  },
+  {
+    "question": "An architect is designing for a VMware Cloud Foundation (VCF) Instance. The following requirements and constraints were documented. The management domain cluster utilizes vSAN stretched as the principal storage. Company policy states that compute and storage capacity utilization must not exceed 90% at all times. Which three statements should the architect consider when designing the solution to satisfy the requirements? (Choose three.)",
+    "options": [
+      "Use a heterogenous cluster configuration.",
+      "Size and monitor the cluster for a maximum compute peak utilization of < 45%.",
+      "Size and monitor the cluster for a maximum storage utilization of 90%.",
+      "Size and monitor the cluster for a maximum compute peak utilization of < 90%.",
+      "Size and monitor the cluster for a maximum storage utilization of 40%.",
+      "Use a homogenous cluster configuration."
+    ],
+    "answer": [
+      2,
+      3,
+      5
+    ],
+    "explanation": "VCF design standards mandate homogenous host configurations, and sizing parameters must ensure both compute and storage utilization remain strictly below the mandated 90% limit."
+  },
+  {
+    "question": "A cloud architect is designing a VMware Cloud Foundation (VCF) Automation solution for an organization. The design must fulfill the following requirements: The design must minimize provider infrastructure lifecycle tasks. The design must minimize infrastructure management overhead. Each tenant must have isolated compute infrastructure. Which of the following deployment models best meets these requirements?",
+    "options": [
+      "Dedicated VCF instances per tenant in a Standard Architecture",
+      "Single VCF instance with dedicated Workload Domains per tenant",
+      "Consolidated VCF deployment per tenant",
+      "Shared Workload Domain for tenants"
+    ],
+    "answer": 1,
+    "explanation": "A single VCF instance centralizes lifecycle management through one SDDC Manager, while dedicated Workload Domains ensure isolated compute infrastructure per tenant."
+  },
+  {
+    "question": "During an initial design workshop with stakeholders, an Architect was provided with an overview of the current state and other information required to proceed to the design phase: Business requirements indicated support for operations of a different business unit. A multi-tenancy statement should be documented. As a result, the Architect makes the decision to enable multi-tenancy within VCF Automation. A combination of which two design implications would also need to be documented? (Choose two.)",
+    "options": [
+      "All Tenants must use a single VCF Automation Orchestrator instance.",
+      "The Provider Tenant must use the embedded VCF Orchestrator instance.",
+      "The Provider Tenant must use an external VCF Orchestrator instance.",
+      "Each Tenant must use an Embedded VCF Automation Orchestrator instance.",
+      "Each Tenant must use an External VCF Automation Orchestrator instance."
+    ],
+    "answer": [
+      0,
+      1
+    ],
+    "explanation": "Multi-tenant VCF Automation utilizes a single shared Orchestrator endpoint for executing workflows across tenants, and the Provider Tenant uses the embedded Orchestrator for core platform tasks."
+  },
+  {
+    "question": "During an initial design workshop with stakeholders, an Architect was provided with an overview of the current state and other information required to proceed to the design phase. Which statement should be documented as a requirement?",
+    "options": [
+      "Existing storage arrays provide sufficient capacity for building the environment.",
+      "The customer network team is not trained to support NSX VPC.",
+      "Existing shared storage array must be used.",
+      "Block-based storage must be used within a workload domain."
+    ],
+    "answer": 2,
+    "explanation": "'Existing shared storage array must be used' represents a definitive, non-negotiable directive (requirement) that directly conditions the storage architecture."
+  },
+  {
+    "question": "During an initial design workshop with stakeholders, the architect was provided with an overview of the current state and other information required to proceed to the design phase. The architect has assumed that the solution will need to support high availability for workloads. Given the assumption, which statement should the architect document as a risk?",
+    "options": [
+      "The entire infrastructure is hosted on a single physical site.",
+      "The solution supports the separation of management components from production workloads.",
+      "The solution supports a recovery point objective (RPO) of 24 hours for infrastructure components.",
+      "BGP is the dynamic routing protocol on the physical fabric and cannot be changed."
+    ],
+    "answer": 0,
+    "explanation": "Hosting the entire infrastructure at a single physical site creates a single point of failure against site-wide disasters, posing a significant risk to high availability goals."
+  },
+  {
+    "question": "During a design workshop, the cloud architect captured the following constraint and requirement: CON-001: The customer's existing stretched cluster model will be used. REQ-001: The design must minimize management infrastructure downtime. Which Supervisor deployment model supports the design constraint and requirement?",
+    "options": [
+      "Three Management Zone Supervisor deployment with High Availability control plane",
+      "Single Management Zone Supervisor deployment with High Availability control plane",
+      "Single Management Zone Supervisor deployment with Simple Availability control plane",
+      "Three Management Zone deployment with Simple Availability control plane"
+    ],
+    "answer": 1,
+    "explanation": "Deploying a single Management Zone fits the stretched cluster structure, while a High Availability control plane provides control plane VM redundancy to minimize downtime."
+  },
+  {
+    "question": "As part of an initial stakeholder meeting, one of the stakeholders has stated the following: According to the hardware standards, all new host server hardware must be deployed using our selected hardware vendor and server model. How would the architect classify this statement?",
+    "options": [
+      "A risk",
+      "A requirement",
+      "A constraint",
+      "An assumption"
+    ],
+    "answer": 2,
+    "explanation": "Mandating a pre-selected vendor and server model restricts design flexibility and defines a fixed boundary, which is classified as a Constraint."
+  },
+  {
+    "question": "A large financial institution is designing a VMware Cloud Foundation (VCF) solution. During the initial discovery meetings, the customer detailed the following requirements: Management of the physical network environment is handled by an outsourced team. The VMware Administration team cannot re-configure the physical network. All hosts must use Link Aggregation. The storage environment is disaggregated. NFS will be used as principal storage. The customer provided the bill-of-materials for the physical servers that are being purchased. Each server will have four 25 GbE physical NICs, with two connected to the network fabric for Management, vMotion, and virtual machine traffic. The other two NICs will be connected to the storage fabric hosting the NFS server. How does the information provided impact the overall design?",
+    "options": [
+      "Link Aggregation cannot be used in the Workload Domain.",
+      "NIC teaming for Virtual Standard Switch (vSS) must be configured.",
+      "Multiple Link Aggregation Groups are not supported.",
+      "Link Aggregation cannot be used in the Management Domain."
+    ],
+    "answer": 2,
+    "explanation": "A vSphere Distributed Switch supports only one LACP LAG group per switch. Attempting to create separate LAGs on the same host for network and storage fabrics violates this single-LAG limit."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: The solution must support running 50,000 workloads concurrently across all sites. The solution must support the concurrent deployment of up to 10 workloads. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Performance",
+      "Availability",
+      "Recoverability",
+      "Manageability"
+    ],
+    "answer": 0,
+    "explanation": "Workload scale targets (50,000 active workloads) and concurrent provisioning speed directly measure system throughput, capacity, and responsiveness under load, classifying them under Performance."
+  },
+  {
+    "question": "During the design workshop, the customer stated the following requirement: The solution will support secure communication. Which design decision should be included in the logical design for the workload domain?",
+    "options": [
+      "Set promiscuous mode port group security policy to reject.",
+      "Ensure the host servers have TPM 2.0 hardware.",
+      "Verify all physical components used for the deployments are on the hardware compatibility list.",
+      "Use a SHA-2 algorithm or higher for signed certificates."
+    ],
+    "answer": 3,
+    "explanation": "Using SHA-2 or higher for digital certificates ensures strong cryptographic signature verification and communication channel integrity across all VCF services."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) solution. The following information has been provided by the customer: Due to budget constraints, the solution must utilize the existing server hardware. The existing server hardware consists of server models from the same vendor but different generations. There are four servers available for use in this solution. What design decision should the architect make for the lifecycle management of the solution based on this information?",
+    "options": [
+      "Use vSphere Lifecycle Manager baselines for the management domain cluster.",
+      "Use a single vSphere Lifecycle Manager composite image for the management and workload domain clusters.",
+      "Use separate vSphere Lifecycle Manager images for the management and workload domain clusters.",
+      "Use a single vSphere Lifecycle Manager composite image for the management domain cluster."
+    ],
+    "answer": 3,
+    "explanation": "With only 4 servers available, all servers belong to the Management Domain. Using a single vLCM composite image enforces desired-state declarative lifecycle management for the cluster."
+  },
+  {
+    "question": "As a part of designing the VMware Cloud Foundation (VCF) Operations deployment, the architect must ensure that VCF Operations is capable of monitoring the customer's infrastructure made up of a central datacenter and multiple remote sites in different countries. During a design workshop, the following requirements were identified: REQ-001: Corporate IT users must be able to review performance, alerts, and capacity details from a single management point. REQ-002: The monitoring solution must support local data collection at remote sites to prevent data loss from unstable WAN connections. REQ-003: The monitoring solution must comply with local data sovereignty regulations. Which deployment model fulfills all design requirements?",
+    "options": [
+      "A single fleet with multiple VCF instances.",
+      "All remote sites will be a single VCF fleet.",
+      "Single VCF fleet with Cloud Proxies in each remote site.",
+      "Each remote site will be it's own VCF fleet."
+    ],
+    "answer": 2,
+    "explanation": "A central VCF Operations fleet provides a single pane of glass, while local Cloud Proxies handle local data collection, WAN outage buffering, and compliance with data sovereignty regulations."
+  },
+  {
+    "question": "An architect is documenting the design for a new VMware Cloud Foundation (VCF) solution and makes the following design decision: Two vSphere clusters will be deployed within the single VI workload domain. What statement should the architect include as an implication of this design decision?",
+    "options": [
+      "Deploying multiple clusters within the single VI workload domain meets the requirement to segregate Production and Development workloads.",
+      "All clusters within the single VI workload domain must use vSAN as their principal storage type.",
+      "If the solution needs to be scaled at a future date, additional VI workload domains can be deployed.",
+      "Deploying multiple clusters in the single VI workload domain reduces the number of vCenter Server instances that must be managed."
+    ],
+    "answer": 3,
+    "explanation": "Because a single Workload Domain is managed by one dedicated vCenter Server, placing multiple clusters within that same domain avoids deploying additional vCenter Server appliances."
+  },
+  {
+    "question": "An architect has compiled a list of design choices following a design workshop with the business stakeholders. Which statement represents a logical design decision?",
+    "options": [
+      "Synchronous data replication will be used to meet the stated Recovery Point Objective (RPO) between site A and B.",
+      "Users must connect to the application servers via a shared Global Load Balancer.",
+      "Sites A and B will each have a /16 subnet for their networks.",
+      "Users must experience application availability in under 2 seconds."
+    ],
+    "answer": 0,
+    "explanation": "A logical design decision translates business requirements (RPO=0) into architectural mechanisms (synchronous data replication) without specifying low-level vendor products or physical hardware configurations."
+  },
+  {
+    "question": "An architect is working on a VMware Cloud Foundation (VCF) architecture design and identified the following requirements: The organization is using a third-party virtual appliance that does not support overlay networks. The virtual appliance must reside on the same L2 domain as an external physical firewall. The virtual appliance also needs access to workloads that are currently hosted on overlay segments provided by NSX. Which design decision should the architect make to meet these requirements?",
+    "options": [
+      "Place the virtual appliance and all workloads on VLAN-backed segments.",
+      "Connect the virtual appliance to a VLAN-backed segment and configure NSX bridging to allow access to overlay segments.",
+      "Request the third-party vendor to certify the virtual appliance for NSX Overlay segments.",
+      "Connect the virtual appliance to an overlay-backed segment and use static routes to the firewall."
+    ],
+    "answer": 1,
+    "explanation": "Connecting the appliance to a VLAN-backed segment satisfies its non-overlay requirement, and NSX L2 bridging extends connectivity seamlessly between the VLAN and NSX overlay segments."
+  },
+  {
+    "question": "Why would an architect specify the default NSX segment profiles in a VMware Cloud Foundation (VCF) design?",
+    "options": [
+      "Default segment profiles provide sufficient security and operational baseline settings for most common workloads and simplify lifecycle management.",
+      "Default segment profiles offer enhanced performance and are automatically optimized for overlay traffic.",
+      "Default segment profiles enable distributed firewall policy enforcement and avoid the need for overlay segments.",
+      "Default segment profiles are required for VLAN-backed segments and cannot be overridden."
+    ],
+    "answer": 0,
+    "explanation": "Default segment profiles provide baseline operational and security configurations that simplify platform updates, lifecycle management, and standardization."
+  },
+  {
+    "question": "During a requirements gathering workshop, several business and technical requirements were captured from the customer. Which requirement will be classified as a Business Requirement?",
+    "options": [
+      "The solution must provide a component-level SLA of 99.9% or higher.",
+      "The solution must provide the best end-user experience.",
+      "The solution must allow the migration of legacy server infrastructure.",
+      "The solution must consider security and resiliency to ensure business continuity."
+    ],
+    "answer": 1,
+    "explanation": "Delivering 'the best end-user experience' articulates a high-level qualitative outcome focused on productivity and satisfaction, which is classified as a Business Requirement."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF) Private Cloud. During a requirements gathering workshop with key customer stakeholders, the following information was captured: The service catalog solution must meet a minimum availability SLA of 99.9%. The performance of the service catalog solution must not be impacted by maintenance activities or a single physical ESX host failure. During the logical design phase of the project, the following design decisions were made: The solution will deploy VCF Automation using the highly available deployment model. Which two corresponding physical design decisions should the architect make to meet the stated requirements? (Choose two.)",
+    "options": [
+      "The solution will deploy three VCF Automation appliances using the small size.",
+      "The solution will configure the external load balancer to send all traffic to the native Kubernetes load balancer.",
+      "The solution will create a VM-host affinity rule to ensure all nodes of the VCF Automation cluster are located on the same ESX host.",
+      "The solution will deploy an external load balancer to replace the native load balancer.",
+      "The solution will create a VM-host anti-affinity rule to ensure all nodes of the VCF Automation cluster are located on different ESX hosts."
+    ],
+    "answer": [
+      1,
+      4
+    ],
+    "explanation": "VM-host anti-affinity prevents single host outages from taking down multiple VCF Automation nodes, and an external load balancer routing to the Kubernetes ingress ensures high availability and non-disruptive maintenance."
+  },
+  {
+    "question": "A customer has a new initiative to build a private cloud based on VMware Cloud Foundation (VCF). The customer technical team is presenting an overview of the current state of the infrastructure as well as describing what the expectations are for the private cloud. Based on the notes captured by the architect, which statement should be documented as a constraint?",
+    "options": [
+      "The design must address security zone requirements for management, production, dev/test, and QA workloads.",
+      "The existing storage is out of hardware vendor maintenance.",
+      "No funding exists for a new storage array. Therefore, existing storage hardware must be used.",
+      "The design must provide a centralized management console to manage both data centers."
+    ],
+    "answer": 2,
+    "explanation": "A complete lack of budget forcing the mandatory reuse of existing storage hardware is a clear financial and technical Constraint."
+  },
+  {
+    "question": "An architect is drafting a design document in preparation for the deployment of a new VMware Cloud Foundation (VCF) solution. To minimize costs, the customer has asked that the VCF solution utilize existing the vSphere infrastructure. The customer has migrated all virtual machines off this infrastructure in preparation for the deployment of VCF. The following information has been provided about the existing vSphere infrastructure: •There are three separate vSphere clusters, each consisting of five hosts. •All networking is vSphere based, with a vSphere Distributed Switch (vDS) configured per vSphere cluster. •All clusters use NFSv3 for shared storage. •A single vCenter manages the three vSphere clusters. Based on this information, the architect makes a decision to create a new VCF fleet with a single VCF instance. What design implication should the architect document for this decision?",
+    "options": [
+      "NSX will be automatically deployed during the creation of the VCF fleet.",
+      "The ESX hosts will be converted to use vSphere Lifecycle Manager baselines during the creation of the VCF fleet.",
+      "The vCenter VM must be migrated to a standalone host before the creation of the VCF fleet..",
+      "The clusters will be automatically configured to use vSAN storage before the creation of the VCF fleet."
+    ],
+    "answer": 2,
+    "explanation": "During VCF Management Domain bring-up, newly provisioned hosts must be unmanaged by existing vCenters, requiring the legacy vCenter VM to be moved to a standalone host."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) deployment to meet the following design requirements: •Tenants need dedicated external network access. •The number of NSX Edge clusters should be minimized. To fulfill these requirements, the architect made a design decision to use a Workload Networking VPC with Full Services Model. Which additional design decision should be considered by the architect as part of the logical network design to fulfill these requirements?",
+    "options": [
+      "Use NSX Federation providing a dedicated NSX instance for each tenant.",
+      "Deploy the maximum number of 10 NSX Edges into a single Edge cluster.",
+      "Use Virtual Routing and Forwarding (VRF) lite to create a separate VRF Tier-0 Gateway for each tenant.",
+      "Install two NSX bare metal Edges with multiple physical interfaces to separate tenants."
+    ],
+    "answer": 2,
+    "explanation": "VRF-lite allows multiple isolated routing tables (per tenant) on a single Tier-0 gateway, minimizing Edge clusters while offering dedicated external routing domains."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: •The solution must support a yearly workload growth of up to 10%. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Performance",
+      "Manageability",
+      "Security",
+      "Availability"
+    ],
+    "answer": 0,
+    "explanation": "Accommodating projected growth metrics and system throughput scaling over time classifies directly under Performance (Scalability)."
+  },
+  {
+    "question": "A customer is deploying VMware Cloud Foundation (VCF) in an enterprise environment. During a series of workshops with stakeholders, the following requirements were identified: •The network solution must be capable of complete logical isolation. •The network solution must be capable of supporting independent upgrade cycles for network stacks. •The network solution must be capable of tenant-specific customization of NSX configurations. The architect has made the following design decisions: •The solution will consist of a single VCF instance. •The solution will include a management domain and two workload domains. Based on the scenario, which additional design decision meets all of the stated requirements?",
+    "options": [
+      "Deploy NSX only in the management domain and use VLAN-backed segments in the workload domains.",
+      "Deploy a dedicated NSX instance per workload domain.",
+      "Use a shared NSX instance across both workload domains.",
+      "Use a global NSX Federation configuration across workload domains."
+    ],
+    "answer": 1,
+    "explanation": "A dedicated NSX instance per workload domain delivers complete control-plane and data-plane isolation, independent NSX upgrade schedules, and unconstrained tenant customizations."
+  },
+  {
+    "question": "An architect is responsible for the design of a new VMware Cloud Foundation (VCF)-based private cloud solution. During a requirements gathering workshop, key stakeholders provided the following requirement: •The solution must identify any configuration changes made to the Management Infrastructure every 30 days. Which three design decisions should the architect make to meet the stated requirements? (Choose three.)",
+    "options": [
+      "Schedule Configuration Drift to Check the configuration every 30 days.",
+      "Configure a Configuration Template for the Management Cluster.",
+      "Schedule Configuration Drift to Remediate the configuration every 30 days.",
+      "Create a Configuration Template for the Management NSX Manager.",
+      "Configure a Configuration Template for the Management vCenter.",
+      "Configure Host Profiles for the Workload Domain."
+    ],
+    "answer": [
+      0,
+      3,
+      4
+    ],
+    "explanation": "Creating Configuration Templates for core management components (vCenter, NSX Manager) sets the baseline, and scheduling 30-day Configuration Drift checks automatically detects deviations."
+  },
+  {
+    "question": "During the design workshop, the customer stated the following requirement: •The solution must comply with the organization's security standards. Which two design decisions should be included in the logical design for the workload domain? (Choose two.)",
+    "options": [
+      "Use an SHA-2 algorithm or higher when signing certificates.",
+      "Enable Inter-SR IBGP routing.",
+      "Use large-size NSX Edge virtual appliances to account for the additional firewall rules.",
+      "Enable VM Monitoring for each workload within the cluster.",
+      "Establish an operations practice to capture and update the thumbprint of the NSX Local Manager certificate on the NSX Global Manager every time the certificate is updated."
+    ],
+    "answer": [
+      0,
+      4
+    ],
+    "explanation": "Mandating SHA-2 or higher for certificates ensures strong cryptographic signatures, and managing NSX Local/Global Manager certificate thumbprints maintains secure inter-manager trust."
+  },
+  {
+    "question": "During a design workshop, the security team provides the following requirement for the VMware Cloud Foundation (VCF) Automation deployment: •All Virtual Machine images must be reviewed and vetted by the security team prior to consumption. Which Content Library type supports the requirement?",
+    "options": [
+      "Local Content Library",
+      "Tenant-managed Content Library",
+      "Subscribed Content Library",
+      "Provider-managed Content Library"
+    ],
+    "answer": 3,
+    "explanation": "A Provider-managed Content Library allows central IT and security teams to vet, approve, and publish standardized VM images before distributing them to tenant subscriptions."
+  },
+  {
+    "question": "An architect is designing for a greenfield VMware Cloud Foundation (VCF) solution. This would be the first VCF Fleet in the VCF solution, and the customer would like to start with a minimal footprint with the option to scale up and out later. Which VCF Operations deployment model should the architect choose?",
+    "options": [
+      "Simple",
+      "High Availability",
+      "Standard",
+      "Advanced"
+    ],
+    "answer": 0,
+    "explanation": "The 'Simple' deployment model minimizes initial host resource overhead by consolidating core management components, allowing for easy scale-up/scale-out later."
+  },
+  {
+    "question": "As part of an initial stakeholder meeting, one of the stakeholders has stated the following: The initial design must be completed within the next 3 months so that hardware can be ordered within the current budget cycle. How would the architect classify and record this statement?",
+    "options": [
+      "An assumption",
+      "A risk",
+      "A requirement",
+      "A constraint"
+    ],
+    "answer": 3,
+    "explanation": "A fixed deadline tied to budget cycles dictates strict project time and financial boundaries, which is recorded as a Constraint."
+  },
+  {
+    "question": "An architect is responsible for designing a new VMware Cloud Foundation (VCF)-based Private Cloud solution. During the requirements gathering workshop with key customer stakeholders, the following information was captured: •The solution must ensure all components meet a software version of N-1. When creating the design document, which design quality should be used to classify the stated requirements?",
+    "options": [
+      "Security",
+      "Availability",
+      "Manageability",
+      "Recoverability"
+    ],
+    "answer": 2,
+    "explanation": "Adopting an N-1 software release policy optimizes operational lifecycle management, update predictability, and component stability, falling under Manageability."
+  },
+  {
+    "question": "Which two VCF components are replicated across availability zones in a VMware Cloud Foundation (VCF) Fleet with Disaster Recovery model design with two availability zones? (Choose two.)",
+    "options": [
+      "SDDC Manager",
+      "VCF Operations",
+      "VCF Automation",
+      "vCenter",
+      "NSX"
+    ],
+    "answer": [
+      3,
+      4
+    ],
+    "explanation": "vCenter (via vCHA) and NSX (via Federation/Global Manager) provide continuous availability and consistent policy enforcement across multi-AZ disaster recovery topologies."
+  },
+  {
+    "question": "An architect has been tasked with designing a new VMware Cloud Foundation (VCF) solution. During the requirements gathering workshops with the customer, the following requirements were captured: •REQ01: The solution must support workloads being deployed to multiple physical datacenter locations (DC01, DC02). •REQ02: The solution must support the use of the two factor authentication for authenticating user access to the administrative tools. •REQ03: The solution must prioritize reducing the operational overhead associated with managing the deployed infrastructure platform. A combination of which two design decisions should the architect document for the VCF Single Sign-On architecture in order to meet these requirements? (Choose two.)",
+    "options": [
+      "Deploy VCF Identity Broker (VIDB) in the management domain of every VCF instance in all sites.",
+      "Configure all additional VCF instances in the same region to point to the VIDB in the first VCF instance at DC02.",
+      "Configure all additional VCF instances in the same private cloud to point to the VIDB in the first VCF instance at DC01.",
+      "Deploy VCF Identity Broker (VIDB) in the management domain of each VCF instance at DC02.",
+      "Deploy VCF Identity Broker (VIDB) in the first VCF instance management domain at DC01."
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explanation": "Deploying VIDB once at DC01 and pointing all subsequent VCF instances to it centralizes identity/2FA configuration and significantly minimizes operational management overhead."
+  },
+  {
+    "question": "A VMware Cloud Foundation (VCF) architect is planning for the expansion of an existing VCF instance. The existing VCF instance is deployed with a single workload domain. The number of ESX hosts has grown to the maximum number the existing vCenter can support. Which design decision would the architect need to make to allow the existing VCF Instance to add more ESX hosts?",
+    "options": [
+      "Deploy a second VCF Instance within the existing VCF Fleet.",
+      "Deploy a second vCenter server appliance within the existing workload domain.",
+      "Deploy a second cluster within the existing vCenter.",
+      "Deploy a second workload domain within the existing VCF Instance."
+    ],
+    "answer": 3,
+    "explanation": "Deploying a new Workload Domain provisions a dedicated vCenter Server instance, bypassing single-vCenter host limits while keeping infrastructure managed by SDDC Manager."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF)-based solution for a customer. During a discovery workshop, the following requirements were stated by the customer: •All applications/workloads designated as business critical have a Recovery Point Objective (RPO) of 1 business hour. •The infrastructure components of the VCF solution must have a Recovery Time Objective (RTO) of 4 business hours. In the context provided, what does the RTO determine?",
+    "options": [
+      "The maximum tolerable amount of time allowed before an application/service should be recovered to a useable state",
+      "The minimum tolerable amount of time allowed before an application/service should be recovered to a useable state",
+      "The maximum amount of data loss that can be tolerated",
+      "The minimum amount of data loss that can be tolerated"
+    ],
+    "answer": 0,
+    "explanation": "Recovery Time Objective (RTO) specifies the maximum acceptable duration of service interruption following an outage before complete restoration."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) fleet. The following information has been provided by the customer: •Due to budget constraints, the solution must utilize the existing server hardware. •The existing server hardware consists of server models from the same vendor but different generations. •There are ten servers available for use in this solution. •Management and Business workloads should be hosted in different clusters. What design decision should the architect make for the lifecycle management of the solution based on this information?",
+    "options": [
+      "Use a single vSphere Lifecycle Manager composite image for the management and workload domain clusters.",
+      "Use vSphere Lifecycle Manager baselines for the management domain cluster.",
+      "Use separate vSphere Lifecycle Manager composite images for the management and workload domain clusters.",
+      "Use a single vSphere Lifecycle Manager composite image for the management domain cluster."
+    ],
+    "answer": 2,
+    "explanation": "Creating separate vLCM composite images for management and workload clusters accommodates different hardware generations, ensuring specific driver/firmware compatibility per cluster."
+  },
+  {
+    "question": "An architect has been tasked with designing a new VMware Cloud Foundation (VCF) solution. The following design decisions were documented after requirements gathering workshops with the customer: •Deploy a VCF Fleet into each of the DC1 and DC2 datacenters. •Deploy two VCF instances (VCF1 and VCF2) into each VCF Fleet. •Use the existing, supported third-party solution to provide Multifactor Authentication (MFA) for users accessing the VCF components. The architect also documented the following information from the workshops: •The customer wants to minimize the risk of a single operational task performed by an administrator impacting multiple components. •The customer wants to avoid single points of failure by using high availability architectures. Which two design decisions should the architect include for the authentication approach based on the information provided? (Choose two.)",
+    "options": [
+      "Deploy a shared VCF Identity Broker for all VCF instances within a VCF Fleet.",
+      "Deploy a shared VCF Identity Broker for all VCF instances across all VCF Fleets.",
+      "Use the external VCF Identity Broker model.",
+      "Use the embedded VCF Identity Broker model.",
+      "Deploy a dedicated VCF Identity Broker for each VCF instance within a VCF Fleet."
+    ],
+    "answer": [
+      2,
+      4
+    ],
+    "explanation": "Utilizing external Identity Brokers allows independent MFA integration, and deploying dedicated Identity Brokers per VCF instance minimizes the administrative blast radius."
+  },
+  {
+    "question": "A large financial institution is designing a VMware Cloud Foundation (VCF) solution. During the initial discovery meetings, the customer detailed the following requirements •Management of the physical network environment is handled by an outsourced team. •The VMware Administration team cannot re-configure the physical network. •The environment is configured to use Link Aggregation. How does the information provided impact the overall design?",
+    "options": [
+      "NIC teaming for Virtual Standard Switch (vSS) must be configured.",
+      "LACP failback must be configured.",
+      "Link Aggregation cannot be used in the Management Domain.",
+      "Link Aggregation cannot be used for Workload Domains."
+    ],
+    "answer": 2,
+    "explanation": "Initial VCF Management Domain bring-up uses vSphere Standard Switches (vSS), which do not support LACP/Link Aggregation."
+  },
+  {
+    "question": "Which statement would the architect document as a design decision within the logical design?",
+    "options": [
+      "vSphere High Availability (HA) will be enabled.",
+      "The VMware Distributed Resource Scheduler (DRS) latency sensitivity value will be set to high for the workload cluster.",
+      "Service Levels will align with the defined Business Impact Analysis findings.",
+      "The solution must provide the ability to patch an existing template."
+    ],
+    "answer": 0,
+    "explanation": "Enabling vSphere HA defines a high-level architectural decision for automated VM failover and cluster resilience within the logical design."
+  },
+  {
+    "question": "An architect is designing a VMware Cloud Foundation (VCF) solution for an organization. The organization mandates that all workload domains must utilize external storage arrays using Fiber Channel (FC). Which design decision should the architect document regarding the principal storage type for the workload domain clusters?",
+    "options": [
+      "vSAN must be configured as principal storage for all workload domain clusters.",
+      "VMFS on FC must be configured as principal storage for workload domain clusters.",
+      "NFSv3 must be configured as principal storage for all workload domain clusters.",
+      "vVols on NVMe-oF must be configured as principal storage for workload domain clusters."
+    ],
+    "answer": 1,
+    "explanation": "VCF supports VMFS on Fibre Channel (FC) as principal storage for VI Workload Domains, meeting the external FC array mandate."
+  },
+  {
+    "question": "An architect is reviewing a VMware Cloud Foundation (VCF) design and notices that the management domain and workload domains are deployed on the same physical rack. What type of model is being implemented?",
+    "options": [
+      "Consolidated Architecture Model",
+      "Standard Architecture Model",
+      "Stretched Cluster Architecture Model",
+      "Remote Office Architecture Model"
+    ],
+    "answer": 0,
+    "explanation": "In a Consolidated Architecture Model, VCF management components and tenant workloads run co-located within the same vSphere cluster/rack."
+  },
+  {
+    "question": "An organization requires that all network traffic between tenant workloads across different ESXi hosts must be encrypted. Which feature should the architect include in the NSX design?",
+    "options": [
+      "MACsec on physical switches",
+      "NSX IPsec VPN",
+      "NSX Geneve Encryption",
+      "TLS 1.3 on Edge Gateways"
+    ],
+    "answer": 2,
+    "explanation": "NSX Geneve Encryption enables in-flight encryption of overlay traffic traversing between ESXi hosts at the Geneve tunnel layer."
+  },
+  {
+    "question": "An architect is designing a multi-site VCF solution. The customer requires that all management virtual machines have continuous availability with seamless zero-downtime failover across sites. What network and storage design choice fulfills this requirement?",
+    "options": [
+      "vSAN Stretched Cluster with Layer 2 Stretched Management Network",
+      "vSphere Replication with Site Recovery Manager",
+      "NSX Federation with Active-Passive Tier-0 Gateways",
+      "HCX Bulk Migration with Stretched L2"
+    ],
+    "answer": 0,
+    "explanation": "A vSAN stretched cluster combined with a stretched L2 network provides active-active synchronous mirroring and zero-downtime vSphere HA failover across sites."
+  },
+  {
+    "question": "During a design workshop, a stakeholder states: 'The system must support automated provisioning of vSphere virtual machines within 10 minutes of request submission.' How should this statement be classified?",
+    "options": [
+      "Business Requirement",
+      "Functional Requirement",
+      "Non-Functional Requirement",
+      "Constraint"
+    ],
+    "answer": 1,
+    "explanation": "A statement specifying a concrete automated action that the system must perform (automated VM provisioning) within a timeframe is a Functional Requirement."
+  },
+  {
+    "question": "An architect is designing the networking for a VCF deployment. The network team specifies that BGP dynamic routing must be established between the NSX Tier-0 Gateways and top-of-rack (ToR) physical switches. Which protocol configuration is required?",
+    "options": [
+      "eBGP with unique Autonomous System (AS) numbers for NSX Tier-0 and ToR switches",
+      "iBGP with identical AS numbers across all Tier-1 and Tier-0 gateways",
+      "OSPF Area 0 configured on Edge datapath interfaces",
+      "Static routing with BFD enabled on physical links"
+    ],
+    "answer": 0,
+    "explanation": "Peering Tier-0 gateways with physical ToR switches via eBGP using distinct AS numbers is the standard design for dynamic route exchange and loop prevention."
+  },
+  {
+    "question": "An architect is responsible for designing a VMware Cloud Foundation (VCF) private cloud. The customer requires that security rules enforce isolation between individual virtual machine interfaces, even when VMs reside on the same Layer 2 segment. Which NSX capability satisfies this requirement?",
+    "options": [
+      "NSX Distributed Firewall (DFW)",
+      "NSX Gateway Firewall",
+      "NSX Edge Firewall",
+      "Distributed IDS/IPS"
+    ],
+    "answer": 0,
+    "explanation": "NSX Distributed Firewall operates directly at the VM vNIC layer, providing micro-segmentation between VMs on the same L2 segment."
+  },
+  {
+    "question": "An organization mandates that all ESXi hosts within a VCF workload domain must enforce strict boot integrity and attestation. Which physical hardware component must be included in the server bill of materials?",
+    "options": [
+      "TPM 2.0 Chip",
+      "Dual Redundant SD Cards",
+      "NVMe Cache Drive",
+      "Hardware RAID Controller"
+    ],
+    "answer": 0,
+    "explanation": "TPM 2.0 chips enable ESXi Secure Boot and host attestation in vCenter Server, ensuring hypervisor integrity."
+  },
+  {
+    "question": "An architect is planning a VCF deployment for a customer with 12 ESXi hosts. The customer wants to separate management workloads from business workloads using the Standard Architecture model. What is the minimum host distribution required?",
+    "options": [
+      "4 hosts for Management Domain, 8 hosts for VI Workload Domain",
+      "2 hosts for Management Domain, 10 hosts for VI Workload Domain",
+      "3 hosts for Management Domain, 9 hosts for VI Workload Domain",
+      "6 hosts for Management Domain, 6 hosts for VI Workload Domain"
+    ],
+    "answer": 0,
+    "explanation": "VCF Standard Architecture requires a minimum of 4 hosts for the Management Domain cluster (for vSAN quorum), leaving 8 hosts for the Workload Domain."
+  },
+  {
+    "question": "Which component in VMware Cloud Foundation is directly responsible for orchestrating end-to-end automated patch and upgrade workflows across vSphere, NSX, and vSAN?",
+    "options": [
+      "SDDC Manager",
+      "vSphere Lifecycle Manager (vLCM)",
+      "VCF Operations",
+      "vCenter Server"
+    ],
+    "answer": 0,
+    "explanation": "SDDC Manager coordinates and automates the full-stack lifecycle management (patching/upgrading) for vSphere, vSAN, and NSX across all domains."
+  },
+  {
+    "question": "An architect is designing an NSX Edge deployment for a VCF workload domain requiring high-throughput north-south routing and stateful services. Which NSX Edge form factor should be chosen?",
+    "options": [
+      "Bare Metal NSX Edge",
+      "Medium VM NSX Edge",
+      "Large VM NSX Edge",
+      "Small VM NSX Edge"
+    ],
+    "answer": 0,
+    "explanation": "Bare Metal NSX Edges provide raw hardware performance, lower network latency, and high bandwidth without hypervisor virtualization overhead."
+  },
+  {
+    "question": "During a design workshop, the customer specifies that the cloud environment must maintain 99.99% operational uptime per year. How does the architect classify this metric in the design documentation?",
+    "options": [
+      "Availability Requirement",
+      "Manageability Requirement",
+      "Recoverability Requirement",
+      "Security Requirement"
+    ],
+    "answer": 0,
+    "explanation": "An operational uptime percentage target (99.99%) specifies continuous platform access and is classified under Availability."
+  },
+  {
+    "question": "An architect needs to configure vSAN storage policies for virtual machines running high-volume OLTP databases where write performance and lowest latency are paramount. Which policy should be selected?",
+    "options": [
+      "RAID-1 (Mirroring) with FTT=1 or FTT=2",
+      "RAID-5 (Erasure Coding) with FTT=1",
+      "RAID-6 (Erasure Coding) with FTT=2",
+      "RAID-0 (No Redundancy)"
+    ],
+    "answer": 0,
+    "explanation": "RAID-1 (Mirroring) avoids erasure-coding parity calculation overhead, providing the highest write performance and lowest storage latency for databases."
+  },
+  {
+    "question": "An organization is deploying VCF Automation to deliver a self-service cloud catalog. The security team demands that users only see infrastructure catalog items corresponding to their specific department. Which VCF Automation construct enforces this?",
+    "options": [
+      "Projects and Custom Roles",
+      "Cloud Accounts",
+      "Flavors and Images",
+      "Fabric Networks"
+    ],
+    "answer": 0,
+    "explanation": "Projects map users/groups to specific Cloud Zones and entitlement policies, restricting catalog visibility and resource consumption per department."
+  },
+  {
+    "question": "An architect is designing a BCDR solution for a VCF environment where RPO must be less than 1 minute for application data across distant datacenters (100 miles apart, 15ms latency). Which replication technology should be selected?",
+    "options": [
+      "vSphere Replication / Live Recovery Asynchronous Replication",
+      "vSAN Stretched Cluster Synchronous Replication",
+      "Array-based Synchronous Mirroring",
+      "HCX Cold Migration"
+    ],
+    "answer": 0,
+    "explanation": "For sites >10ms latency, synchronous replication introduces write penalty degradation; vSphere Replication / Live Recovery asynchronous replication allows RPOs down to 1 minute over distance."
+  },
+  {
+    "question": "When designing a VCF deployment using vSAN ESA (Express Storage Architecture), what hardware requirement must be satisfied for storage devices?",
+    "options": [
+      "All devices must be certified NVMe flash drives",
+      "SAS/SATA SSDs configured in Cache and Capacity tiers",
+      "Fibre Channel LUNs presented as RDM",
+      "Serial Attached SCSI (SAS) HDDs for capacity tier"
+    ],
+    "answer": 0,
+    "explanation": "vSAN ESA utilizes a single-tier architecture built exclusively on high-performance certified All-NVMe storage devices."
+  },
+  {
+    "question": "An architect is tasked with integrating VCF Operations with an external corporate identity provider. Which protocols are natively supported by VCF Identity Broker for single sign-on (SSO)?",
+    "options": [
+      "SAML 2.0 and OIDC",
+      "RADIUS and TACACS+",
+      "NTLM v2 and Kerberos",
+      "LDAP over HTTP"
+    ],
+    "answer": 0,
+    "explanation": "VCF Identity Broker integrates modern identity federations using industry-standard SAML 2.0 and OpenID Connect (OIDC) protocols."
+  },
+  {
+    "question": "An architect is designing a VCF solution with multiple workload domains. The customer wants to ensure that a hardware failure or maintenance task in one workload domain will never affect vCenter availability in another workload domain. Which design decision supports this?",
+    "options": [
+      "Deploy a dedicated vCenter Server for each workload domain in the Management Domain cluster.",
+      "Deploy a single shared vCenter for all workload domains.",
+      "Deploy vCenter Servers on external physical hosts.",
+      "Place all vCenter Servers on local host disks."
+    ],
+    "answer": 0,
+    "explanation": "Deploying dedicated vCenter instances per workload domain guarantees management isolation, preventing blast radius spillover during failures or maintenance."
+  },
+  {
+    "question": "An architect is reviewing network requirements for VCF bring-up. Which type of DNS records must be pre-created for all VCF management appliances and ESXi hosts prior to deployment?",
+    "options": [
+      "Forward (A) and Reverse (PTR) DNS records",
+      "CNAME alias records only",
+      "TXT and MX records",
+      "SRV records for active directory"
+    ],
+    "answer": 0,
+    "explanation": "VCF Cloud Builder and SDDC Manager require strict forward (A) and reverse (PTR) DNS resolution for all host and management appliance IP addresses before deployment."
+  },
+  {
+    "question": "What is the primary benefit of deploying an NSX Edge Cluster in an Active-Active Tier-0 gateway configuration?",
+    "options": [
+      "Equal-Cost Multi-Path (ECMP) routing for increased north-south network throughput",
+      "Stateful firewall inspection across all Edge nodes simultaneously",
+      "Automated zero-downtime vMotion of Edge VMs",
+      "Simplified single-IP default gateway configuration"
+    ],
+    "answer": 0,
+    "explanation": "Active-Active Tier-0 gateways leverage ECMP to distribute North-South traffic across multiple Edge nodes, maximizing aggregate network throughput."
+  },
+  {
+    "question": "An architect is documenting the physical network design for ESXi hosts in a VCF cluster using two 25GbE uplinks. How should vSphere Distributed Switch (vDS) teaming policies be configured to optimize bandwidth utilization and uplink redundancy without switch-assisted LAG?",
+    "options": [
+      "Route based on physical NIC load (Load-Based Teaming)",
+      "Route based on IP hash",
+      "Explicit failover order",
+      "Route based on source MAC hash"
+    ],
+    "answer": 0,
+    "explanation": "Load-Based Teaming ('Route based on physical NIC load') dynamically shifts traffic across active uplinks when utilization exceeds 75%, maximizing bandwidth without requiring physical LACP."
+  },
+  {
+    "question": "An organization is deploying VCF across two regions. The cloud architect needs to define a centralized management dashboard for global compliance, capacity reporting, and cross-region monitoring. Which solution fulfills this?",
+    "options": [
+      "VCF Operations with multi-site federation / aggregated dashboards",
+      "SDDC Manager Federation only",
+      "vCenter Linked Mode",
+      "NSX Local Manager"
+    ],
+    "answer": 0,
+    "explanation": "VCF Operations aggregates metrics and logs across multi-region VCF fleets into centralized dashboards for capacity, performance, and compliance monitoring."
+  }
+]
