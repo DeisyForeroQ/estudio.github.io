@@ -1,7 +1,7 @@
 :root {
-  --bg-gradient-1: #002b49;
-  --bg-gradient-2: #005b94;
-  --bg-gradient-3: #0081c6;
+  --bg-gradient-1: #306E9C;  // 002b49
+  --bg-gradient-2: #3790C4 ;  // 005b94
+  --bg-gradient-3: #50BCF2 ;  // 0081c6
   --accent-cyan: #00d2ff;
   --accent-gold: #ffd166;
   --card-dark: rgba(10, 25, 47, 0.75);
