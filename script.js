@@ -52,7 +52,7 @@ async function selectExam(jsonFile, examTitle) {
     const shuffledQuestions = shuffleArray(allQuestions);
     
     // 2. Cortar estrictamente a un máximo de 60 preguntas
-    currentQuestions = shuffledQuestions.slice(0, 60);
+    currentQuestions = shuffledQuestions.slice(0, 160);
 
     userAnswers = {}; // Reiniciar respuestas anteriores
 
