@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// 1. Cargar examen desde el JSON seleccionando 60 preguntas aleatorias
+// 1. Cargar examen desde el JSON seleccionando preguntas aleatorias
 async function selectExam(jsonFile, examTitle) {
   const titleElem = document.getElementById('app-title');
   const counterElem = document.getElementById('question-counter');
@@ -40,7 +40,7 @@ async function selectExam(jsonFile, examTitle) {
   if (resultsContainer) resultsContainer.style.display = 'none';
 
   const submitBtn = document.getElementById('btn-submit-exam');
-  if (submitBtn) submitBtn.style.display = 'block'; // RESTAURAR VISIBILIDAD DEL BOTÓN
+  if (submitBtn) submitBtn.style.display = 'block';
 
   try {
     const response = await fetch(jsonFile);
@@ -51,7 +51,7 @@ async function selectExam(jsonFile, examTitle) {
     // 1. Mezclar todo el banco de preguntas de forma aleatoria
     const shuffledQuestions = shuffleArray(allQuestions);
     
-    // 2. Cortar estrictamente a un máximo de 60 preguntas
+    // 2. Cortar estrictamente a un máximo de preguntas (ej. 160 o las disponibles)
     currentQuestions = shuffledQuestions.slice(0, 160);
 
     userAnswers = {}; // Reiniciar respuestas anteriores
@@ -76,7 +76,7 @@ async function selectExam(jsonFile, examTitle) {
   }
 }
 
-// 2. Renderizar preguntas
+// 2. Renderizar preguntas (Soporta Radio y Checkbox dinámicamente)
 function renderQuestions(questions) {
   const container = document.getElementById('questions-wrapper');
   container.innerHTML = ''; 
@@ -93,11 +93,15 @@ function renderQuestions(questions) {
       margin-bottom: 20px;
     `;
 
+    // Detectar si la pregunta es de selección múltiple (si q.answer es un arreglo)
+    const isMulti = Array.isArray(q.answer);
+    const inputType = isMulti ? 'checkbox' : 'radio';
+
     let optionsHTML = '';
     q.options.forEach((opt, oIndex) => {
       optionsHTML += `
         <label id="label-${qIndex}-${oIndex}" style="display: block; margin: 10px 0; cursor: pointer; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border: 1px solid transparent; transition: all 0.2s;">
-          <input type="radio" name="question_${qIndex}" value="${oIndex}" onchange="saveAnswer(${qIndex}, ${oIndex})">
+          <input type="${inputType}" name="question_${qIndex}" value="${oIndex}" onchange="saveAnswer(${qIndex}, ${oIndex}, ${isMulti})">
           <span style="margin-left: 8px;">${opt}</span>
         </label>
       `;
@@ -105,7 +109,8 @@ function renderQuestions(questions) {
 
     questionCard.innerHTML = `
       <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #00d2ff;">
-        Pregunta ${qIndex + 1}: ${q.question}
+        Pregunta ${qIndex + 1}: ${q.question} 
+        ${isMulti ? '<span style="color: #ffd166; font-size: 0.85rem; display: block; margin-top: 5px;">(Selecciona varias opciones)</span>' : ''}
       </h3>
       <div class="options-container">
         ${optionsHTML}
@@ -117,9 +122,24 @@ function renderQuestions(questions) {
   });
 }
 
-// 3. Guardar respuesta del usuario
-function saveAnswer(questionIndex, optionIndex) {
-  userAnswers[questionIndex] = optionIndex;
+// 3. Guardar respuesta del usuario (Maneja tanto radio como checkbox)
+function saveAnswer(questionIndex, optionIndex, isMulti) {
+  if (isMulti) {
+    // Recolectar todos los checkboxes marcados en esta pregunta
+    const checkboxes = document.querySelectorAll(`input[name="question_${questionIndex}"]:checked`);
+    userAnswers[questionIndex] = Array.from(checkboxes).map(cb => parseInt(cb.value));
+  } else {
+    userAnswers[questionIndex] = parseInt(optionIndex);
+  }
+}
+
+// Función auxiliar para comparar si dos arreglos contienen los mismos elementos
+function arraysEqual(a, b) {
+  if (!Array.isArray(a) || !Array.isArray(b)) return false;
+  if (a.length !== b.length) return false;
+  const sortedA = [...a].sort((x, y) => x - y);
+  const sortedB = [...b].sort((x, y) => x - y);
+  return sortedA.every((val, idx) => val === sortedB[idx]);
 }
 
 // 4. Evaluar el examen completo
@@ -134,21 +154,64 @@ function evaluateExam() {
 
   currentQuestions.forEach((q, qIndex) => {
     const selectedAnswer = userAnswers[qIndex];
-    const correctAnswer = q.answer; // Debe coincidir con la posición (0, 1, 2, 3...) en el JSON
+    const correctAnswer = q.answer; 
     const feedbackElem = document.getElementById(`feedback-${qIndex}`);
+    const isMulti = Array.isArray(correctAnswer);
 
-    // Deshabilitar las opciones
+    // Deshabilitar todos los inputs de esta pregunta
     const inputs = document.querySelectorAll(`input[name="question_${qIndex}"]`);
     inputs.forEach(input => input.disabled = true);
 
-    // Resaltar la respuesta correcta siempre en verde
-    const correctLabel = document.getElementById(`label-${qIndex}-${correctAnswer}`);
-    if (correctLabel) {
-      correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
-      correctLabel.style.borderColor = "#2ecc71";
+    let isCorrect = false;
+
+    if (isMulti) {
+      // Validación para selección múltiple
+      const userArr = Array.isArray(selectedAnswer) ? selectedAnswer : [];
+      isCorrect = arraysEqual(userArr, correctAnswer);
+
+      // Resaltar en verde todas las opciones que eran correctas
+      correctAnswer.forEach(corrIdx => {
+        const correctLabel = document.getElementById(`label-${qIndex}-${corrIdx}`);
+        if (correctLabel) {
+          correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
+          correctLabel.style.borderColor = "#2ecc71";
+        }
+      });
+
+      // Resaltar en rojo las opciones marcadas erróneamente por el usuario
+      userArr.forEach(userOptIdx => {
+        if (!correctAnswer.includes(userOptIdx)) {
+          const wrongLabel = document.getElementById(`label-${qIndex}-${userOptIdx}`);
+          if (wrongLabel) {
+            wrongLabel.style.background = "rgba(231, 76, 60, 0.2)";
+            wrongLabel.style.borderColor = "#e74c3c";
+          }
+        }
+      });
+
+    } else {
+      // Validación para selección única
+      isCorrect = (selectedAnswer !== undefined && parseInt(selectedAnswer) === parseInt(correctAnswer));
+
+      // Resaltar la respuesta correcta en verde
+      const correctLabel = document.getElementById(`label-${qIndex}-${correctAnswer}`);
+      if (correctLabel) {
+        correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
+        correctLabel.style.borderColor = "#2ecc71";
+      }
+
+      // Si falló y marcó algo, marcar su opción en rojo
+      if (!isCorrect && selectedAnswer !== undefined) {
+        const wrongLabel = document.getElementById(`label-${qIndex}-${selectedAnswer}`);
+        if (wrongLabel) {
+          wrongLabel.style.background = "rgba(231, 76, 60, 0.2)";
+          wrongLabel.style.borderColor = "#e74c3c";
+        }
+      }
     }
 
-    if (selectedAnswer !== undefined && parseInt(selectedAnswer) === parseInt(correctAnswer)) {
+    // Mostrar feedback en la tarjeta
+    if (isCorrect) {
       correctCount++;
       if (feedbackElem) {
         feedbackElem.style.display = "block";
@@ -159,24 +222,21 @@ function evaluateExam() {
       }
     } else {
       incorrectCount++;
-      
-      // Si respondió mal, marcar la opción elegida en rojo
-      if (selectedAnswer !== undefined) {
-        const wrongLabel = document.getElementById(`label-${qIndex}-${selectedAnswer}`);
-        if (wrongLabel) {
-          wrongLabel.style.background = "rgba(231, 76, 60, 0.2)";
-          wrongLabel.style.borderColor = "#e74c3c";
-        }
-      }
-
       if (feedbackElem) {
         feedbackElem.style.display = "block";
         feedbackElem.style.background = "rgba(231, 76, 60, 0.15)";
         feedbackElem.style.border = "1px solid #e74c3c";
         feedbackElem.style.color = "#ff6b6b";
+
+        let correctText = '';
+        if (isMulti) {
+          correctText = correctAnswer.map(idx => `<strong>${q.options[idx]}</strong>`).join(' y ');
+        } else {
+          correctText = `<strong>${q.options[correctAnswer]}</strong>`;
+        }
+
         feedbackElem.innerHTML = `
-          <strong>Incorrecto.</strong> La respuesta correcta era: 
-          <strong>${q.options[correctAnswer]}</strong>.<br>
+          <strong>Incorrecto.</strong> La(s) respuesta(s) correcta(s) era(n): ${correctText}.<br>
           <em>${q.explanation || ''}</em>
         `;
       }
