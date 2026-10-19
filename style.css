@@ -1,10 +1,10 @@
 :root {
-  --bg-gradient-1: #003DA5;   /* Actualizado a Azul I Adistec */
-  --bg-gradient-2: #1E2CA2;   /* Actualizado a Azul II Adistec */
+  --bg-gradient-1: #1E4496;   
+  --bg-gradient-2: #162CA8;   /* Actualizado a Azul II Adistec */
   --bg-gradient-3: #006EB3;   /* Actualizado a Cyan II (#006EB3) */
   --accent-cyan: #00A3DD;     /* Actualizado a Cyan I (#00A3DD) */
   --accent-gold: #ffd166;
-  --card-dark: rgba(0, 61, 165, 0.75);
+  --card-dark: rgba(0, 74, 199, 0.75);
   --card-gold: rgba(255, 238, 173, 0.95);
   --text-light: #ffffff;
   --text-sub: #b0c4de;
