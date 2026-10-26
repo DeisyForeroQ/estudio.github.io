@@ -210,8 +210,7 @@
     ],
     "answer": [0],
     "explanation": "Not specified in retrieved sources"
-  }
-  ,
+  },
   {
     "question": "What is a mandatory vSphere prerequisite for VCF Operations to perform Cross-Cluster Workload Optimization (moving a VM from Cluster A to Cluster B)?",
     "options": [
