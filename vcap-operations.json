@@ -253,7 +253,7 @@
       "D. The high latency on vCenter collection suggests a network bottleneck between the Cloud Proxy and the vCenter.",
       "E. The SDDC Manager adapter instance is failing to collect data, causing the SDDC Manager object state to become \"Unknown\"."
     ],
-    "answer": [2, 4],
+    "answer": [2,3, 4],
     "explanation": "Not specified in retrieved sources"
   },
   {
