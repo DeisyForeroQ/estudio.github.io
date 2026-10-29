@@ -137,4 +137,42 @@
           
           <div class="progress-container">
             <span class="progress-text" id="progress-ratio-text">0/0</span>
-            <div
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+          </div>
+
+          <div class="top-right-actions">
+            <a href="#" class="link-feedback" onclick="alert('¡Gracias por tus comentarios!'); return false;">Share feedback</a>
+            <button class="btn-finish-test" id="btn-finish-test" onclick="evaluateExam()">Finish test</button>
+          </div>
+        </header>
+
+        <!-- RESUMEN DE RESULTADOS (SOLO AL FINALIZAR) -->
+        <div id="results-summary" style="display: none;"></div>
+
+        <!-- CONTENIDO DE LA PREGUNTA ACTIVA -->
+        <div class="question-display-area" id="active-question-container">
+          <!-- Se renderiza dinámicamente -->
+        </div>
+
+        <!-- NAVEGACIÓN INFERIOR -->
+        <footer class="quiz-footer">
+          <div class="footer-left">
+            <button class="btn-nav-sec" id="btn-prev-q" onclick="navigateQuestion(-1)">Back</button>
+          </div>
+          <div class="footer-right">
+            <button class="btn-nav-purple" id="btn-next-q" onclick="navigateQuestion(1)">Skip question ›</button>
+            <button class="icon-btn" title="Ajustes">⚙</button>
+            <button class="icon-btn" onclick="toggleFullScreen()" title="Pantalla completa">⤢</button>
+          </div>
+        </footer>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
