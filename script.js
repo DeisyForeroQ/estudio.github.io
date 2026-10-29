@@ -1,8 +1,10 @@
-// Variables globales
+// Variables Globales
 let currentQuestions = [];
 let userAnswers = {};
+let currentQuestionIndex = 0;
+let isEvaluated = false;
 
-// Función auxiliar para desordenar un arreglo aleatoriamente (Algoritmo Fisher-Yates)
+// Función Algoritmo Fisher-Yates para desordenar
 function shuffleArray(array) {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -12,7 +14,6 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-// Inicializar eventos al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
   const btnArchitecture = document.getElementById('btn-architecture');
   if (btnArchitecture) {
@@ -23,261 +24,253 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// 1. Cargar examen desde el JSON seleccionando preguntas aleatorias
+// Cargar examen JSON
 async function selectExam(jsonFile, examTitle) {
-  const titleElem = document.getElementById('app-title');
-  const counterElem = document.getElementById('question-counter');
-  
-  if (titleElem) titleElem.textContent = examTitle;
-  if (counterElem) counterElem.textContent = "Cargando preguntas...";
-
-  // Alternar pantallas
   document.getElementById('exam-selector-screen').style.display = 'none';
-  document.getElementById('quiz-screen').style.display = 'block';
+  document.getElementById('quiz-screen').style.display = 'flex';
 
-  // Ocultar resultados previos si existen y mostrar botón de enviar
   const resultsContainer = document.getElementById('results-summary');
   if (resultsContainer) resultsContainer.style.display = 'none';
 
-  const submitBtn = document.getElementById('btn-submit-exam');
-  if (submitBtn) submitBtn.style.display = 'block';
+  isEvaluated = false;
+  userAnswers = {};
+  currentQuestionIndex = 0;
 
   try {
     const response = await fetch(jsonFile);
-    if (!response.ok) throw new Error(`No se pudo cargar el archivo: ${jsonFile}`);
+    if (!response.ok) throw new Error(`Error al cargar ${jsonFile}`);
     
     const allQuestions = await response.json();
+    currentQuestions = shuffleArray(allQuestions).slice(0, 60); // Máximo 60 preguntas tipo la interfaz
 
-    // 1. Mezclar todo el banco de preguntas de forma aleatoria
-    const shuffledQuestions = shuffleArray(allQuestions);
-    
-    // 2. Cortar estrictamente a un máximo de preguntas (ej. 160 o las disponibles)
-    currentQuestions = shuffledQuestions.slice(0, 160);
-
-    userAnswers = {}; // Reiniciar respuestas anteriores
-
-    if (counterElem) {
-      counterElem.textContent = `Total de preguntas: ${currentQuestions.length}`;
-    }
-
-    renderQuestions(currentQuestions);
+    updateProgressBar();
+    renderSidebarList();
+    renderActiveQuestion();
 
   } catch (error) {
     console.error(error);
-    const wrapper = document.getElementById('questions-wrapper');
-    if (wrapper) {
-      wrapper.innerHTML = `
-        <div style="text-align: center; color: #ff6b6b; padding: 20px;">
-          <p>⚠️ No se pudo cargar el archivo <strong>${jsonFile}</strong>.</p>
-          <p>Asegúrate de crear este archivo en la misma carpeta que el <code>index.html</code>.</p>
-        </div>
-      `;
-    }
+    alert(`No se pudo cargar el archivo ${jsonFile}`);
+    goBackToMenu();
   }
 }
 
-// 2. Renderizar preguntas (Soporta Radio y Checkbox dinámicamente)
-function renderQuestions(questions) {
-  const container = document.getElementById('questions-wrapper');
-  container.innerHTML = ''; 
+// Renderizar la lista lateral de preguntas
+function renderSidebarList() {
+  const sidebarNav = document.getElementById('sidebar-questions-list');
+  sidebarNav.innerHTML = '';
 
-  questions.forEach((q, qIndex) => {
-    const questionCard = document.createElement('div');
-    questionCard.className = 'question-card';
-    questionCard.id = `question-card-${qIndex}`;
-    questionCard.style.cssText = `
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-    `;
+  currentQuestions.forEach((q, index) => {
+    const item = document.createElement('div');
+    item.className = `nav-q-item ${index === currentQuestionIndex ? 'active' : ''}`;
+    item.onclick = () => jumpToQuestion(index);
 
-    // Detectar si la pregunta es de selección múltiple (si q.answer es un arreglo)
-    const isMulti = Array.isArray(q.answer);
-    const inputType = isMulti ? 'checkbox' : 'radio';
+    let statusHTML = '';
+    if (isEvaluated) {
+      const isCorrect = checkAnswerCorrectness(index);
+      if (isCorrect) {
+        statusHTML = `<span class="status-badge-correct">Correct</span>`;
+      } else {
+        statusHTML = `<span class="status-badge-incorrect">Incorrect</span>`;
+      }
+    }
 
-    let optionsHTML = '';
-    q.options.forEach((opt, oIndex) => {
-      optionsHTML += `
-        <label id="label-${qIndex}-${oIndex}" style="display: block; margin: 10px 0; cursor: pointer; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; border: 1px solid transparent; transition: all 0.2s;">
-          <input type="${inputType}" name="question_${qIndex}" value="${oIndex}" onchange="saveAnswer(${qIndex}, ${oIndex}, ${isMulti})">
-          <span style="margin-left: 8px;">${opt}</span>
-        </label>
-      `;
-    });
-
-    questionCard.innerHTML = `
-      <h3 style="margin-bottom: 15px; font-size: 1.1rem; color: #00d2ff;">
-        Pregunta ${qIndex + 1}: ${q.question} 
-        ${isMulti ? '<span style="color: #ffd166; font-size: 0.85rem; display: block; margin-top: 5px;">(Selecciona varias opciones)</span>' : ''}
-      </h3>
-      <div class="options-container">
-        ${optionsHTML}
+    item.innerHTML = `
+      <div class="nav-q-header">
+        <span>🔖 Question ${index + 1}</span>
+        ${statusHTML}
       </div>
-      <div id="feedback-${qIndex}" style="margin-top: 15px; display: none; padding: 12px; border-radius: 8px; font-size: 0.95rem;"></div>
+      <div class="nav-q-preview">${q.question}</div>
     `;
 
-    container.appendChild(questionCard);
+    sidebarNav.appendChild(item);
   });
 }
 
-// 3. Guardar respuesta del usuario (Maneja tanto radio como checkbox)
-function saveAnswer(questionIndex, optionIndex, isMulti) {
-  if (isMulti) {
-    // Recolectar todos los checkboxes marcados en esta pregunta
-    const checkboxes = document.querySelectorAll(`input[name="question_${questionIndex}"]:checked`);
-    userAnswers[questionIndex] = Array.from(checkboxes).map(cb => parseInt(cb.value));
+// Renderizar la pregunta activa actual en el panel principal
+function renderActiveQuestion() {
+  const container = document.getElementById('active-question-container');
+  const q = currentQuestions[currentQuestionIndex];
+  if (!q) return;
+
+  const isMulti = Array.isArray(q.answer);
+  const inputType = isMulti ? 'checkbox' : 'radio';
+
+  let optionsHTML = '';
+  q.options.forEach((opt, oIndex) => {
+    const isChecked = isOptionSelected(currentQuestionIndex, oIndex, isMulti);
+    
+    // Formato de resaltado si ya fue evaluado
+    let evalStyle = '';
+    if (isEvaluated) {
+      const isCorrectOpt = isMulti ? q.answer.includes(oIndex) : q.answer === oIndex;
+      if (isCorrectOpt) {
+        evalStyle = 'border-color: #16a34a; background-color: #f0fdf4;';
+      } else if (isChecked) {
+        evalStyle = 'border-color: #dc2626; background-color: #fef2f2;';
+      }
+    }
+
+    optionsHTML += `
+      <label class="option-card ${isChecked ? 'selected' : ''}" style="${evalStyle}">
+        <input type="${inputType}" 
+               class="custom-input" 
+               name="q_option" 
+               value="${oIndex}" 
+               ${isChecked ? 'checked' : ''} 
+               ${isEvaluated ? 'disabled' : ''} 
+               onchange="handleOptionSelect(${oIndex}, ${isMulti})">
+        <span class="option-text">${opt}</span>
+      </label>
+    `;
+  });
+
+  // Retroalimentación si ya fue evaluado
+  let feedbackHTML = '';
+  if (isEvaluated) {
+    const isCorrect = checkAnswerCorrectness(currentQuestionIndex);
+    feedbackHTML = `
+      <div class="feedback-box ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}">
+        <strong>${isCorrect ? '¡Correcto!' : 'Incorrecto.'}</strong><br>
+        ${q.explanation || ''}
+      </div>
+    `;
+  }
+
+  container.innerHTML = `
+    <div class="q-number-title">
+      🔖 Question ${currentQuestionIndex + 1}:
+    </div>
+    <div class="q-text">${q.question}</div>
+    <div class="q-subtext">${isMulti ? 'Select all that apply.' : 'Select the best response.'}</div>
+    <div class="options-list">
+      ${optionsHTML}
+    </div>
+    ${feedbackHTML}
+  `;
+
+  // Actualizar botón de navegación siguiente
+  const btnNext = document.getElementById('btn-next-q');
+  if (currentQuestionIndex === currentQuestions.length - 1) {
+    btnNext.textContent = 'Finish test ›';
   } else {
-    userAnswers[questionIndex] = parseInt(optionIndex);
+    btnNext.textContent = 'Skip question ›';
+  }
+
+  renderSidebarList();
+}
+
+// Manejar selección de opción
+function handleOptionSelect(optionIndex, isMulti) {
+  if (isEvaluated) return;
+
+  if (isMulti) {
+    if (!userAnswers[currentQuestionIndex]) userAnswers[currentQuestionIndex] = [];
+    const indexInArr = userAnswers[currentQuestionIndex].indexOf(optionIndex);
+    if (indexInArr > -1) {
+      userAnswers[currentQuestionIndex].splice(indexInArr, 1);
+    } else {
+      userAnswers[currentQuestionIndex].push(optionIndex);
+    }
+  } else {
+    userAnswers[currentQuestionIndex] = optionIndex;
+  }
+
+  updateProgressBar();
+  renderActiveQuestion();
+}
+
+// Comprobar si una opción está seleccionada
+function isOptionSelected(qIndex, oIndex, isMulti) {
+  const ans = userAnswers[qIndex];
+  if (ans === undefined) return false;
+  if (isMulti) return Array.isArray(ans) && ans.includes(oIndex);
+  return ans === oIndex;
+}
+
+// Navegar entre preguntas
+function navigateQuestion(direction) {
+  const newIndex = currentQuestionIndex + direction;
+  if (newIndex >= 0 && newIndex < currentQuestions.length) {
+    currentQuestionIndex = newIndex;
+    renderActiveQuestion();
+  } else if (newIndex >= currentQuestions.length && !isEvaluated) {
+    evaluateExam();
   }
 }
 
-// Función auxiliar para comparar si dos arreglos contienen los mismos elementos
-function arraysEqual(a, b) {
-  if (!Array.isArray(a) || !Array.isArray(b)) return false;
-  if (a.length !== b.length) return false;
-  const sortedA = [...a].sort((x, y) => x - y);
-  const sortedB = [...b].sort((x, y) => x - y);
-  return sortedA.every((val, idx) => val === sortedB[idx]);
+function jumpToQuestion(index) {
+  currentQuestionIndex = index;
+  renderActiveQuestion();
 }
 
-// 4. Evaluar el examen completo
+// Actualizar barra de progreso
+function updateProgressBar() {
+  const answeredCount = Object.keys(userAnswers).filter(k => {
+    const val = userAnswers[k];
+    return Array.isArray(val) ? val.length > 0 : val !== undefined;
+  }).length;
+
+  const total = currentQuestions.length;
+  document.getElementById('progress-ratio-text').textContent = `${answeredCount}/${total}`;
+  
+  const percentage = total > 0 ? (answeredCount / total) * 100 : 0;
+  document.getElementById('progress-bar-fill').style.width = `${percentage}%`;
+}
+
+// Evaluar exactitud de respuesta
+function checkAnswerCorrectness(qIndex) {
+  const userAns = userAnswers[qIndex];
+  const q = currentQuestions[qIndex];
+  if (!q) return false;
+
+  if (Array.isArray(q.answer)) {
+    if (!Array.isArray(userAns)) return false;
+    if (userAns.length !== q.answer.length) return false;
+    return q.answer.every(val => userAns.includes(val));
+  } else {
+    return userAns === q.answer;
+  }
+}
+
+// Evaluar examen completo
 function evaluateExam() {
-  if (!currentQuestions || currentQuestions.length === 0) {
-    alert("No hay preguntas cargadas para evaluar.");
-    return;
-  }
+  if (isEvaluated) return;
+  isEvaluated = true;
 
   let correctCount = 0;
-  let incorrectCount = 0;
-
-  currentQuestions.forEach((q, qIndex) => {
-    const selectedAnswer = userAnswers[qIndex];
-    const correctAnswer = q.answer; 
-    const feedbackElem = document.getElementById(`feedback-${qIndex}`);
-    const isMulti = Array.isArray(correctAnswer);
-
-    // Deshabilitar todos los inputs de esta pregunta
-    const inputs = document.querySelectorAll(`input[name="question_${qIndex}"]`);
-    inputs.forEach(input => input.disabled = true);
-
-    let isCorrect = false;
-
-    if (isMulti) {
-      // Validación para selección múltiple
-      const userArr = Array.isArray(selectedAnswer) ? selectedAnswer : [];
-      isCorrect = arraysEqual(userArr, correctAnswer);
-
-      // Resaltar en verde todas las opciones que eran correctas
-      correctAnswer.forEach(corrIdx => {
-        const correctLabel = document.getElementById(`label-${qIndex}-${corrIdx}`);
-        if (correctLabel) {
-          correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
-          correctLabel.style.borderColor = "#2ecc71";
-        }
-      });
-
-      // Resaltar en rojo las opciones marcadas erróneamente por el usuario
-      userArr.forEach(userOptIdx => {
-        if (!correctAnswer.includes(userOptIdx)) {
-          const wrongLabel = document.getElementById(`label-${qIndex}-${userOptIdx}`);
-          if (wrongLabel) {
-            wrongLabel.style.background = "rgba(231, 76, 60, 0.2)";
-            wrongLabel.style.borderColor = "#e74c3c";
-          }
-        }
-      });
-
-    } else {
-      // Validación para selección única
-      isCorrect = (selectedAnswer !== undefined && parseInt(selectedAnswer) === parseInt(correctAnswer));
-
-      // Resaltar la respuesta correcta en verde
-      const correctLabel = document.getElementById(`label-${qIndex}-${correctAnswer}`);
-      if (correctLabel) {
-        correctLabel.style.background = "rgba(46, 204, 113, 0.2)";
-        correctLabel.style.borderColor = "#2ecc71";
-      }
-
-      // Si falló y marcó algo, marcar su opción en rojo
-      if (!isCorrect && selectedAnswer !== undefined) {
-        const wrongLabel = document.getElementById(`label-${qIndex}-${selectedAnswer}`);
-        if (wrongLabel) {
-          wrongLabel.style.background = "rgba(231, 76, 60, 0.2)";
-          wrongLabel.style.borderColor = "#e74c3c";
-        }
-      }
-    }
-
-    // Mostrar feedback en la tarjeta
-    if (isCorrect) {
-      correctCount++;
-      if (feedbackElem) {
-        feedbackElem.style.display = "block";
-        feedbackElem.style.background = "rgba(46, 204, 113, 0.15)";
-        feedbackElem.style.border = "1px solid #2ecc71";
-        feedbackElem.style.color = "#2ecc71";
-        feedbackElem.innerHTML = `<strong>¡Correcto!</strong> ${q.explanation || ''}`;
-      }
-    } else {
-      incorrectCount++;
-      if (feedbackElem) {
-        feedbackElem.style.display = "block";
-        feedbackElem.style.background = "rgba(231, 76, 60, 0.15)";
-        feedbackElem.style.border = "1px solid #e74c3c";
-        feedbackElem.style.color = "#ff6b6b";
-
-        let correctText = '';
-        if (isMulti) {
-          correctText = correctAnswer.map(idx => `<strong>${q.options[idx]}</strong>`).join(' y ');
-        } else {
-          correctText = `<strong>${q.options[correctAnswer]}</strong>`;
-        }
-
-        feedbackElem.innerHTML = `
-          <strong>Incorrecto.</strong> La(s) respuesta(s) correcta(s) era(n): ${correctText}.<br>
-          <em>${q.explanation || ''}</em>
-        `;
-      }
-    }
+  currentQuestions.forEach((_, idx) => {
+    if (checkAnswerCorrectness(idx)) correctCount++;
   });
 
-  // Mostrar el panel de puntaje superior
-  const resultsContainer = document.getElementById('results-summary');
-  if (resultsContainer) {
-    const scorePercentage = Math.round((correctCount / currentQuestions.length) * 100);
-    resultsContainer.style.display = 'block';
-    resultsContainer.innerHTML = `
-      <div style="background: rgba(15, 23, 42, 0.8); border: 2px solid ${scorePercentage >= 70 ? '#2ecc71' : '#e74c3c'}; border-radius: 12px; padding: 20px; margin-bottom: 25px; text-align: center;">
-        <h2 style="color: ${scorePercentage >= 70 ? '#2ecc71' : '#e74c3c'}; margin-bottom: 10px;">
-          ${scorePercentage >= 70 ? '¡Examen Aprobado!' : 'Examen No Aprobado'} (${scorePercentage}%)
-        </h2>
-        <p style="font-size: 1.1rem; color: #fff;">
-          Correctas: <strong style="color: #2ecc71;">${correctCount}</strong> | 
-          Incorrectas / Sin responder: <strong style="color: #e74c3c;">${incorrectCount}</strong>
-        </p>
-      </div>
-    `;
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  const percentage = Math.round((correctCount / currentQuestions.length) * 100);
 
-  // Ocultar el botón después de evaluar
-  const submitBtn = document.getElementById('btn-submit-exam');
-  if (submitBtn) submitBtn.style.display = 'none';
+  const resultsSummary = document.getElementById('results-summary');
+  resultsSummary.style.display = 'block';
+  resultsSummary.innerHTML = `
+    <div style="background: ${percentage >= 70 ? '#f0fdf4' : '#fef2f2'}; border: 2px solid ${percentage >= 70 ? '#16a34a' : '#dc2626'}; border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: center;">
+      <h2 style="color: ${percentage >= 70 ? '#16a34a' : '#dc2626'}; margin-bottom: 8px;">
+        ${percentage >= 70 ? '¡Examen Aprobado!' : 'Examen No Aprobado'} (${percentage}%)
+      </h2>
+      <p style="color: #475569;">
+        Preguntas correctas: <strong>${correctCount}</strong> de <strong>${currentQuestions.length}</strong>
+      </p>
+    </div>
+  `;
+
+  renderActiveQuestion();
 }
 
-// 5. Volver al menú principal
+// Volver al menú
 function goBackToMenu() {
   document.getElementById('exam-selector-screen').style.display = 'block';
   document.getElementById('quiz-screen').style.display = 'none';
-  
-  const titleElem = document.getElementById('app-title');
-  const counterElem = document.getElementById('question-counter');
+}
 
-  if (titleElem) titleElem.textContent = "Simulador de Certificaciones";
-  if (counterElem) counterElem.textContent = "Selecciona tu ruta de certificación oficial para comenzar";
-  
-  document.getElementById('questions-wrapper').innerHTML = '';
+// Pantalla completa opcional
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) document.exitFullscreen();
+  }
 }
