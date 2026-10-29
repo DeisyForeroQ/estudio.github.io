@@ -27,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Cargar examen JSON
 async function selectExam(jsonFile, examTitle) {
-  document.getElementById('exam-selector-screen').style.display = 'none';
-  document.getElementById('quiz-screen').style.display = 'flex';
+  const selectorScreen = document.getElementById('exam-selector-screen');
+  const quizScreen = document.getElementById('quiz-screen');
+  if (selectorScreen) selectorScreen.style.display = 'none';
+  if (quizScreen) quizScreen.style.display = 'flex';
 
   const resultsContainer = document.getElementById('results-summary');
   if (resultsContainer) resultsContainer.style.display = 'none';
@@ -121,7 +123,7 @@ function renderActiveQuestion() {
                value="${oIndex}" 
                ${isSelected ? 'checked' : ''} 
                ${isCheckedThisQ || isEvaluated ? 'disabled' : ''} 
-               onchange="handleOptionSelect(${oIndex}, ${isMulti})">
+               onclick="handleOptionSelect(${oIndex}, ${isMulti})">
         <span class="option-text">${opt}</span>
       </label>
     `;
@@ -153,13 +155,18 @@ function renderActiveQuestion() {
   renderSidebarList();
 }
 
-// Control dinámico del botón inferior derecho ("Skip", "Check answer", "Next question")
+// Control dinámico del botón inferior derecho con verificación robusta
 function updateFooterButtonState() {
   const btnNext = document.getElementById('btn-next-q');
   if (!btnNext) return;
 
   const userAns = userAnswers[currentQuestionIndex];
-  const hasSelected = userAns !== undefined && (Array.isArray(userAns) ? userAns.length > 0 : true);
+  
+  // Validar si existe respuesta seleccionada (sea número o array con elementos)
+  const hasSelected = userAns !== undefined && userAns !== null && (
+    Array.isArray(userAns) ? userAns.length > 0 : true
+  );
+  
   const isCheckedThisQ = checkedAnswers[currentQuestionIndex] === true;
 
   if (isCheckedThisQ || isEvaluated) {
@@ -185,26 +192,30 @@ function checkCurrentAnswer() {
   renderActiveQuestion();
 }
 
-// Manejar selección de opción de forma interactiva y fluida
+// Manejar selección asegurando conversión limpia a enteros
 function handleOptionSelect(optionIndex, isMulti) {
   if (checkedAnswers[currentQuestionIndex] || isEvaluated) return;
 
+  const numericIndex = parseInt(optionIndex, 10);
+
   if (isMulti) {
-    if (!userAnswers[currentQuestionIndex]) userAnswers[currentQuestionIndex] = [];
-    const indexInArr = userAnswers[currentQuestionIndex].indexOf(optionIndex);
+    if (!Array.isArray(userAnswers[currentQuestionIndex])) {
+      userAnswers[currentQuestionIndex] = [];
+    }
+    const indexInArr = userAnswers[currentQuestionIndex].indexOf(numericIndex);
     
     if (indexInArr > -1) {
       userAnswers[currentQuestionIndex].splice(indexInArr, 1);
     } else {
-      userAnswers[currentQuestionIndex].push(optionIndex);
+      userAnswers[currentQuestionIndex].push(numericIndex);
     }
   } else {
-    userAnswers[currentQuestionIndex] = optionIndex;
+    userAnswers[currentQuestionIndex] = numericIndex;
   }
 
   updateProgressBar();
 
-  // Actualiza visualmente las tarjetas seleccionadas sin recargar todo el contenedor
+  // Actualizar estilos de las tarjetas de opción en tiempo real
   const optionCards = document.querySelectorAll('.option-card');
   optionCards.forEach((card, idx) => {
     const input = card.querySelector('input');
@@ -225,9 +236,9 @@ function handleOptionSelect(optionIndex, isMulti) {
 // Comprobar si una opción está seleccionada
 function isOptionSelected(qIndex, oIndex, isMulti) {
   const ans = userAnswers[qIndex];
-  if (ans === undefined) return false;
+  if (ans === undefined || ans === null) return false;
   if (isMulti) return Array.isArray(ans) && ans.includes(oIndex);
-  return ans === oIndex;
+  return Number(ans) === Number(oIndex);
 }
 
 // Navegar entre preguntas
@@ -267,9 +278,11 @@ function checkAnswerCorrectness(qIndex) {
   if (Array.isArray(q.answer)) {
     if (!Array.isArray(userAns)) return false;
     if (userAns.length !== q.answer.length) return false;
-    return q.answer.every(val => userAns.includes(val));
+    const sortedUser = [...userAns].sort();
+    const sortedCorrect = [...q.answer].sort();
+    return sortedUser.every((val, idx) => val === sortedCorrect[idx]);
   } else {
-    return userAns === q.answer;
+    return Number(userAns) === Number(q.answer);
   }
 }
 
