@@ -51,7 +51,20 @@ async function selectExam(jsonFile, examTitle) {
 
   } catch (error) {
     console.error(error);
-    alert(`No se pudo cargar el archivo ${jsonFile}`); goBackToMenu(); } }  // Renderizar la lista lateral de preguntas function renderSidebarList() { const sidebarNav = document.getElementById('sidebar-questions-list'); sidebarNav.innerHTML = '';  currentQuestions.forEach((q, index) => { const item = document.createElement('div'); item.className = `nav-q-item ${index === currentQuestionIndex ? 'active' : ''}`;
+    alert(`No se pudo cargar el archivo ${jsonFile}`);
+    goBackToMenu();
+  }
+}
+
+// Renderizar la lista lateral de preguntas
+function renderSidebarList() {
+  const sidebarNav = document.getElementById('sidebar-questions-list');
+  if (!sidebarNav) return;
+  sidebarNav.innerHTML = '';
+
+  currentQuestions.forEach((q, index) => {
+    const item = document.createElement('div');
+    item.className = `nav-q-item ${index === currentQuestionIndex ? 'active' : ''}`;
     item.onclick = () => jumpToQuestion(index);
 
     let statusHTML = '';
@@ -66,7 +79,8 @@ async function selectExam(jsonFile, examTitle) {
 
     item.innerHTML = `
       <div class="nav-q-header">
-        <span>🔖 Question ${index + 1}</span>${statusHTML}
+        <span>🔖 Question ${index + 1}</span>
+        ${statusHTML}
       </div>
       <div class="nav-q-preview">${q.question}</div>
     `;
@@ -107,7 +121,7 @@ function renderActiveQuestion() {
                value="${oIndex}" 
                ${isSelected ? 'checked' : ''} 
                ${isCheckedThisQ || isEvaluated ? 'disabled' : ''} 
-               onchange="handleOptionSelect(${oIndex},${isMulti})">
+               onchange="handleOptionSelect(${oIndex}, ${isMulti})">
         <span class="option-text">${opt}</span>
       </label>
     `;
@@ -142,12 +156,15 @@ function renderActiveQuestion() {
 // Control dinámico del botón inferior derecho ("Skip", "Check answer", "Next question")
 function updateFooterButtonState() {
   const btnNext = document.getElementById('btn-next-q');
+  if (!btnNext) return;
+
   const userAns = userAnswers[currentQuestionIndex];
   const hasSelected = userAns !== undefined && (Array.isArray(userAns) ? userAns.length > 0 : true);
   const isCheckedThisQ = checkedAnswers[currentQuestionIndex] === true;
 
   if (isCheckedThisQ || isEvaluated) {
-    btnNext.textContent = currentQuestionIndex === currentQuestions.length - 1 ? 'Finish test ›' : 'Next question ›';
+    const isLast = currentQuestionIndex === currentQuestions.length - 1;
+    btnNext.textContent = isLast ? 'Finish test ›' : 'Next question ›';
     btnNext.className = 'btn-nav-purple active-btn';
     btnNext.onclick = () => navigateQuestion(1);
   } else if (hasSelected) {
@@ -168,13 +185,14 @@ function checkCurrentAnswer() {
   renderActiveQuestion();
 }
 
-// Manejar selección de opción
+// Manejar selección de opción de forma interactiva y fluida
 function handleOptionSelect(optionIndex, isMulti) {
   if (checkedAnswers[currentQuestionIndex] || isEvaluated) return;
 
   if (isMulti) {
     if (!userAnswers[currentQuestionIndex]) userAnswers[currentQuestionIndex] = [];
     const indexInArr = userAnswers[currentQuestionIndex].indexOf(optionIndex);
+    
     if (indexInArr > -1) {
       userAnswers[currentQuestionIndex].splice(indexInArr, 1);
     } else {
@@ -185,6 +203,22 @@ function handleOptionSelect(optionIndex, isMulti) {
   }
 
   updateProgressBar();
+
+  // Actualiza visualmente las tarjetas seleccionadas sin recargar todo el contenedor
+  const optionCards = document.querySelectorAll('.option-card');
+  optionCards.forEach((card, idx) => {
+    const input = card.querySelector('input');
+    if (input) {
+      if (isOptionSelected(currentQuestionIndex, idx, isMulti)) {
+        card.classList.add('selected');
+        input.checked = true;
+      } else {
+        card.classList.remove('selected');
+        input.checked = false;
+      }
+    }
+  });
+
   updateFooterButtonState();
 }
 
@@ -216,7 +250,12 @@ function jumpToQuestion(index) {
 function updateProgressBar() {
   const answeredCount = Object.keys(checkedAnswers).length;
   const total = currentQuestions.length;
-  document.getElementById('progress-ratio-text').textContent = `${answeredCount}/${total}`;  const percentage = total > 0 ? (answeredCount / total) * 100 : 0; document.getElementById('progress-bar-fill').style.width = `${percentage}%`;
+  const ratioText = document.getElementById('progress-ratio-text');
+  const barFill = document.getElementById('progress-bar-fill');
+
+  if (ratioText) ratioText.textContent = `${answeredCount}/${total}`;
+  const percentage = total > 0 ? (answeredCount / total) * 100 : 0;
+  if (barFill) barFill.style.width = `${percentage}%`;
 }
 
 // Evaluar exactitud de respuesta
@@ -247,8 +286,27 @@ function evaluateExam() {
   const percentage = Math.round((correctCount / currentQuestions.length) * 100);
 
   const resultsSummary = document.getElementById('results-summary');
-  resultsSummary.style.display = 'block';
-  resultsSummary.innerHTML = `
-    <div style="background: ${percentage >= 70 ? '#f0fdf4' : '#fef2f2'}; border: 2px solid ${percentage >= 70 ? '#16a34a' : '#dc2626'}; border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: center;">
-      <h2 style="color: ${percentage >= 70 ? '#16a34a' : '#dc2626'}; margin-bottom: 8px;">
-        ${percentage >= 70 ? '¡Examen Aprobado!' : '
+  if (resultsSummary) {
+    resultsSummary.style.display = 'block';
+    resultsSummary.innerHTML = `
+      <div style="background: ${percentage >= 70 ? '#f0fdf4' : '#fef2f2'}; border: 2px solid ${percentage >= 70 ? '#16a34a' : '#dc2626'}; border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: center;">
+        <h2 style="color: ${percentage >= 70 ? '#16a34a' : '#dc2626'}; margin-bottom: 8px;">
+          ${percentage >= 70 ? '¡Examen Aprobado!' : 'Examen No Aprobado'} (${percentage}%)
+        </h2>
+        <p style="color: #475569;">
+          Preguntas correctas: <strong>${correctCount}</strong> de <strong>${currentQuestions.length}</strong>
+        </p>
+      </div>
+    `;
+  }
+
+  renderActiveQuestion();
+}
+
+// Volver al menú
+function goBackToMenu() {
+  const selector = document.getElementById('exam-selector-screen');
+  const quiz = document.getElementById('quiz-screen');
+  if (selector) selector.style.display = 'block';
+  if (quiz) quiz.style.display = 'none';
+}
